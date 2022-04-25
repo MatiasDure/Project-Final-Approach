@@ -10,7 +10,7 @@ public class MyGame : Game
 	}
 
 	// For every game object, Update is called every frame, by the engine:
-	void Update() // Test 4 
+	void Update() 
 	{
 
 	}
