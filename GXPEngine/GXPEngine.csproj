@@ -87,10 +87,34 @@
     <Compile Include="GXPEngine\SoLoud\Soloud.cs" />
     <Compile Include="GXPEngine\SoLoud\SoloudSoundSystem.cs" />
     <Compile Include="NLineSegment.cs" />
+    <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Ship.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="bin\Debug\GXPEngine.exe.config" />
+    <None Include="bin\Debug\lib\libfmodex-4.34.05.so" />
+    <None Include="bin\Debug\lib\libfmodex.dylib" />
+    <None Include="bin\Debug\lib\libglfw-32.dylib" />
+    <None Include="bin\Debug\lib\libglfw-64.dylib" />
+    <None Include="bin\Debug\lib\libglfw.so" />
+    <None Include="bin\Debug\lib\libsoloud-32.dylib" />
+    <None Include="bin\Debug\lib\libsoloud-64.dylib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\circle.png" />
+    <Content Include="bin\Debug\GXPEngine.exe" />
+    <Content Include="bin\Debug\GXPEngine.pdb" />
+    <Content Include="bin\Debug\lib\COPYING.txt" />
+    <Content Include="bin\Debug\lib\Fmod.License.txt" />
+    <Content Include="bin\Debug\lib\fmodex.dll" />
+    <Content Include="bin\Debug\lib\glfw.dll" />
+    <Content Include="bin\Debug\lib\soloud.dll" />
+    <Content Include="bin\Debug\lib\soloud_x64.dll" />
+    <Content Include="bin\Debug\square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
 </Project>

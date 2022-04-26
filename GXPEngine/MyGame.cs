@@ -4,25 +4,27 @@ using GXPEngine;                                // GXPEngine contains the engine
 
 public class MyGame : Game
 {
-	public Level currentLevel;
-	string startingLevel;
+	string levelName = null;
+	int startingLevel = 1;
 	public Planet planet;
 	Blackhole black;
+	public Level level = null;
 
-	public MyGame() : base(1280, 720, false)		// Create a window that's 800x600 and NOT fullscreen
+	public MyGame() : base(1920, 1080, false)		// Create a window that's 800x600 and NOT fullscreen
 	{
-		startingLevel = "levelOne";
-		planet = new Planet(new Vector2(100,100));
-		black = new Blackhole(new Vector2(700,300));
-		AddChild(planet);
-		AddChild(black);
+		//planet = new Planet(new Vector2(100,100));
+		//black = new Blackhole(new Vector2(700,300));
+		//AddChild(planet);
+		//AddChild(black);
+		OnAfterStep += CheckLevel;
+		LoadLevel(startingLevel);
 	}
 
 	// For every game object, Update is called every frame, by the engine:
 	void Update() 
 	{
-		planet.Step();
-        Console.WriteLine(planet.acceleration);
+		//planet.Step();
+  //      Console.WriteLine(planet.acceleration);
 	}
 
 	static void Main()
@@ -31,4 +33,26 @@ public class MyGame : Game
 		myGame.Start();
 	}
 
+	void CheckLevel()
+    {
+		if (levelName == null) return;
+		DestroyAll();
+		level = new Level(levelName);
+		AddChild(level);
+		levelName = null;
+    }
+
+	void LoadLevel(int plevel)
+    {
+		levelName = "level" + plevel + ".tmx";
+    }
+
+	void DestroyAll()
+    {
+		List<GameObject> children = GetChildren();
+		for(int i = 0; i < children.Count; i++)
+        {
+			children[i].Destroy();
+        }
+    }
 }

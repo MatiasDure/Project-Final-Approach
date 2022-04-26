@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
+using TiledMapParser;
 
 public class Planet:Ball
 {
@@ -15,14 +16,18 @@ public class Planet:Ball
     public bool pull;
     public Vector2 desVelocity = new Vector2(0,0); 
 
-    public Planet(Vector2 pPos):base("circle.png", 1, 1, pPos)
+    public Planet(TiledObject obj = null):base("circle.png", 1, 1)
     {
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
-        _position = pPos;
+        if(obj != null)
+        {
+            _position = new Vector2(obj.X, obj.Y);
+            Console.WriteLine(_position);
+        }
     }
 
-    public void Step()
+    public override void Step()
     {
         if(!pull) GravityChange();
 
@@ -54,7 +59,9 @@ public class Planet:Ball
 
     CollisionInfo CheckCollision()
     {
-        Level myLevel = ((MyGame)game).currentLevel;
+        Level myLevel = ((MyGame)game).level;
+
+        if(myLevel == null) return null;
 
         float smallestToi = 100;
         float currentToi = smallestToi;

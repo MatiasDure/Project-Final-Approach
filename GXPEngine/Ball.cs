@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
+using TiledMapParser;
 
 public abstract class Ball:AnimationSprite
 {    
@@ -14,8 +15,10 @@ public abstract class Ball:AnimationSprite
     public int Radius { get => _radius; }
     public Vector2 Position { get => _position; }
 
-    public Ball(string pImgPath, int pCol, int pRow, Vector2 pPos):base(pImgPath, pCol, pRow, -1, false, false)
+    public Ball(string pImgPath, int pCol, int pRow, TiledObject obj = null):base(pImgPath, pCol, pRow, -1, false, false)
     {
 
     }
+
+    virtual public void Step() { }
 }

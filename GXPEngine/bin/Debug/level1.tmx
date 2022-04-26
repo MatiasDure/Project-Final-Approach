@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="17">
+ <imagelayer id="2" name="Image Layer 1">
+  <image source="../../../../../../term3/uxUiDesign/icons/HudBackground.png" width="1920" height="1080"/>
+ </imagelayer>
+ <objectgroup id="3" name="objects">
+  <object id="1" name="blackhole" type="Blackhole" x="116" y="124" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="9" name="marble2" type="Planet" x="125" y="465" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="10" name="blackhole" type="Blackhole" x="649" y="129" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="11" name="blackhole" type="Blackhole" x="121" y="765" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="12" name="blackhole" type="Blackhole" x="763" y="581" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="13" name="blackhole" type="Blackhole" x="1207" y="239" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="14" name="blackhole" type="Blackhole" x="1549" y="875" width="82" height="82">
+   <ellipse/>
+  </object>
+  <object id="16" name="marble1" type="Planet" x="893" y="911" width="82" height="82">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

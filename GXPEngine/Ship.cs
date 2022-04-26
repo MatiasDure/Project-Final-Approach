@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
+using TiledMapParser;
 
 public class Ship:Ball
 {
-    public Ship(Vector2 pPos) :base("circle.png", 1, 1, pPos)
+    public Ship() :base("circle.png", 1, 1)
     {
         
     }
