@@ -9,20 +9,41 @@ public class Planet:Ball
 {
     CollisionInfo firstCollision = null;
 
-    Vector2 _velocity;
-    Vector2 _oldPosition;
+    public Vector2 acceleration;
+    public Vector2 velocity;
+    Vector2 oldPosition;
 
     public Planet(Vector2 pPos):base("circle.png", 1, 1, pPos)
     {
-
+        acceleration = new Vector2(0, 0);
+        velocity = new Vector2(0, 0);
+        _position = pPos;
     }
 
     public void Step()
     {
+        GravityChange();
+        oldPosition = Position;
+        velocity += acceleration;
+        _position += velocity;
 
+        UpdateScreenPosition();
     }
 
+    void UpdateScreenPosition()
+    {
+        x = _position.x;
+        y = _position.y;
+    }
 
+    void GravityChange()
+    {
+        acceleration = new Vector2(0, 0);
+        if (Input.GetKey(Key.UP)) acceleration += new Vector2(0, -.05f);
+        if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
+        if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
+        if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
+    }
 
     CollisionInfo CheckCollision()
     {
@@ -41,7 +62,7 @@ public class Planet:Ball
             if (smallestToi != currentToi)
             {
                 collisionDetected = true;
-                firstColNormal = (this._oldPosition + smallestToi * this._velocity) - other.Position; // Point of impact - mover.position
+                firstColNormal = (this.oldPosition + smallestToi * this.velocity) - other.Position; // Point of impact - mover.position
                 firstColNormal.Normalize();
                 currentToi = smallestToi;
             }
@@ -67,23 +88,23 @@ public class Planet:Ball
 
     void ResolveCollision(CollisionInfo pCollision)
     {
-        Vector2 desiredPos = _oldPosition + pCollision.timeOfImpact * _velocity;
+        Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
         Position.SetXY(desiredPos);
-        _velocity.Reflect(Ball.bounciness, pCollision.normal);
+        velocity.Reflect(Ball.bounciness, pCollision.normal);
         //_velocity *= 0.995f; //friction
-        _velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
+        velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
 
     }
 
     float ToiBall(Ball pOther, float pCurrentToi)
     {
-        Vector2 oldRelativePos = this._oldPosition - pOther.Position;
+        Vector2 oldRelativePos = this.oldPosition - pOther.Position;
 
         float distance = oldRelativePos.Length();
-        float velocityLength = this._velocity.Length();
+        float velocityLength = this.velocity.Length();
         float sumRadius = this.Radius + pOther.Radius;
         float a = velocityLength * velocityLength;
-        float b = 2 * oldRelativePos.Dot(this._velocity);
+        float b = 2 * oldRelativePos.Dot(this.velocity);
         float c = distance * distance - sumRadius * sumRadius;
         float insideSqrt = b * b - 4 * a * c;
 
@@ -125,9 +146,9 @@ public class Planet:Ball
         {
             float toi;
             Vector2 lineNormal = pOther._normal.vector; //(currentLine.end - currentLine.start).Normal();
-            Vector2 oldDiffVector = this._oldPosition - pOther.end;
+            Vector2 oldDiffVector = this.oldPosition - pOther.end;
             float a = Vector2.Dot(lineNormal, oldDiffVector) - this.Radius;
-            float b = -Vector2.Dot(lineNormal, _velocity);
+            float b = -Vector2.Dot(lineNormal, velocity);
             toi = a / b;
             return toi < pCurrentToi ? toi : pCurrentToi;
         }

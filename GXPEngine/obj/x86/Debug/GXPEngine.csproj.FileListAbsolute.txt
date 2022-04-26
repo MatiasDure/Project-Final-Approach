@@ -22,3 +22,11 @@ C:\Users\omair\Documents\Saxion\CMGT\Courses\ProjectFinalApproach\Project_Final_
 C:\Users\omair\Documents\Saxion\CMGT\Courses\ProjectFinalApproach\Project_Final_Approach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\omair\Documents\Saxion\CMGT\Courses\ProjectFinalApproach\Project_Final_Approach\GXPEngine\obj\x86\Debug\GXPEngine.exe
 C:\Users\omair\Documents\Saxion\CMGT\Courses\ProjectFinalApproach\Project_Final_Approach\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.AssemblyReference.cache
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.SuggestedBindingRedirects.cache
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.exe
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\GXPEngine.exe.config
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\GXPEngine.exe
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\GXPEngine.pdb

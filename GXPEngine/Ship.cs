@@ -9,6 +9,6 @@ public class Ship:Ball
 {
     public Ship(Vector2 pPos) :base("circle.png", 1, 1, pPos)
     {
-
+        
     }
 }

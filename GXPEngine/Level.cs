@@ -9,11 +9,16 @@ public class Level
 {
     public List<Ball> balls;
     public List<NLineSegment> lines;
+    Vector2 gravity;
 
     public Level()
     {
         balls = new List<Ball>();
         lines = new List<NLineSegment>();
+    }
+
+    void Update()
+    {
     }
 
     public int BallCount() => balls.Count;
