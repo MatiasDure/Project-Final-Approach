@@ -12,8 +12,8 @@ public class MyGame : Game
 	public MyGame() : base(1280, 720, false)		// Create a window that's 800x600 and NOT fullscreen
 	{
 		startingLevel = "levelOne";
-		planet = new Planet(new Vector2(300,400));
-		black = new Blackhole(new Vector2(200,100));
+		planet = new Planet(new Vector2(100,100));
+		black = new Blackhole(new Vector2(700,300));
 		AddChild(planet);
 		AddChild(black);
 	}

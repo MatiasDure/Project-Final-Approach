@@ -12,6 +12,8 @@ public class Planet:Ball
     public Vector2 acceleration;
     public Vector2 velocity;
     Vector2 oldPosition;
+    public bool pull;
+    public Vector2 desVelocity = new Vector2(0,0); 
 
     public Planet(Vector2 pPos):base("circle.png", 1, 1, pPos)
     {
@@ -22,10 +24,13 @@ public class Planet:Ball
 
     public void Step()
     {
-        GravityChange();
+        if(!pull) GravityChange();
+
         oldPosition = Position;
         velocity += acceleration;
         _position += velocity;
+
+        velocity = velocity * 0.98f + desVelocity * 0.02f; 
 
         UpdateScreenPosition();
     }
@@ -39,6 +44,7 @@ public class Planet:Ball
     void GravityChange()
     {
         acceleration = new Vector2(0, 0);
+        
         if (Input.GetKey(Key.UP)) acceleration += new Vector2(0, -.05f);
         if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
