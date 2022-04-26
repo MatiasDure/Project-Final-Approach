@@ -8,7 +8,8 @@ using GXPEngine;
 public abstract class Ball:AnimationSprite
 {    
     int _radius;
-    Vector2 _position;
+    public Vector2 _position;
+    public Vector2 _velocity; 
     public static float bounciness = 1f;
 
     public int Radius { get => _radius; }

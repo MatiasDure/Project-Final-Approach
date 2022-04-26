@@ -16,11 +16,11 @@ public class Blackhole:Ball
     void update()
     {
         Level myLevel = ((MyGame)game).currentLevel;
-        foreach (var item in myLevel.item)
+        foreach (Ball ball in myLevel.balls)
         {
-            if(item != this)
+            if(ball != this)
             {
-                Vector2 difference = item.position - position;    
+                Vector2 difference = ball._position - position;    
                 float distance = difference.Length();
 
                 int detectionRange = 400; 
@@ -30,8 +30,7 @@ public class Blackhole:Ball
                 int Mass = 20;
                 float gravitationalPull2 = G * (Mass * Mathf.Pow(10, 13) / Mathf.Pow(distance, 2));
 
-                item.velocity += difference.Normalized() * gravitationalPull;
-
+                ball._velocity += difference.Normalized() * gravitationalPull;
             }
         }
     }

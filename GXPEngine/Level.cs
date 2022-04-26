@@ -7,8 +7,8 @@ using GXPEngine;
 
 public class Level
 {
-    List<Ball> balls;
-    List<NLineSegment> lines;
+    public List<Ball> balls;
+    public List<NLineSegment> lines;
 
     public Level()
     {
