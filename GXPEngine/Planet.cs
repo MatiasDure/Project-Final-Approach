@@ -21,6 +21,9 @@ public class Planet:Ball
     {
 
     }
+
+
+
     CollisionInfo CheckCollision()
     {
         Level myLevel = ((MyGame)game).currentLevel;
@@ -30,23 +33,23 @@ public class Planet:Ball
         bool collisionDetected = false;
         Vector2 firstColNormal = new Vector2();
 
-        for (int i = 0; i < myLevel.GetPointsCount(); i++)
+        for (int i = 0; i < myLevel.BallCount(); i++)
         {
-            Ball other = myLevel.GetPointAtIndex(i);
+            Ball other = myLevel.BallAtIndex(i);
             smallestToi = ToiBall(other, currentToi);
 
             if (smallestToi != currentToi)
             {
                 collisionDetected = true;
-                firstColNormal = (this._oldPosition + smallestToi * this._velocity) - other._position; // Point of impact - mover.position
+                firstColNormal = (this._oldPosition + smallestToi * this._velocity) - other.Position; // Point of impact - mover.position
                 firstColNormal.Normalize();
                 currentToi = smallestToi;
             }
         }
 
-        for (int i = 0; i < myLevel.GetLinesCount(); i++)
+        for (int i = 0; i < myLevel.LineCount(); i++)
         {
-            NLineSegment currentLine = myLevel.GetLineAtIndex(i);
+            NLineSegment currentLine = myLevel.LineAtIndex(i);
             smallestToi = ToiLine(currentLine, currentToi);
 
             if (smallestToi != currentToi)
@@ -60,6 +63,16 @@ public class Planet:Ball
 
         if (collisionDetected) return new CollisionInfo(firstColNormal, null, smallestToi);
         return null;
+    }
+
+    void ResolveCollision(CollisionInfo pCollision)
+    {
+        Vector2 desiredPos = _oldPosition + pCollision.timeOfImpact * _velocity;
+        Position.SetXY(desiredPos);
+        _velocity.Reflect(Ball.bounciness, pCollision.normal);
+        //_velocity *= 0.995f; //friction
+        _velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
+
     }
 
     float ToiBall(Ball pOther, float pCurrentToi)
@@ -95,8 +108,29 @@ public class Planet:Ball
         }
     }
 
-    float ToiLine()
+    float ToiLine(NLineSegment pOther, float pCurrentToi)
     {
-        return 0;
+        Vector2 lineVector = pOther.start - pOther.end;
+        Vector2 diffVecBetweenEndPoint = this.Position - pOther.end;
+
+        float lineVectorLength = lineVector.Length();
+        float scalarProjection = diffVecBetweenEndPoint.ScalarProjection(lineVector);
+
+        //returns the currentToi if the line is not between the line segment
+        if (scalarProjection > lineVectorLength || scalarProjection < 0) return pCurrentToi;
+
+        Vector2 vectorProjection = Vector2.VectorProjection(diffVecBetweenEndPoint, pOther._normal.vector);
+
+        if (vectorProjection.Length() < this.Radius) //if ball collides with lineSegment
+        {
+            float toi;
+            Vector2 lineNormal = pOther._normal.vector; //(currentLine.end - currentLine.start).Normal();
+            Vector2 oldDiffVector = this._oldPosition - pOther.end;
+            float a = Vector2.Dot(lineNormal, oldDiffVector) - this.Radius;
+            float b = -Vector2.Dot(lineNormal, _velocity);
+            toi = a / b;
+            return toi < pCurrentToi ? toi : pCurrentToi;
+        }
+        return pCurrentToi;
     }
 }
