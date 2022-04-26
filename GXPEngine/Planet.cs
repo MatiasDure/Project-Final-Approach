@@ -49,6 +49,7 @@ public class Planet:Ball
         if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
+        acceleration.LimitLength(0.05f); 
     }
 
     CollisionInfo CheckCollision()
