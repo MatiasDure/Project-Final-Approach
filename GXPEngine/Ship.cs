@@ -7,7 +7,7 @@ using GXPEngine;
 
 public class Ship:Ball
 {
-    public Ship():base("circle.png", 1, 1)
+    public Ship(Vector2 pPos) :base("circle.png", 1, 1, pPos)
     {
 
     }

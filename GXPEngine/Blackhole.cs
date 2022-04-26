@@ -7,7 +7,7 @@ using GXPEngine;
 
 public class Blackhole:Ball
 {
-    public Blackhole():base("circle.png",1,1)
+    public Blackhole(Vector2 pPos) :base("circle.png",1,1, pPos)
     {
 
     }
