@@ -8,7 +8,6 @@ using TiledMapParser;
 
 public class Planet:Ball
 {
-    CollisionInfo firstCollision = null;
 
     Vector2 acceleration;
     Vector2 velocity;
@@ -35,10 +34,29 @@ public class Planet:Ball
         velocity += acceleration;
         _position += velocity;
 
-        velocity = velocity * 0.99f + desVelocity * 0.01f; 
+        velocity = velocity * 0.99f + desVelocity * 0.01f;
+
+        bool firstTime = true;
+        for (int i = 0; i < 2; i++)
+        {
+            _position += velocity;
+            CollisionInfo firstCollision = FindEarliestCollision();
+            if (firstCollision != null)
+            {
+                ResolveCollision(firstCollision);
+                if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
+                {
+                    firstTime = false;
+                    continue;
+                }
+            }
+            break;
+        }
 
         UpdateScreenPosition();
     }
+
+    bool Approximate(float pA, float margin = 0.001f) => pA <= margin;
 
     void UpdateScreenPosition()
     {
@@ -65,7 +83,7 @@ public class Planet:Ball
         desVelocity = unitDifference;
     }
 
-    CollisionInfo CheckCollision()
+    CollisionInfo FindEarliestCollision()
     {
         Level myLevel = ((MyGame)game).level;
 

@@ -34,23 +34,18 @@ public class Level: GameObject
         balls = FindObjectsOfType<Blackhole>();
         marbles = FindObjectsOfType<Planet>();
 
-        Console.WriteLine("planets: " + marbles.Length);
-        Console.WriteLine("blackholes: " + balls.Length);
-
         for (int i = 0; i < balls.Length; i++)
         {
             balls[i].planets = marbles;
         }
 
-        //lines = FindObjectsOfType<NLineSegment>();
+        lines = FindObjectsOfType<NLineSegment>();
     }
 
     void Update()
-    {
-        
+    { 
         foreach (Planet p in marbles) p.Step();
         foreach(Blackhole b in balls) b.Step();
-
     }
 
     public int BallCount() => balls.Length;
