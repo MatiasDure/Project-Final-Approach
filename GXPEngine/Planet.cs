@@ -8,7 +8,6 @@ using TiledMapParser;
 
 public class Planet:Ball
 {
-
     Vector2 acceleration;
     Vector2 velocity;
     Vector2 oldPosition;
@@ -21,7 +20,7 @@ public class Planet:Ball
         velocity = new Vector2(0, 0);
         if(obj != null)
         {
-            _position = new Vector2(obj.X, obj.Y);
+            _position = new Vector2(obj.X + obj.Width/2, obj.Y + obj.Height/2);
             Console.WriteLine(_position);
         }
     }

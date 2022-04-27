@@ -52,4 +52,5 @@ public class Level: GameObject
     public int LineCount() => lines.Length;
     public Ball BallAtIndex(int pIndex) => balls[pIndex];
     public NLineSegment LineAtIndex(int pIndex) => lines[pIndex];
+
 }
