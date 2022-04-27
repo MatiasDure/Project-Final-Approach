@@ -9,16 +9,16 @@ using TiledMapParser;
 public class Level: GameObject
 {
     TiledLoader loader;
-    Blackhole[] balls;
+    NotMarble[] notMarbles;
     Planet[] marbles;
     NLineSegment[] lines;
-    string currentLevel;
+    int currentLevel;
 
-    public Level(string pCurrentLevel)
+    public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
-        currentLevel = pCurrentLevel;
+        currentLevel = pCurrentLevelNum;
     }
 
     public void CreateLevel()
@@ -31,26 +31,41 @@ public class Level: GameObject
         loader.autoInstance = true;
         loader.LoadObjectGroups();
 
-        balls = FindObjectsOfType<Blackhole>();
+        notMarbles = FindObjectsOfType<NotMarble>();
         marbles = FindObjectsOfType<Planet>();
 
-        for (int i = 0; i < balls.Length; i++)
-        {
-            balls[i].planets = marbles;
-        }
+        
+        AddingPlanets();
 
         lines = FindObjectsOfType<NLineSegment>();
     }
 
     void Update()
-    { 
-        foreach (Planet p in marbles) p.Step();
-        foreach(Blackhole b in balls) b.Step();
+    {
+        for (int i = 0; i < marbles.Length ;i++)
+        {
+            marbles[i].Step();
+            if(i == 0 && marbles[i].Win && marbles[i+1].Win)
+            {
+                ((MyGame)game).LoadLevel(++currentLevel);
+            }
+            if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
+        }
+
+        foreach (NotMarble notMarble in notMarbles) notMarble.Step();
     }
 
-    public int BallCount() => balls.Length;
+    void AddingPlanets()
+    {
+        for (int i = 0; i < notMarbles.Length; i++)
+        {
+            notMarbles[i].planets = marbles;
+        }
+    }
+
+    public int BallCount() => notMarbles.Length;
     public int LineCount() => lines.Length;
-    public Ball BallAtIndex(int pIndex) => balls[pIndex];
+    public Ball BallAtIndex(int pIndex) => notMarbles[pIndex];
     public NLineSegment LineAtIndex(int pIndex) => lines[pIndex];
 
 }

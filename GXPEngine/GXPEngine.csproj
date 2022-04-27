@@ -87,6 +87,7 @@
     <Compile Include="GXPEngine\SoLoud\Soloud.cs" />
     <Compile Include="GXPEngine\SoLoud\SoloudSoundSystem.cs" />
     <Compile Include="NLineSegment.cs" />
+    <Compile Include="NotMarble.cs" />
     <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Ship.cs" />

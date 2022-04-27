@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Ship:Ball
+public class Ship:NotMarble
 {
-    public Ship() :base("circle.png", 1, 1)
+
+    public Ship(TiledObject obj = null) :base("ship.png", 1, 1)
     {
-        
+        Init(obj);
     }
+
 }

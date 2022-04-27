@@ -11,18 +11,23 @@ public class Planet:Ball
     Vector2 acceleration;
     Vector2 velocity;
     Vector2 oldPosition;
-    bool pull = false;
     Vector2 desVelocity = new Vector2(0,0); 
+
+    bool pull = false;
+    bool _lost = false;
+    bool _win = false;
+
+    int timesLost = 50;
+    int timesWon = 50;
+
+    public bool Lost { get => _lost; }
+    public bool Win { get => _win; }
 
     public Planet(TiledObject obj = null):base("circle.png", 1, 1)
     {
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
-        if(obj != null)
-        {
-            _position = new Vector2(obj.X + obj.Width/2, obj.Y + obj.Height/2);
-            Console.WriteLine(_position);
-        }
+        Init(obj);
     }
 
     public override void Step()
@@ -74,12 +79,21 @@ public class Planet:Ball
         acceleration.LimitLength(0.05f); 
     }
 
-    public void SuckedIn(Vector2 pDifference)
+    public void SuckedIn(Vector2 pDifference, GameObject pOther)
     {
+        if(!pull) pull = true;
         Vector2 unitDifference = pDifference.Normalized();
-        pull = true;
         acceleration = unitDifference * velocity.Length() * 0.05f;
         desVelocity = unitDifference;
+
+        if (pDifference.Length() < 1)
+        {
+            if (!Lost && pOther is Blackhole) timesLost--;
+            else if (!Win && pOther is Ship) timesWon--;
+        }
+
+        if (timesLost < 0) _lost = true;
+        else if (timesWon < 0) _win = true;
     }
 
     CollisionInfo FindEarliestCollision()
