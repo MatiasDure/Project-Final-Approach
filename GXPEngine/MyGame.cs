@@ -10,7 +10,7 @@ public class MyGame : Game
 	Blackhole black;
 	public Level level = null;
 
-	public MyGame() : base(1920, 1080, false)		// Create a window that's 800x600 and NOT fullscreen
+	public MyGame() : base(1920, 1080, false, true, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
 	{
 		//planet = new Planet(new Vector2(100,100));
 		//black = new Blackhole(new Vector2(700,300));
@@ -38,6 +38,7 @@ public class MyGame : Game
 		if (levelName == null) return;
 		DestroyAll();
 		level = new Level(levelName);
+		level.CreateLevel();
 		AddChild(level);
 		levelName = null;
     }

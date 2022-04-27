@@ -10,11 +10,11 @@ public class Planet:Ball
 {
     CollisionInfo firstCollision = null;
 
-    public Vector2 acceleration;
-    public Vector2 velocity;
+    Vector2 acceleration;
+    Vector2 velocity;
     Vector2 oldPosition;
-    public bool pull;
-    public Vector2 desVelocity = new Vector2(0,0); 
+    bool pull = false;
+    Vector2 desVelocity = new Vector2(0,0); 
 
     public Planet(TiledObject obj = null):base("circle.png", 1, 1)
     {
@@ -35,7 +35,7 @@ public class Planet:Ball
         velocity += acceleration;
         _position += velocity;
 
-        velocity = velocity * 0.98f + desVelocity * 0.02f; 
+        velocity = velocity * 0.99f + desVelocity * 0.01f; 
 
         UpdateScreenPosition();
     }
@@ -55,6 +55,14 @@ public class Planet:Ball
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
         acceleration.LimitLength(0.05f); 
+    }
+
+    public void SuckedIn(Vector2 pDifference)
+    {
+        Vector2 unitDifference = pDifference.Normalized();
+        pull = true;
+        acceleration = unitDifference * velocity.Length() * 0.05f;
+        desVelocity = unitDifference;
     }
 
     CollisionInfo CheckCollision()

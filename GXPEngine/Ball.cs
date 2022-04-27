@@ -17,7 +17,6 @@ public abstract class Ball:AnimationSprite
 
     public Ball(string pImgPath, int pCol, int pRow, TiledObject obj = null):base(pImgPath, pCol, pRow, -1, false, false)
     {
-
     }
 
     virtual public void Step() { }

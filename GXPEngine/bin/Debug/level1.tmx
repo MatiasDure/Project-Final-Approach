@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="17">
  <imagelayer id="2" name="Image Layer 1">
-  <image source="../../../../../../term3/uxUiDesign/icons/HudBackground.png" width="1920" height="1080"/>
+  <image source="HudBackground.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="objects">
   <object id="1" name="blackhole" type="Blackhole" x="116" y="124" width="82" height="82">

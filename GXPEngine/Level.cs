@@ -19,14 +19,14 @@ public class Level: GameObject
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevel;
-        marbles = new Planet[2];
-        CreateLevel();
     }
 
     public void CreateLevel()
     {
+        loader.addColliders = false;
         loader.LoadImageLayers();
-        loader.LoadTileLayers();
+
+        loader.rootObject = this;
 
         loader.autoInstance = true;
         loader.LoadObjectGroups();
@@ -34,17 +34,20 @@ public class Level: GameObject
         balls = FindObjectsOfType<Blackhole>();
         marbles = FindObjectsOfType<Planet>();
 
-        for(int i = 0; i < balls.Length; i++)
+        Console.WriteLine("planets: " + marbles.Length);
+        Console.WriteLine("blackholes: " + balls.Length);
+
+        for (int i = 0; i < balls.Length; i++)
         {
             balls[i].planets = marbles;
         }
 
-        lines = FindObjectsOfType<NLineSegment>();
+        //lines = FindObjectsOfType<NLineSegment>();
     }
 
     void Update()
     {
-        Console.WriteLine(marbles.Length);
+        
         foreach (Planet p in marbles) p.Step();
         foreach(Blackhole b in balls) b.Step();
 

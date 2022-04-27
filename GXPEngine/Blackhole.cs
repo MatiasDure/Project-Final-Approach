@@ -11,9 +11,9 @@ public class Blackhole:Ball
     int detectionRange = 100;
     public Planet[] planets;
 
-    public Blackhole( TiledObject obj = null) :base("circle.png", 1, 1)
+    public Blackhole( TiledObject obj = null) :base("blackhole.png", 1, 1)
     {
-        _position = new Vector2(obj.X, obj.Y);
+        _position = new Vector2(obj.X + obj.Width/2, obj.Y + obj.Height/2);
     }
 
     public override void Step()
@@ -32,9 +32,7 @@ public class Blackhole:Ball
 
             if (distance < detectionRange)
             {
-                p.pull = true;
-                p.acceleration = difference.Normalized() * p.velocity.Length() * 0.05f;
-                p.desVelocity = difference.Normalized();
+                p.SuckedIn(difference);
             }
         }    
         
