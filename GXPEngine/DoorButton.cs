@@ -27,15 +27,15 @@ public class DoorButton:NotMarble
     {
     }
 
-     public bool CollisionWithPlanet()
-    {
-        foreach (Planet p in planets)
-        {
-            Vector2 difference = _position - p.Position;
-            float distance = difference.Length();
+    // public bool CollisionWithPlanet()
+    //{
+    //    foreach (Planet p in planets)
+    //    {
+    //        Vector2 difference = _position - p.Position;
+    //        float distance = difference.Length();
 
-            if (distance < 80) return true;
-        }
-        return false;
-    }
+    //        if (distance < 80) return true;
+    //    }
+    //    return false;
+    //}
 }

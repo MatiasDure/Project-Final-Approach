@@ -30,26 +30,25 @@ public class Door:AnimationSprite
     {
         bool collision = connectedButton.CollisionWithPlanet();
 
-        if (connectedButton != null && collision && !open)
+        if (connectedButton != null && collision)
         {
-            open = true;
-            Open();
+            OpenClose(openPos);
         }
-        else if (open && !collision)
+        else if (!collision)
         {
-            open = false;
-            Close();
+            if(open)
+            {
+                SetXY(closePos.x,closePos.y);
+                open = false;
+            }
+            OpenClose(closePos);
         }
     }
 
-    public void Open()
+    public void OpenClose(Vector2 pPos)
     {
-        SetXY(openPos.x, openPos.y);
-    }
-
-    public void Close()
-    {
-        SetXY(closePos.x, closePos.y);
+        if (y < pPos.y) y++;
+        else if (y > pPos.y) y--;
     }
 
 }

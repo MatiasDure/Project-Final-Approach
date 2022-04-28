@@ -26,9 +26,9 @@ public class Level: GameObject
     public void CreateLevel()
     {
         loader.addColliders = false;
+        loader.rootObject = this;
         loader.LoadImageLayers();
 
-        loader.rootObject = this;
 
         loader.autoInstance = true;
         loader.LoadObjectGroups();
