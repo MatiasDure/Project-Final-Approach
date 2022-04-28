@@ -2,13 +2,17 @@ using System;									// System contains a lot of default C# libraries
 using System.Collections.Generic;
 using GXPEngine;                                // GXPEngine contains the engine
 
+// TO DO:
+// Button and door mechanic
+// Portal mechanic
+// Conveyor belt mechanic
+
 public class MyGame : Game
 {
 	string levelName = null;
 	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
-	Blackhole black;
 	public Level level = null;
 
 	public MyGame() : base(1920, 1080, false, true, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen

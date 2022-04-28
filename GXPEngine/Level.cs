@@ -12,6 +12,8 @@ public class Level: GameObject
     NotMarble[] notMarbles;
     Planet[] marbles;
     NLineSegment[] lines;
+    Door[] doors;
+
     int currentLevel;
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
@@ -33,8 +35,10 @@ public class Level: GameObject
 
         notMarbles = FindObjectsOfType<NotMarble>();
         marbles = FindObjectsOfType<Planet>();
+        doors = FindObjectsOfType<Door>();
 
-        
+        ConnectingDoorToButton();
+
         AddingPlanets();
 
         lines = FindObjectsOfType<NLineSegment>();
@@ -52,7 +56,9 @@ public class Level: GameObject
             if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
         }
 
+        foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
+        
     }
 
     void AddingPlanets()
@@ -60,6 +66,23 @@ public class Level: GameObject
         for (int i = 0; i < notMarbles.Length; i++)
         {
             notMarbles[i].planets = marbles;
+        }
+    }
+
+    void ConnectingDoorToButton()
+    {
+        for(int i = 0; i < doors.Length; i++)
+        {
+            bool foundButton = false;
+            foreach(NotMarble notMarble in notMarbles)
+            {
+                if(notMarble is DoorButton dB && doors[i].Id == dB.Id)
+                {
+                    doors[i].connectedButton = dB;
+                    foundButton = true;
+                }
+                if (foundButton) break;
+            }
         }
     }
 

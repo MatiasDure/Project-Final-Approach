@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
-using TiledMapParser;
 
-public class Blackhole:NotMarble
+public class ConveyorBelt:AnimationSprite
 {
-    public Blackhole( TiledObject obj = null) :base("blackhole.png", 1, 1)
+    public ConveyorBelt():base("something.png", 1, 1)
     {
-        Init(obj);
+
     }
+
 }

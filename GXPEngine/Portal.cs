@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
-using TiledMapParser;
 
-public class Blackhole:NotMarble
+public class Portal:AnimationSprite
 {
-    public Blackhole( TiledObject obj = null) :base("blackhole.png", 1, 1)
+    public Portal():base("something.png",1,1)
     {
-        Init(obj);
+
     }
+
 }
+

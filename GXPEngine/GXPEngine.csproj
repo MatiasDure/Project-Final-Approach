@@ -44,6 +44,9 @@
     <Compile Include="Ball.cs" />
     <Compile Include="Blackhole.cs" />
     <Compile Include="CollisionInfo.cs" />
+    <Compile Include="ConveyorBelt.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="DoorButton.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />
     <Compile Include="GXPEngine\AddOns\TiledLoader.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="NotMarble.cs" />
     <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Planet.cs" />
+    <Compile Include="Portal.cs" />
     <Compile Include="Ship.cs" />
   </ItemGroup>
   <ItemGroup>

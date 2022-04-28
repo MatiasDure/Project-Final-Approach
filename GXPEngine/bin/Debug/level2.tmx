@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="7">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="9">
  <imagelayer id="3" name="Image Layer 1">
-  <image source="HudBackground.png" width="1920" height="1080"/>
+  <image source="background.jpg" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="2" name="Object Layer 1">
   <object id="1" name="marble1" type="Planet" x="190" y="362" width="72" height="76">
