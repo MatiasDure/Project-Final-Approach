@@ -16,9 +16,10 @@ public class Planet:Ball
     bool pull = false;
     bool _lost = false;
     bool _win = false;
+    public bool riding = false;
 
-    int timesLost = 50;
-    int timesWon = 50;
+    int timesLost = 30;
+    int timesWon = 30;
 
     public bool Lost { get => _lost; }
     public bool Win { get => _win; }
@@ -32,13 +33,10 @@ public class Planet:Ball
 
     public override void Step()
     {
-        if(!pull) GravityChange();
 
         oldPosition = Position;
+        if(!pull) GravityChange();
         velocity += acceleration;
-        _position += velocity;
-
-        velocity = velocity * 0.99f + desVelocity * 0.01f;
 
         bool firstTime = true;
         for (int i = 0; i < 2; i++)
@@ -57,6 +55,10 @@ public class Planet:Ball
             break;
         }
 
+        if (!riding) velocity = velocity * 0.99f + desVelocity * 0.01f;
+        else velocity = velocity * 0.95f;
+
+
         UpdateScreenPosition();
     }
 
@@ -70,7 +72,7 @@ public class Planet:Ball
 
     void GravityChange()
     {
-        acceleration = new Vector2(0, 0);
+        ResetAcceleration();
         
         if (Input.GetKey(Key.UP)) acceleration += new Vector2(0, -.05f);
         if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
@@ -94,6 +96,18 @@ public class Planet:Ball
 
         if (timesLost < 0) _lost = true;
         else if (timesWon < 0) _win = true;
+    }
+
+    public void RidingConveyorBelt(Vector2 pDirection)
+    {
+        velocity += pDirection;
+        riding = true;
+        velocity.LimitLength(5f);
+    }
+
+    void ResetAcceleration()
+    {
+        acceleration = new Vector2(0, 0);
     }
 
     CollisionInfo FindEarliestCollision()

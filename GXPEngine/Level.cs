@@ -13,11 +13,15 @@ public class Level: GameObject
     Planet[] marbles;
     NLineSegment[] lines;
     Door[] doors;
+    ConveyorBelt[] belts;
 
     int currentLevel;
+    int tiles = 19;
+    int tileSize = 128;
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
+        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -36,6 +40,7 @@ public class Level: GameObject
         notMarbles = FindObjectsOfType<NotMarble>();
         marbles = FindObjectsOfType<Planet>();
         doors = FindObjectsOfType<Door>();
+        belts = FindObjectsOfType<ConveyorBelt>();
 
         ConnectingDoorToButton();
 
@@ -49,15 +54,20 @@ public class Level: GameObject
         for (int i = 0; i < marbles.Length ;i++)
         {
             marbles[i].Step();
-            if(i == 0 && marbles[i].Win && marbles[i+1].Win)
+            if(marbles.Length > 1)
             {
-                ((MyGame)game).LoadLevel(++currentLevel);
+                if(i == 0 && marbles[i].Win && marbles[i+1].Win)
+                {
+                    ((MyGame)game).LoadLevel(++currentLevel);
+                }
             }
+            else if(marbles[i].Win) ((MyGame)game).LoadLevel(++currentLevel);
             if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
         }
 
         foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
+        foreach (ConveyorBelt belt in belts) belt.Step();
         
     }
 
@@ -66,6 +76,11 @@ public class Level: GameObject
         for (int i = 0; i < notMarbles.Length; i++)
         {
             notMarbles[i].planets = marbles;
+        }
+
+        for(int i = 0; i < belts.Length; i++)
+        {
+            belts[i].planets = marbles;
         }
     }
 

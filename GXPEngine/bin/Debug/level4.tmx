@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="128" tileheight="128" infinite="0" nextlayerid="3" nextobjectid="1">
  <imagelayer id="2" name="Image Layer 1">
-  <image source="background.jpg" width="1920" height="1080"/>
+  <image source="HudBackground.png" width="2432" height="2432"/>
  </imagelayer>
 </map>

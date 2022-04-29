@@ -30,10 +30,7 @@ public class Door:AnimationSprite
     {
         bool collision = connectedButton.CollisionWithPlanet();
 
-        if (connectedButton != null && collision)
-        {
-            OpenClose(openPos);
-        }
+        if (connectedButton != null && collision) OpenClose(openPos);
         else if (!collision)
         {
             if(open)
