@@ -17,6 +17,7 @@ public class Planet:Ball
     bool _lost = false;
     bool _win = false;
     public bool riding = false;
+    public bool teleporting = false;
 
     int timesLost = 30;
     int timesWon = 30;
@@ -103,6 +104,11 @@ public class Planet:Ball
         velocity += pDirection;
         riding = true;
         velocity.LimitLength(5f);
+    }
+
+    public void Teleport(Vector2 pPos)
+    {
+        _position = pPos;
     }
 
     void ResetAcceleration()

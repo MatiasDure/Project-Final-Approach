@@ -19,14 +19,15 @@ public abstract class Ball:AnimationSprite
     { 
     }
 
-    virtual protected void Init(TiledObject obj = null)
+    virtual protected bool Init(TiledObject obj = null)
     {
-        if(obj != null)
-        {
-            _position = new Vector2(obj.X + obj.Width / 2, obj.Y + obj.Height / 2);
-            SetOrigin(this.width / 2, this.height / 2);
-        }
+        if (obj == null) return false;
+        _position = new Vector2(obj.X + obj.Width / 2, obj.Y + obj.Height / 2);
+        SetOrigin(this.width / 2, this.height / 2);
+        return true;
     }
+
+    virtual protected void Initialize(TiledObject obj = null) { }
 
     virtual public void Step() { }
 

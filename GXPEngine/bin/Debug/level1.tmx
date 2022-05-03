@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="26">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="29">
  <imagelayer id="2" name="Image Layer 1">
   <image source="background.jpg" width="1920" height="1080"/>
  </imagelayer>
@@ -33,6 +33,16 @@
    </properties>
   </object>
   <object id="25" name="belt1" type="ConveyorBelt" x="128" y="434" width="128" height="128"/>
+  <object id="26" name="portal1" type="Portal" x="1560" y="400" width="206" height="206">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="28" name="portal1" type="Portal" x="101" y="807" width="206" height="206">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="16" name="marble1" type="Planet" x="655" y="459" width="82" height="82">
    <ellipse/>
   </object>

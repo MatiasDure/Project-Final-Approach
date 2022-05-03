@@ -14,6 +14,7 @@ public class Level: GameObject
     NLineSegment[] lines;
     Door[] doors;
     ConveyorBelt[] belts;
+    Portal[] portals;
 
     int currentLevel;
     int tiles = 19;
@@ -43,6 +44,7 @@ public class Level: GameObject
         belts = FindObjectsOfType<ConveyorBelt>();
 
         ConnectingDoorToButton();
+        ConnectingPortals();
 
         AddingPlanets();
 
@@ -81,6 +83,29 @@ public class Level: GameObject
         for(int i = 0; i < belts.Length; i++)
         {
             belts[i].planets = marbles;
+        }
+    }
+
+    void ConnectingPortals()
+    {
+        for (int i = 0; i < notMarbles.Length; i++)
+        {
+            if(notMarbles[i] is Portal portal && portal.connectedPortal == null)
+            {
+                bool foundPortal = false;
+                foreach (NotMarble notMarble in notMarbles)
+                {
+                    if (notMarble is Portal otherPortal && 
+                        otherPortal != portal && 
+                        otherPortal.Id == portal.Id)
+                    {
+                        portal.connectedPortal = otherPortal;
+                        otherPortal.connectedPortal = portal;
+                        foundPortal = true;
+                    }
+                    if (foundPortal) break;
+                }
+            }
         }
     }
 

@@ -14,12 +14,12 @@ public class DoorButton:NotMarble
 
     public DoorButton(TiledObject obj = null):base("buttonDoor.png",1,1)
     {
-        Init(obj);
+        Initialize(obj);
     }
 
-    protected override void Init(TiledObject obj = null)
+    protected override void Initialize(TiledObject obj = null)
     {
-        base.Init(obj);
+        if(!base.Init(obj)) return;
         _id = obj.GetIntProperty("id", -1);
     }
 
