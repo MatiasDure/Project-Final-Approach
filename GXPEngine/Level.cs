@@ -50,8 +50,6 @@ public class Level: GameObject
         ConnectingPortals();
 
         AddingPlanets();
-
-        lines = FindObjectsOfType<NLineSegment>();
     }
 
     void Update()

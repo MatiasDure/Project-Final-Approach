@@ -161,8 +161,6 @@ public class Planet:Ball
             NLineSegment currentLine = myLevel.LineAtIndex(i);
             smallestToi = ToiLine(currentLine, currentToi);
 
-            //Console.WriteLine("smallestTOI " + smallestToi); 
-
             if (smallestToi != currentToi)
             {
                 collisionDetected = true;
@@ -183,7 +181,6 @@ public class Planet:Ball
         velocity.Reflect(Ball.bounciness, pCollision.normal);
         //_velocity *= 0.995f; //friction
         //velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
-
     }
 
     float ToiBall(Ball pOther, float pCurrentToi)
