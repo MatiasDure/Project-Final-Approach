@@ -11,7 +11,8 @@ public class Level: GameObject
     TiledLoader loader;
     NotMarble[] notMarbles;
     Planet[] marbles;
-    NLineSegment[] lines;
+    public List<NLineSegment> lines;
+    public List<Caps> caps;
     Door[] doors;
     ConveyorBelt[] belts;
     Portal[] portals;
@@ -26,6 +27,8 @@ public class Level: GameObject
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
+        lines = new List<NLineSegment>();
+        caps = new List<Caps>();
     }
 
     public void CreateLevel()
@@ -126,9 +129,11 @@ public class Level: GameObject
         }
     }
 
-    public int BallCount() => notMarbles.Length;
-    public int LineCount() => lines.Length;
-    public Ball BallAtIndex(int pIndex) => notMarbles[pIndex];
+    public int BallCount() => marbles.Length;
+    public int CapsCount() => caps.Count;
+    public int LineCount() => lines.Count;
+    public Ball BallAtIndex(int pIndex) => marbles[pIndex];
+    public Caps CapsAtIndex(int pIndex) => caps[pIndex];
     public NLineSegment LineAtIndex(int pIndex) => lines[pIndex];
 
 }
