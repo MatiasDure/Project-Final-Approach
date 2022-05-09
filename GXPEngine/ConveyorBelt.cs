@@ -9,16 +9,19 @@ using TiledMapParser;
 public class ConveyorBelt:AnimationSprite
 {
     public Planet[] planets;
-    Vector2 position;
-    Vector2 movement;
+    Vector2 _position;
+    Vector2 _movement;
+
+    public Vector2 Position { get => _position; }
+    public Vector2 Movement { get => _movement; }
 
     public ConveyorBelt(TiledObject obj = null):base("square.png", 1, 1)
     {
-        movement = new Vector2();
+        _movement = new Vector2();
         if(obj != null)
         {
-            position.SetXY(obj.X,obj.Y);
-            movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0));
+            _position.SetXY(obj.X,obj.Y);
+            _movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0));
             SetOrigin(this.width / 2, this.height / 2);
         }
     }
@@ -26,27 +29,27 @@ public class ConveyorBelt:AnimationSprite
     public void Step()
     {
         SetOrigin(this.width / 2, this.height / 2);
-        CollisionWithPlanet();
+        //CollisionWithPlanet();
     }
 
-    void CollisionWithPlanet()
-    {
-        foreach (Planet p in planets)
-        {
-            Vector2 difference = position - p.Position;
-            float distance = difference.Length();
+    //void CollisionWithPlanet()
+    //{
+    //    foreach (Planet p in planets)
+    //    {
+    //        Vector2 difference = _position - p.Position;
+    //        float distance = difference.Length();
 
-            if (distance < 105)
-            {
-                EnableMovement(p);
-            }
-            else if(distance > 120) p.riding = false;
-        }
-    }
+    //        if (distance < 105)
+    //        {
+    //            EnableMovement(p);
+    //        }
+    //        else if(distance > 120) p.riding = false;
+    //    }
+    //}
 
-    void EnableMovement(Planet pP)
-    {
-        pP.RidingConveyorBelt(movement);
-    }
+    //void EnableMovement(Planet pP)
+    //{
+    //    pP.RidingConveyorBelt(_movement);
+    //}
 
 }

@@ -12,7 +12,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 0;
+	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
@@ -45,7 +45,7 @@ public class MyGame : Game
 		DestroyAll();
 		Sound soundToPlay;
 		soundToPlay = levelNum == 0 ? soundtrack[0] : soundtrack[1];
-		soundtrackChannel = soundToPlay.Play();
+		//soundtrackChannel = soundToPlay.Play();
 		level = new Level(levelName,levelNum);
 		level.CreateLevel();
 		AddChild(level);

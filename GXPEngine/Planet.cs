@@ -11,7 +11,10 @@ public class Planet:Ball
     Vector2 acceleration;
     Vector2 velocity;
     Vector2 oldPosition;
-    Vector2 desVelocity = new Vector2(0,0); 
+    Vector2 desVelocity = new Vector2(0,0);
+
+    public NotMarble[] notMarbles;
+    public ConveyorBelt[] belts;
 
     bool pull = false;
     bool _lost = false;
@@ -36,6 +39,7 @@ public class Planet:Ball
     {
         oldPosition = Position;
         if(!pull) GravityChange();
+        CollisionWithBelt();
         velocity += acceleration;
 
         bool firstTime = true;
@@ -55,9 +59,13 @@ public class Planet:Ball
             break;
         }
 
+        Console.WriteLine(riding);
         if (!riding) velocity = velocity * 0.99f + desVelocity * 0.01f;
-        else velocity = velocity * 0.95f;
-
+        else
+        {
+            velocity = velocity * 0.95f;
+            //Console.WriteLine(velocity);
+        }
 
         UpdateScreenPosition();
     }
@@ -102,8 +110,23 @@ public class Planet:Ball
     {
         velocity += pDirection;
         riding = true;
-        velocity.LimitLength(5f);
+        velocity.SetLength(0.85f);
     }
+
+    void CollisionWithBelt()
+    {
+        int amountFalse = 0;
+        foreach (ConveyorBelt belt in belts)
+        {
+            Vector2 difference = Position - belt.Position;
+            float distance = difference.Length();
+
+            if (distance < 105) RidingConveyorBelt(belt.Movement);
+            else if (distance > 120) amountFalse++;
+        }
+        riding = !(amountFalse == belts.Length);
+    }
+
 
     public void Teleport(Vector2 pPos)
     {
@@ -208,7 +231,6 @@ public class Planet:Ball
             float sqrtResult = Mathf.Sqrt(insideSqrt);
 
             toi = (-b - sqrtResult) / (2 * a);
-            Console.WriteLine("TOI : " + toi);
 
             if (toi < 0 || toi > 1) 
             {

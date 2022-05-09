@@ -23,7 +23,7 @@ public class Level: GameObject
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -49,6 +49,7 @@ public class Level: GameObject
         ConnectingDoorToButton();
         ConnectingPortals();
 
+        AddingElementsToPlanets();
         AddingPlanets();
     }
 
@@ -83,6 +84,15 @@ public class Level: GameObject
         for(int i = 0; i < belts.Length; i++)
         {
             belts[i].planets = marbles;
+        }
+    }
+
+    void AddingElementsToPlanets()
+    {
+        for(int i = 0; i < marbles.Length; i++)
+        {
+            marbles[i].notMarbles = notMarbles;
+            marbles[i].belts = belts;
         }
     }
 
