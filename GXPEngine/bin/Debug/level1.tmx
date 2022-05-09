@@ -68,11 +68,11 @@
     <property name="movementX" type="float" value="0.02"/>
    </properties>
   </object>
-  <object id="16" name="marble1" type="Planet" x="95" y="429" width="82" height="82">
+  <object id="16" name="marble1" type="Planet" x="95" y="429" width="64" height="64">
    <ellipse/>
   </object>
   <object id="29" name="ob" type="Obstacle" x="1199" y="218" width="45" height="208"/>
-  <object id="39" name="blackhole" type="Blackhole" x="680" y="593" width="82" height="82">
+  <object id="39" name="blackhole" type="Blackhole" x="680" y="593" width="64" height="64">
    <ellipse/>
   </object>
  </objectgroup>

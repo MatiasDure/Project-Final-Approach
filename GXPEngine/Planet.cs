@@ -12,6 +12,7 @@ public class Planet:Ball
     Vector2 velocity;
     Vector2 oldPosition;
     Vector2 desVelocity = new Vector2(0,0);
+    Vector2 beltAcceleration;
 
     public NotMarble[] notMarbles;
     public ConveyorBelt[] belts;
@@ -20,6 +21,7 @@ public class Planet:Ball
     bool _lost = false;
     bool _win = false;
     public bool riding = false;
+    bool stopping = false;
     public bool teleporting = false;
 
     float _width, _height;
@@ -97,6 +99,7 @@ public class Planet:Ball
         if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
+        if (riding && !stopping) acceleration += beltAcceleration;
         acceleration.LimitLength(0.05f); 
     }
 
@@ -119,14 +122,16 @@ public class Planet:Ball
 
     public void RidingConveyorBelt(Vector2 pDirection)
     {
-        velocity += pDirection;
-        riding = true;
-        velocity.SetLength(0.85f);
+        //velocity += pDirection;
+        beltAcceleration = pDirection;
+        //riding = true;
+        //velocity.SetLength(0.85f);
     }
 
     void CollisionWithBelt()
     {
-        int amountFalse = 0;
+        int amountNotColliding = 0;
+
         foreach (ConveyorBelt belt in belts)
         {
             //Vector2 difference = Position - belt.Position;
@@ -134,10 +139,13 @@ public class Planet:Ball
             float distance = Position.DistanceBetween(belt.Position);
             float differenceFromCenter = Mathf.Abs(this.Width/2 + belt.Width/2);
 
-            if (distance < differenceFromCenter) RidingConveyorBelt(belt.Movement);
-            else if (distance > differenceFromCenter + 10) amountFalse++;
+            if (distance < differenceFromCenter)
+            {
+                RidingConveyorBelt(belt.Movement);
+            }
+            else amountNotColliding++;
         }
-        riding = !(amountFalse == belts.Length);
+        riding = !(amountNotColliding == belts.Length);
     }
 
     public void Teleport(Vector2 pPos)

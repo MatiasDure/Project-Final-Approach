@@ -8,6 +8,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 // fix collision check
 // Highscore
 // add sounds
+// Change door mechanism to dissapear 
 
 public class MyGame : Game
 {

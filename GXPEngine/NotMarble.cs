@@ -8,9 +8,12 @@ using TiledMapParser;
 
 public abstract class NotMarble:Ball
 {
-
     protected int detectionRange = 150;
     public Planet[] planets;
+    float _width, _height;
+
+    public float Width { get => _width; }
+    public float Height { get => _height; }
     
     public NotMarble(string pImgPath, int pCol, int pRow, TiledObject obj = null) : base(pImgPath, pCol, pRow)
     {

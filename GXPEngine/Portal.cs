@@ -37,9 +37,10 @@ public class Portal:NotMarble
         {
             Vector2 difference = _position - p.Position;
             float distance = difference.Length();
+            float differenceFromCenter = Mathf.Abs(this.Width / 2 + p.Width / 2);
             //Console.WriteLine(distance);
 
-            if (distance < 80)
+            if (distance < differenceFromCenter)
             {
                 if (!p.teleporting)
                 {
@@ -48,7 +49,7 @@ public class Portal:NotMarble
                     p.teleporting = true;
                 }
             }
-            else if (p.teleporting && teleportedTo && distance > 130)
+            else if (p.teleporting && teleportedTo && distance > differenceFromCenter + 30)
             {
                 p.teleporting = false;
                 teleportedTo = false;
