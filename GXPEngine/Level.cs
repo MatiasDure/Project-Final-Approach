@@ -18,12 +18,12 @@ public class Level: GameObject
     Portal[] portals;
 
     int currentLevel;
-    int tiles = 19;
-    int tileSize = 128;
+    int tiles = 17;
+    int tileSize = 64;
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -36,7 +36,7 @@ public class Level: GameObject
         loader.addColliders = false;
         loader.rootObject = this;
         loader.LoadImageLayers();
-
+        loader.LoadTileLayers();
 
         loader.autoInstance = true;
         loader.LoadObjectGroups();
@@ -70,8 +70,7 @@ public class Level: GameObject
 
         foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
-        foreach (ConveyorBelt belt in belts) belt.Step();
-        
+        foreach (ConveyorBelt belt in belts) belt.Step();  
     }
 
     void AddingPlanets()

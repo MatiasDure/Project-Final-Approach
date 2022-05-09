@@ -34,7 +34,6 @@ public class Planet:Ball
 
     public override void Step()
     {
-
         oldPosition = Position;
         if(!pull) GravityChange();
         velocity += acceleration;
@@ -179,14 +178,13 @@ public class Planet:Ball
         Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
         Position.SetXY(desiredPos);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
-        //_velocity *= 0.995f; //friction
+        //velocity *= 0.995f; //friction
         //velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
     }
 
     float ToiBall(Ball pOther, float pCurrentToi)
     {
         Vector2 oldRelativePos = this.oldPosition - pOther.Position;
-        //Console.WriteLine("Cap Position : "  + pOther.Position);
 
         float distance = oldRelativePos.Length();
         float velocityLength = this.velocity.Length();
@@ -196,15 +194,11 @@ public class Planet:Ball
         float c = distance * distance - sumRadius * sumRadius;
         float insideSqrt = b * b - 4 * a * c;
 
-        //Console.WriteLine("Worknig");
-
         // returns null because a negative number inside the sqrt would give no solution or the velocity is 0 (ball is not moving) 
         if (insideSqrt < 0 || a == 0) return pCurrentToi;
 
-       // Console.WriteLine( "Ball is moving ");
         if (c < 0)
         {
-            //Console.WriteLine(" Ball moving away");
             if (b < 0) return 0;
             else return pCurrentToi;
         }
@@ -238,21 +232,16 @@ public class Planet:Ball
 
         float lineVectorLength = lineVector.Length();
         float scalarProjection = diffVecBetweenEndPoint.ScalarProjection(lineVector);
-        //Console.WriteLine("Working");
 
         //returns the currentToi if the line is not between the line segment
         if (scalarProjection > lineVectorLength || scalarProjection < 0) return pCurrentToi;
-        //Console.WriteLine("Between Line segment");
 
         Vector2 vectorProjection = Vector2.VectorProjection(diffVecBetweenEndPoint, pOther._normal.vector);
 
-        //Console.WriteLine("Length : " + vectorProjection.Length());
-        //Console.WriteLine("Radius : " + this.Radius);
         if (vectorProjection.Length() < this.Radius) //if ball collides with lineSegment
         {
-            //Console.WriteLine("COllision ! ");
             float toi;
-            Vector2 lineNormal = pOther._normal.vector; //(currentLine.end - currentLine.start).Normal();
+            Vector2 lineNormal = pOther._normal.vector; 
             Vector2 oldDiffVector = this.oldPosition - pOther.end;
             float a = Vector2.Dot(lineNormal, oldDiffVector) - this.Radius;
             float b = -Vector2.Dot(lineNormal, velocity);

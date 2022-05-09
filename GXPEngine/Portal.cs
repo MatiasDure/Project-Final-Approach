@@ -37,7 +37,7 @@ public class Portal:NotMarble
         {
             Vector2 difference = _position - p.Position;
             float distance = difference.Length();
-            Console.WriteLine(distance);
+            //Console.WriteLine(distance);
 
             if (distance < 80)
             {

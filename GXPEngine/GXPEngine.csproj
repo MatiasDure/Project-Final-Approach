@@ -43,6 +43,7 @@
     <Compile Include="Arrow.cs" />
     <Compile Include="Ball.cs" />
     <Compile Include="Blackhole.cs" />
+    <Compile Include="Button.cs" />
     <Compile Include="Caps.cs" />
     <Compile Include="CollisionInfo.cs" />
     <Compile Include="ConveyorBelt.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
     <Compile Include="GXPEngine\AddOns\SpriteBatch.cs" />
     <Compile Include="GXPEngine\AddOns\TiledLoader.cs" />
+    <Compile Include="Hud.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="LevelInfo.cs" />
     <Compile Include="MyGame.cs" />
     <Compile Include="GXPEngine\Core\Canvas.cs" />
     <Compile Include="GXPEngine\Game.cs" />

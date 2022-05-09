@@ -12,4 +12,9 @@ public class Blackhole:NotMarble
     {
         Init(obj);
     }
+
+    protected override void Initialize(TiledObject obj = null)
+    {
+        if (!base.Init(obj)) return;
+    }
 }

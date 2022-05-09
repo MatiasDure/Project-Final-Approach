@@ -23,24 +23,24 @@ public class Obstacle: Sprite
 
         if (obj != null)
         {
-            _oPosition = new Vector2(obj.X - obj.Width / 2, obj.Y - obj.Height / 2);
-            _position = new Vector2(obj.X + obj.Width / 2, obj.Y + obj.Height / 2);
+            _oPosition = new Vector2(obj.X , obj.Y);
+            //_oPosition = new Vector2(obj.X - obj.Width / 2, obj.Y - obj.Height / 2);
+            //_position = new Vector2(obj.X + obj.Width / 2, obj.Y + obj.Height / 2);
             //_position = new Vector2(obj.X - obj.Width / 2, obj.Y - obj.Height / 2);
             rotation = obj.Rotation;
             _width = obj.Width;
             _height = obj.Height;
-            Console.WriteLine(_position);
+            //Console.WriteLine(_position);
         }
-        UpdatePositionsOnScreen();
+        //UpdatePositionsOnScreen();
         AddCollision();
     }
     
-
-    void UpdatePositionsOnScreen()
-    {
-        x = _position.x;
-        y = _position.y;
-    }
+    //void UpdatePositionsOnScreen()
+    //{
+    //    x = _oPosition.x;
+    //    y = _oPosition.y;
+    //}
     void AddCollision()
     {
 

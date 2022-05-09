@@ -28,7 +28,10 @@ public abstract class Ball:AnimationSprite
         return true;
     }
 
-    virtual protected void Initialize(TiledObject obj = null) { }
+    virtual protected void Initialize(TiledObject obj = null) 
+    {
+        if (!Init(obj)) return;
+    }
 
     virtual public void Step() { }
 
