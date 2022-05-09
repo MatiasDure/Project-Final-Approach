@@ -22,9 +22,13 @@ public class Planet:Ball
     public bool riding = false;
     public bool teleporting = false;
 
+    float _width, _height;
+
     int timesLost = 30;
     int timesWon = 30;
 
+    public float Width { get => _width; }
+    public float Height { get => _height; }
     public bool Lost { get => _lost; }
     public bool Win { get => _win; }
 
@@ -32,7 +36,14 @@ public class Planet:Ball
     {
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
-        Init(obj);
+        Initialize(obj);
+    }
+
+    protected override void Initialize(TiledObject obj = null)
+    {
+        base.Initialize(obj);
+        _width = obj.Width;
+        _height = obj.Height;
     }
 
     public override void Step()
@@ -121,9 +132,10 @@ public class Planet:Ball
             //Vector2 difference = Position - belt.Position;
             //float distance = difference.Length();
             float distance = Position.DistanceBetween(belt.Position);
+            float differenceFromCenter = Mathf.Abs(this.Width/2 + belt.Width/2);
 
-            if (distance < 105) RidingConveyorBelt(belt.Movement);
-            else if (distance > 120) amountFalse++;
+            if (distance < differenceFromCenter) RidingConveyorBelt(belt.Movement);
+            else if (distance > differenceFromCenter + 10) amountFalse++;
         }
         riding = !(amountFalse == belts.Length);
     }

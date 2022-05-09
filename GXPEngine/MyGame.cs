@@ -30,6 +30,7 @@ public class MyGame : Game
 	// For every game object, Update is called every frame, by the engine:
 	void Update() 
 	{
+		if (Input.GetKeyDown(Key.TAB)) LoadLevel(levelNum);
 	}
 
 	static void Main()

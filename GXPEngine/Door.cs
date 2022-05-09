@@ -20,6 +20,7 @@ public class Door:AnimationSprite
     {
         if(obj != null)
         {
+            Console.WriteLine(obj.X);
             _id = obj.GetIntProperty("id",-1);
             closePos = new Vector2(obj.X, obj.Y);
             openPos = new Vector2(obj.GetFloatProperty("openPosX", obj.X), obj.GetFloatProperty("openPosY", obj.Y - 200));          
