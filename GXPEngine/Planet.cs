@@ -118,15 +118,15 @@ public class Planet:Ball
         int amountFalse = 0;
         foreach (ConveyorBelt belt in belts)
         {
-            Vector2 difference = Position - belt.Position;
-            float distance = difference.Length();
+            //Vector2 difference = Position - belt.Position;
+            //float distance = difference.Length();
+            float distance = Position.DistanceBetween(belt.Position);
 
             if (distance < 105) RidingConveyorBelt(belt.Movement);
             else if (distance > 120) amountFalse++;
         }
         riding = !(amountFalse == belts.Length);
     }
-
 
     public void Teleport(Vector2 pPos)
     {

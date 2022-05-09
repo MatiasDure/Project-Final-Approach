@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="39">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="40">
  <imagelayer id="2" name="Image Layer 1">
   <image source="background.jpg" width="1920" height="1080"/>
  </imagelayer>
@@ -7,7 +7,7 @@
   <object id="1" name="ship" type="Ship" x="116" y="124" width="82" height="82">
    <ellipse/>
   </object>
-  <object id="10" name="blackhole" type="Blackhole" x="474.333" y="14.3333" width="82" height="82">
+  <object id="10" name="blackhole" type="Blackhole" x="1247.33" y="273.333" width="82" height="82">
    <ellipse/>
   </object>
   <object id="21" name="door1" type="Door" x="1166" y="218" width="78" height="208">
@@ -70,6 +70,9 @@
   <object id="16" name="marble1" type="Planet" x="95" y="429" width="82" height="82">
    <ellipse/>
   </object>
-  <object id="29" name="ob" type="Obstacle" x="1166" y="218" width="78" height="208"/>
+  <object id="29" name="ob" type="Obstacle" x="1199" y="218" width="45" height="208"/>
+  <object id="39" name="blackhole" type="Blackhole" x="680" y="593" width="82" height="82">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>
