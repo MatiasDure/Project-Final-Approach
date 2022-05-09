@@ -22,8 +22,9 @@ public class Portal:NotMarble
 
     protected override void Initialize(TiledObject obj = null)
     {
-        if(base.Init(obj)) return;
+        if(!base.Init(obj)) return;
         _id = obj.GetIntProperty("id", -1);
+        Console.WriteLine(_id);
     }
 
     public override void Step()

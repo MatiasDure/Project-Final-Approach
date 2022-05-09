@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="67">
+ <tileset firstgid="1" name="City_Level_1" tilewidth="64" tileheight="64" tilecount="0" columns="10">
+  <image source="../../../../1-First-5.9.22Project-Final-Approach-master/GXPEngine/bin/Debug/City_Level_1.png" width="640" height="640"/>
+ </tileset>
+ <objectgroup id="5" name="Object Layer 1">
+  <object id="41" type="Obstacle" x="256.333" y="128.014" width="64" height="895.583"/>
+  <object id="42" type="Obstacle" x="768.333" y="128.014" width="64" height="895.583"/>
+  <object id="43" type="Obstacle" x="768.333" y="128.014" width="64" height="447.583" rotation="90"/>
+  <object id="44" type="Obstacle" x="384.666" y="384.681" width="192" height="64"/>
+  <object id="45" type="Obstacle" x="384.333" y="640.014" width="192" height="64"/>
+  <object id="46" type="Obstacle" x="448.333" y="447.681" width="192" height="64" rotation="90"/>
+  <object id="47" type="Obstacle" x="576.666" y="449.431" width="192" height="64" rotation="90"/>
+  <object id="48" type="Obstacle" x="576.333" y="704.014" width="192" height="64" rotation="90"/>
+  <object id="49" type="Obstacle" x="575.833" y="512.014" width="192" height="64"/>
+  <object id="50" type="Obstacle" x="705.333" y="577.014" width="318.333" height="64" rotation="90"/>
+  <object id="51" type="Obstacle" x="576.333" y="832.014" width="64" height="64"/>
+  <object id="52" type="Obstacle" x="640.333" y="320.014" width="64" height="64"/>
+  <object id="53" type="Obstacle" x="769.333" y="256.014" width="192" height="64" rotation="90"/>
+  <object id="56" name="doorButton1" type="DoorButton" x="575.833" y="768.514" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="57" name="door1" type="Door" x="447.833" y="512.014" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="58" name="door1" type="Door" x="319.666" y="512.014" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="59" name="door1" type="Door" x="576.333" y="897.347" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="60" name="portal1" type="Portal" x="704.666" y="192.014" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="61" name="portal1" type="Portal" x="704.833" y="448.014" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="62" name="portal2" type="Portal" x="449" y="576.681" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="63" name="portal2" type="Portal" x="705" y="578.014" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="64" name="ship" type="Ship" x="447.916" y="448.347" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="65" name="ship" type="Ship" x="576.333" y="576.014" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="66" type="Obstacle" x="770" y="960.208" width="64" height="447.583" rotation="90"/>
+  <object id="54" name="marble1" type="Planet" x="723.333" y="673.014" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="55" name="marble1" type="Planet" x="592.333" y="719.514" width="32" height="32">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

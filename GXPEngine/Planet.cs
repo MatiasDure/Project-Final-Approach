@@ -72,7 +72,7 @@ public class Planet:Ball
             break;
         }
 
-        Console.WriteLine(riding);
+        //Console.WriteLine(riding);
         if (!riding) velocity = velocity * 0.99f + desVelocity * 0.01f;
         else
         {

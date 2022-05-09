@@ -23,7 +23,7 @@ public class Level: GameObject
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -107,7 +107,8 @@ public class Level: GameObject
                 {
                     if (notMarble is Portal otherPortal && 
                         otherPortal != portal && 
-                        otherPortal.Id == portal.Id)
+                        otherPortal.Id == portal.Id &&
+                        otherPortal.connectedPortal == null)
                     {
                         portal.connectedPortal = otherPortal;
                         otherPortal.connectedPortal = portal;
