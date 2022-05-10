@@ -17,7 +17,7 @@
    <properties>
     <property name="distance" type="float" value="100"/>
     <property name="movable" type="bool" value="true"/>
-    <property name="velocityX" type="float" value="1"/>
+    <property name="velocityX" type="float" value="-1"/>
    </properties>
    <ellipse/>
   </object>

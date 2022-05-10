@@ -51,7 +51,10 @@ public class Blackhole:NotMarble
     {
         currentPosition += Velocity;
         float distance = (startingPosition - currentPosition).Length();
-        if (distance > distanceToMove) TurnAround();
+        if (distance > distanceToMove ||
+           (currentPosition.x == startingPosition.x &&
+           currentPosition.y == startingPosition.y)) TurnAround();
+        //if (distance > distanceToMove) TurnAround();
     }
 
     void TurnAround()
