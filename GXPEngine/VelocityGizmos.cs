@@ -10,8 +10,6 @@ public class VelocityGizmos: EasyDraw
     List<EasyDraw> shaft;
     EasyDraw tip;
     EasyDraw gizmosBase; 
-    Vector2 mouse;
-    Vector2 pos;
     Vector2 velocity;
     int count;
     int oldCount = 0;
@@ -38,6 +36,7 @@ public class VelocityGizmos: EasyDraw
         AddChild(tip);
         AddChild(gizmosBase);
     }
+
     void UpdatePositons()
     {
         tip.x = magnituge + tip.width/2;

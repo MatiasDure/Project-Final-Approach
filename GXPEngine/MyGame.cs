@@ -2,13 +2,16 @@ using System;									// System contains a lot of default C# libraries
 using System.Collections.Generic;
 using GXPEngine;                                // GXPEngine contains the engine
 
-// TO DO:
-// add hud
-// add buttons
-// fix collision check
-// Highscore
-// add sounds
-// Change door mechanism to dissapear 
+// What needs to be done:
+// -Fix collision check ---> Omair
+// - New collision OnCollision() check for door to switch on and off collider ---> Omair
+// - score system (highscore or stars? / based on timer or something else? (timer for now)) --->Matias
+// - Implement json parser system to save highscore ---> Matias
+// - Create buttons for hud ---> Matias
+// - Alien ship laser beam new mechanism(three position checks, shrinking)---> ??
+// -Place buttons and hud elements on screen ---> ??
+// - Implement sound effects based on collisions---> ??
+// - Implement animation sprites and set cycles correctly---> ?? 
 
 public class MyGame : Game
 {
