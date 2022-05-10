@@ -31,6 +31,7 @@ public class Planet:Ball
 
     public float Width { get => _width; }
     public float Height { get => _height; }
+    public Vector2 Velocity { get => velocity; }
     public bool Lost { get => _lost; }
     public bool Win { get => _win; }
     public bool Pull { get => _pull; }

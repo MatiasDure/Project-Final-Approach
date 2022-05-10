@@ -24,20 +24,13 @@ public class Obstacle: Sprite
         if (obj != null)
         {
             _oPosition = new Vector2(obj.X , obj.Y);
-            //_oPosition = new Vector2(obj.X - obj.Width / 2, obj.Y - obj.Height / 2);
             rotation = obj.Rotation;
             _width = obj.Width;
             _height = obj.Height;
         }
-        //UpdatePositionsOnScreen();
         AddCollision();
     }
     
-    //void UpdatePositionsOnScreen()
-    //{
-    //    x = _oPosition.x;
-    //    y = _oPosition.y;
-    //}
 
     void AddCollision()
     {
@@ -49,7 +42,6 @@ public class Obstacle: Sprite
 
 
         PolygonMaker(new Vector2[] { fourthPoint, thirdPoint, secondPoint, firstPoint });
-        //PolygonMaker(new Vector2[] { new Vector2(0, 0), new Vector2(100, 800), new Vector2(500,500) });
     
     }
     void PolygonMaker(Vector2[] polyGon)

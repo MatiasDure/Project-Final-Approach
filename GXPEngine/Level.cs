@@ -10,7 +10,7 @@ public class Level: GameObject
 {
     TiledLoader loader;
     NotMarble[] notMarbles;
-    Planet[] marbles;
+    public Planet[] marbles;
     public List<NLineSegment> lines;
     public List<Caps> caps;
     Door[] doors;
@@ -23,7 +23,7 @@ public class Level: GameObject
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -51,6 +51,13 @@ public class Level: GameObject
 
         AddingElementsToPlanets();
         AddingPlanets();
+        CreateGizmos();
+    }
+
+    void CreateGizmos()
+    {
+        VelocityGizmos v = new VelocityGizmos();
+        AddChild(v);
     }
 
     void Update()
