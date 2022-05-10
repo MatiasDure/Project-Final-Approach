@@ -17,7 +17,7 @@ public class Planet:Ball
     public NotMarble[] notMarbles;
     public ConveyorBelt[] belts;
 
-    bool pull = false;
+    bool _pull = false;
     bool _lost = false;
     bool _win = false;
     public bool riding = false;
@@ -33,6 +33,7 @@ public class Planet:Ball
     public float Height { get => _height; }
     public bool Lost { get => _lost; }
     public bool Win { get => _win; }
+    public bool Pull { get => _pull; }
 
     public Planet(TiledObject obj = null):base("circle.png", 1, 1)
     {
@@ -51,7 +52,7 @@ public class Planet:Ball
     public override void Step()
     {
         oldPosition = Position;
-        if(!pull) GravityChange();
+        if(!_pull) GravityChange();
         CollisionWithBelt();
         velocity += acceleration;
 
@@ -65,6 +66,7 @@ public class Planet:Ball
                 ResolveCollision(firstCollision);
                 if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
                 {
+                    _position = oldPosition;
                     firstTime = false;
                     continue;
                 }
@@ -105,7 +107,8 @@ public class Planet:Ball
 
     public void SuckedIn(Vector2 pDifference, GameObject pOther)
     {
-        if(!pull) pull = true;
+        if(!_pull) _pull = true;
+        
         Vector2 unitDifference = pDifference.Normalized();
         acceleration = unitDifference * velocity.Length() * 0.05f;
         desVelocity = unitDifference;
@@ -114,6 +117,7 @@ public class Planet:Ball
         {
             if (!Lost && pOther is Blackhole) timesLost--;
             else if (!Win && pOther is Ship) timesWon--;
+            
         }
 
         if (timesLost < 0) _lost = true;

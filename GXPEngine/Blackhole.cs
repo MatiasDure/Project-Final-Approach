@@ -74,8 +74,8 @@ public class Blackhole:NotMarble
 
             if (distance < detectionRange)
             {
-                p.SuckedIn(difference, this);
                 pull = true;
+                p.SuckedIn(difference, this);
             }
         }
     }

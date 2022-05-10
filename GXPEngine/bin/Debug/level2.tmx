@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="9">
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="10">
  <imagelayer id="3" name="Image Layer 1">
   <image source="background.jpg" width="1920" height="1080"/>
  </imagelayer>
@@ -10,15 +10,15 @@
   <object id="2" name="marble2" type="Planet" x="1640" y="144" width="72" height="76">
    <ellipse/>
   </object>
-  <object id="5" name="blackhole" type="Blackhole" x="900" y="640" width="72" height="76">
+  <object id="6" name="blackhole" type="Blackhole" x="1120" y="84" width="72" height="76">
+   <ellipse/>
+  </object>
+  <object id="9" name="blackhole" type="Blackhole" x="996" y="440" width="72" height="76">
    <properties>
     <property name="distance" type="float" value="100"/>
     <property name="movable" type="bool" value="true"/>
     <property name="velocityX" type="float" value="1"/>
    </properties>
-   <ellipse/>
-  </object>
-  <object id="6" name="blackhole" type="Blackhole" x="1120" y="84" width="72" height="76">
    <ellipse/>
   </object>
  </objectgroup>
