@@ -10,13 +10,12 @@
   <object id="2" name="marble2" type="Planet" x="1640" y="144" width="72" height="76">
    <ellipse/>
   </object>
-  <object id="3" name="blackhole" type="Blackhole" x="806" y="660" width="72" height="76">
-   <ellipse/>
-  </object>
-  <object id="4" name="blackhole" type="Blackhole" x="964" y="400" width="72" height="76">
-   <ellipse/>
-  </object>
-  <object id="5" name="blackhole" type="Blackhole" x="660" y="904" width="72" height="76">
+  <object id="5" name="blackhole" type="Blackhole" x="900" y="640" width="72" height="76">
+   <properties>
+    <property name="distance" type="float" value="100"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="velocityX" type="float" value="1"/>
+   </properties>
    <ellipse/>
   </object>
   <object id="6" name="blackhole" type="Blackhole" x="1120" y="84" width="72" height="76">

@@ -26,8 +26,8 @@ public class Planet:Ball
 
     float _width, _height;
 
-    int timesLost = 30;
-    int timesWon = 30;
+    int timesLost = 10;
+    int timesWon = 10;
 
     public float Width { get => _width; }
     public float Height { get => _height; }

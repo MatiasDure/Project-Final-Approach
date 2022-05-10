@@ -72,7 +72,12 @@
    <ellipse/>
   </object>
   <object id="29" name="ob" type="Obstacle" x="1199" y="218" width="45" height="208"/>
-  <object id="39" name="blackhole" type="Blackhole" x="680" y="593" width="64" height="64">
+  <object id="39" name="blackhole" type="Blackhole" x="704" y="743" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="20"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="velocityX" type="float" value="0.2"/>
+   </properties>
    <ellipse/>
   </object>
   <object id="40" name="portal1" type="Portal" x="400" y="950" width="64" height="64">
