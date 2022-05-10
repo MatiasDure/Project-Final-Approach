@@ -10,7 +10,7 @@ public abstract class NotMarble:Ball
 {
     protected int detectionRange = 150;
     public Planet[] planets;
-    float _width, _height;
+    protected float _width, _height;
 
     public float Width { get => _width; }
     public float Height { get => _height; }
@@ -41,8 +41,9 @@ public abstract class NotMarble:Ball
         {
             Vector2 difference = _position - p.Position;
             float distance = difference.Length();
+            float distanceForCenter = p.Width/2 + this.Width/2;
 
-            if (distance < 80) return true;
+            if (distance < distanceForCenter) return true;
         }
         return false;
     }

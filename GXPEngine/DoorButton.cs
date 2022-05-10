@@ -21,6 +21,8 @@ public class DoorButton:NotMarble
     {
         if(!base.Init(obj)) return;
         _id = obj.GetIntProperty("id", -1);
+        _width = obj.Width;
+        _height = obj.Height;
     }
 
     public override void Step()

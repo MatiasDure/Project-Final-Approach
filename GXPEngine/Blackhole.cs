@@ -25,7 +25,7 @@ public class Blackhole:NotMarble
         if (!base.Init(obj)) return;
         currentPosition = startingPosition = new Vector2(obj.X, obj.Y);      
         movable = obj.GetBoolProperty("movable",false);
-        Console.WriteLine(movable);
+        detectionRange = obj.GetIntProperty("range", 100);
         if (movable)
         {
             Velocity = new Vector2(obj.GetFloatProperty("velocityX", 0), obj.GetFloatProperty("velocityY", 0));

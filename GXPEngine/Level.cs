@@ -51,10 +51,10 @@ public class Level: GameObject
 
         AddingElementsToPlanets();
         AddingPlanets();
-        CreateGizmos();
+        CreateGravityIndicator();
     }
 
-    void CreateGizmos()
+    void CreateGravityIndicator()
     {
         VelocityGizmos v = new VelocityGizmos();
         AddChild(v);

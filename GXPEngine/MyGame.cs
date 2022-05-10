@@ -13,7 +13,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 2;
+	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;

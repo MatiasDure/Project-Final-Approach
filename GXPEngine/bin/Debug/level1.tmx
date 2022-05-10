@@ -8,6 +8,9 @@
    <ellipse/>
   </object>
   <object id="10" name="blackhole" type="Blackhole" x="1247.33" y="273.333" width="82" height="82">
+   <properties>
+    <property name="range" type="int" value="150"/>
+   </properties>
    <ellipse/>
   </object>
   <object id="21" name="door1" type="Door" x="1166" y="218" width="78" height="208">
@@ -15,7 +18,7 @@
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="22" name="doorButton1" type="DoorButton" x="360" y="680" width="86" height="90">
+  <object id="22" name="doorButton1" type="DoorButton" x="360" y="680" width="86" height="86">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
