@@ -19,30 +19,43 @@ public class ConveyorBelt:AnimationSprite
     public float Width { get => _width; }
     public float Height { get => _height; }
 
-    public ConveyorBelt(TiledObject obj = null):base("conveyorBelt.png", 1, 1)
+    public ConveyorBelt(TiledObject obj = null):base("square.png", 1, 1)
     {
         _movement = new Vector2();
         if(obj != null)
         {
+            _position.SetXY(obj.X,obj.Y);
             _movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0));
+            SetOrigin(this.width / 2, this.height / 2);
             _width = obj.Width;
             _height = obj.Height;
-            _position.SetXY(obj.X + width/2,obj.Y + width/2);
-            //SetOrigin(this._width / 2, this._height / 2);
-            //Console.WriteLine(_width);
-            UpdateScreenPos();
         }
-    }
-
-    void UpdateScreenPos()
-    {
-        x = _position.x;
-        y = _position.y;
     }
 
     public void Step()
     {
-        //SetOrigin(this.Width / 2, this.Height / 2);
+        SetOrigin(this.width / 2, this.height / 2);
+        //CollisionWithPlanet();
     }
+
+    //void CollisionWithPlanet()
+    //{
+    //    foreach (Planet p in planets)
+    //    {
+    //        Vector2 difference = _position - p.Position;
+    //        float distance = difference.Length();
+
+    //        if (distance < 105)
+    //        {
+    //            EnableMovement(p);
+    //        }
+    //        else if(distance > 120) p.riding = false;
+    //    }
+    //}
+
+    //void EnableMovement(Planet pP)
+    //{
+    //    pP.RidingConveyorBelt(_movement);
+    //}
 
 }

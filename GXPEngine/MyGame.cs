@@ -9,14 +9,14 @@ using GXPEngine;                                // GXPEngine contains the engine
 // - Implement json parser system to save highscore ---> Matias
 // - Create buttons for hud ---> Matias
 // - Alien ship laser beam new mechanism(three position checks, shrinking)---> ??
-// - Place buttons and hud elements on screen ---> ??
+// -Place buttons and hud elements on screen ---> ??
 // - Implement sound effects based on collisions---> ??
 // - Implement animation sprites and set cycles correctly---> ?? 
 
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 9;
+	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;

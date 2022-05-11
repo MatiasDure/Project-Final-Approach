@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Timer : Sprite
+public class Timer:Sprite
 {
     int _timer;
-    int _levelTime;
-    int newSecond;
-    int oldSecond;
     public int TimeLeft { get => _timer; }
-    public int LevelTime { get => _levelTime; }
     
     public Timer(TiledObject obj):base("empty.png", false)
     {
@@ -21,15 +17,12 @@ public class Timer : Sprite
         if(obj != null)
         {
             _timer = obj.GetIntProperty("timer");
-            _levelTime = _timer;
         }
     }
 
     void Update()
     {
-        oldSecond = newSecond;
-        newSecond = Time.time / 1000;
-        if (newSecond != oldSecond) UpdateTimer();
+        UpdateTimer();
     }
 
     void DisplayTimer()
@@ -39,8 +32,9 @@ public class Timer : Sprite
 
     void UpdateTimer()
     {
-        if (TimeLeft <= 0) return;
-        _timer--;
-        //Console.WriteLine(TimeLeft);
+        int t = Time.time % 1000;
+        //Console.WriteLine(t);
+        if (!(TimeLeft > 0)) return;
+        
     }
 }

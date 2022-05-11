@@ -99,7 +99,6 @@
     <Compile Include="Obstacle.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Portal.cs" />
-    <Compile Include="Score.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="VelocityGizmos.cs" />
