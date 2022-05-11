@@ -30,8 +30,15 @@ public class Door:AnimationSprite
     public void Step()
     {
         bool collision = connectedButton.CollisionWithPlanet();
+        if (collision)
+        {
+            if (connectedButton.currentFrame < 2) connectedButton.Animate(0.1f);
+            Console.WriteLine((3f/4f));
 
-        if(disableCollider && currentFrame != 2) Animate(0.05f);
+        }
+        else connectedButton.currentFrame = 0;
+
+            if (disableCollider && currentFrame != 2) Animate(0.05f);
         if(!disableCollider) currentFrame = 0;
         if (connectedButton != null && collision) disableCollider = true;//OpenClose(openPos);
         else if (!collision)

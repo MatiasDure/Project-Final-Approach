@@ -12,7 +12,7 @@ public class DoorButton:NotMarble
 
     public int Id { get => _id; } 
 
-    public DoorButton(TiledObject obj = null):base("buttonDoor.png",1,1)
+    public DoorButton(TiledObject obj = null):base("buttonCyanAnim.png", 3,1)
     {
         Initialize(obj);
     }

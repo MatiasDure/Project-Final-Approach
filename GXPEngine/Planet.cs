@@ -130,6 +130,7 @@ public class Planet:Ball
             //velocity.Reflect(bounciness, pOther.collider.GetCollisionInfo(pOther.collider).normal);
             Ufo(s); 
         }
+
     }
     void UfoSuck()
     {
@@ -138,7 +139,7 @@ public class Planet:Ball
         {
             ufoPosition += new Vector2(0, 32);
             Vector2 diff = ufoPosition  - _position;
-            if (Mathf.Abs(ufoPosition.Length() - _position.Length()) < 0.1f || check2)
+            if (diff.Length() < 0.1f || check2)
             {
                 check2 = true;
                 diff += new Vector2(6, -53);
