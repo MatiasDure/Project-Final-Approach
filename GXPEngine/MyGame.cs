@@ -36,7 +36,6 @@ public class MyGame : Game
 	void Update() 
 	{
 		if (Input.GetKeyDown(Key.TAB)) LoadLevel(levelNum);
-        Console.WriteLine(currentFps);
 	}
 
 	static void Main()

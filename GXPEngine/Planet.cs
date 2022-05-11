@@ -264,7 +264,7 @@ public class Planet:Ball
             if (pCurrentToi > toi) 
             {
 
-                Console.WriteLine("Collision ! ");
+                //Console.WriteLine("Collision ! ");
                 return toi;
             }
             return pCurrentToi;
@@ -319,7 +319,7 @@ public class Planet:Ball
                 {
                     collisionDetected = true;
                     firstColNormal = currentLine._normal.vector;
-                    Console.WriteLine(firstColNormal);
+                    //Console.WriteLine(firstColNormal);
                     currentToi = smallestToi;
                 }
             }
@@ -332,7 +332,7 @@ public class Planet:Ball
     {
         Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
         _position.SetXY(desiredPos);
-            Console.WriteLine("position: "+ _position);
+            //Console.WriteLine("position: "+ _position);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
     }
 

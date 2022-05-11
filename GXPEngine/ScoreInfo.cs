@@ -13,14 +13,6 @@ public class ScoreInfo : GameObject
     JObject scores;
     public bool gameSaved;
     int[] levelScores;
-    int level1Score;
-    int level2Score;
-    int level3Score;
-    int level4Score;
-    int level5Score;
-    int level6Score;
-    int level7Score;
-    int level8Score;
 
     public ScoreInfo()
     {
@@ -36,15 +28,17 @@ public class ScoreInfo : GameObject
 
     void Update()
     {
-        Console.WriteLine(level1Score);
+        //Console.WriteLine(level1Score);
     }
 
-    public void Save(int pLevel)
+    public void Save(int pLevel, int pScore)
     {
         try
         {
-            //attributes that change throughout game    
-            
+            //attributes that change throughout game
+            if (levelScores[pLevel - 1] >= pScore) return;
+            scores.GetValue("level1").Replace(pScore);
+            File.WriteAllText(jsonPath, scores.ToString());
             Console.WriteLine("Game Saved!");
             gameSaved = false;
         }
@@ -59,14 +53,6 @@ public class ScoreInfo : GameObject
             {
                 levelScores[i] = (int)scores["level" + (i+1)];
             }
-            //level1Score = (int)scores["level1"];
-            //level2Score = (int)scores["level2"];
-            //level3Score = (int)scores["level3"];
-            //level4Score = (int)scores["level4"];
-            //level5Score = (int)scores["level5"];
-            //level6Score = (int)scores["level6"];
-            //level7Score = (int)scores["level7"];
-            //level8Score = (int)scores["level8"];
         }
         catch (Exception) { Console.WriteLine("Error while loading! Game was not loaded properly."); }
     }

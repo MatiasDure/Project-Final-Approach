@@ -80,7 +80,12 @@ public class Level: GameObject
             marbles[i].Step();
             if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
         }
-        if(win == marbles.Length) ((MyGame)game).LoadLevel(++currentLevel);
+        if(win == marbles.Length)
+        {
+            info.Save(currentLevel,score.Stars);
+            ((MyGame)game).LoadLevel(++currentLevel); 
+        } 
+
 
         foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
