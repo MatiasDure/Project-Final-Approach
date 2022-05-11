@@ -49,3 +49,6 @@ C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEn
 C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\Newtonsoft.Json.dll
 C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\Newtonsoft.Json.xml
 C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CopyComplete
+C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\bin\Debug\Newtonsoft.Json.dll
+C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\bin\Debug\Newtonsoft.Json.xml
+C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CopyComplete

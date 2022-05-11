@@ -45,7 +45,7 @@ public class Blackhole:NotMarble
             MovingPull();
         }
         else base.Step();
-        Animate(0.05f);
+        Animate(0.2f);
     }
 
     void Move()

@@ -23,7 +23,7 @@ public class MyGame : Game
 	Sound[] soundtrack;
 	SoundChannel soundtrackChannel;
 
-	public MyGame() : base(1920, 1080, false, true, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
+	public MyGame() : base(1920, 1080, false, false, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
 	{
 		targetFps = 60;
 		soundtrack = new Sound[] { new Sound("sounds/mainMenuSoundtrack.mp3",true,true),
@@ -36,6 +36,7 @@ public class MyGame : Game
 	void Update() 
 	{
 		if (Input.GetKeyDown(Key.TAB)) LoadLevel(levelNum);
+        Console.WriteLine(currentFps);
 	}
 
 	static void Main()

@@ -42,7 +42,7 @@ public class Door:AnimationSprite
         bool collision = connectedButton.CollisionWithPlanet();
         if (collision)
         {
-            if (connectedButton.currentFrame < 2) connectedButton.Animate(0.1f);
+            if (connectedButton.currentFrame < 2) connectedButton.Animate(0.2f);
             delay = 1; 
         }
         else
@@ -53,7 +53,7 @@ public class Door:AnimationSprite
             delay -= 0.05f;
         } 
 
-            if (disableCollider && currentFrame != 2) Animate(0.05f);
+            if (disableCollider && currentFrame != 2) Animate(0.1f);
         //if(!disableCollider) currentFrame = 0;
         if (connectedButton != null && collision) disableCollider = true;//OpenClose(openPos);
         else if (!collision)

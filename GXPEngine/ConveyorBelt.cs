@@ -26,7 +26,7 @@ public class ConveyorBelt:AnimationSprite
         if(obj != null)
         {
             _position.SetXY(obj.X,obj.Y);
-            _movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0));
+            _movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0)) * 2;
             //SetOrigin(this.width / 2, this.height / 2);
             _width = obj.Width;
             _height = obj.Height;
@@ -53,7 +53,7 @@ public class ConveyorBelt:AnimationSprite
     {
         FixPositions();
         fixedPoisitions = true;
-        Animate(0.05f);
+        Animate(0.1f);
     }
 
 }
