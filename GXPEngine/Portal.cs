@@ -24,7 +24,8 @@ public class Portal:NotMarble
     {
         if(!base.Init(obj)) return;
         _id = obj.GetIntProperty("id", -1);
-        Console.WriteLine(_id);
+        _width = obj.Width;
+        _height = obj.Height;   
     }
 
     public override void Step()
@@ -38,8 +39,7 @@ public class Portal:NotMarble
         {
             Vector2 difference = _position - p.Position;
             float distance = difference.Length();
-            float differenceFromCenter = Mathf.Abs(this.Width / 2 + p.Width / 2);
-            //Console.WriteLine(distance);
+            float differenceFromCenter = this.Width / 2 + p.Width / 2;
 
             if (distance < differenceFromCenter)
             {
@@ -50,7 +50,7 @@ public class Portal:NotMarble
                     p.teleporting = true;
                 }
             }
-            else if (p.teleporting && teleportedTo && distance > differenceFromCenter + 30)
+            else if (p.teleporting && teleportedTo && distance > differenceFromCenter)
             {
                 p.teleporting = false;
                 teleportedTo = false;

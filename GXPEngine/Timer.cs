@@ -32,9 +32,9 @@ public class Timer:Sprite
 
     void UpdateTimer()
     {
-        Console.WriteLine(Time.time);
+        int t = Time.time % 1000;
+        Console.WriteLine(t);
         if (!(TimeLeft > 0)) return;
-        _timer -= Time.deltaTime;
         
     }
 }
