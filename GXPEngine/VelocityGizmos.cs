@@ -75,9 +75,9 @@ public class VelocityGizmos: EasyDraw
     void GetVelocity()
     {
         Level level = ((MyGame)game).level;
-        if (!level.marbles[0].Pull) velocity = level.marbles[0].Velocity * 20;
-        else if (level.marbles.Length > 1) velocity = level.marbles[1].Velocity * 20;
-        else velocity = new Vector2();
+        if (!level.marbles[0].Pull) velocity += level.marbles[0].Gravity * 20;
+        velocity *= 0.99f;
+        velocity.LimitLength(100);
     }
     void Update()
     {
