@@ -18,6 +18,7 @@ public class Level: GameObject
     Portal[] portals;
     Timer timer;
     Score score;
+    ScoreInfo info;
 
     int currentLevel;
     int tiles = 17;
@@ -31,6 +32,8 @@ public class Level: GameObject
         currentLevel = pCurrentLevelNum;
         lines = new List<NLineSegment>();
         caps = new List<Caps>();
+        info = new ScoreInfo();
+        AddChild(info);
     }
 
     public void CreateLevel()
@@ -70,19 +73,14 @@ public class Level: GameObject
 
     void Update()
     {
+        int win = 0;
         for (int i = 0; i < marbles.Length ;i++)
         {
+            if(marbles[i].Win) win++;
             marbles[i].Step();
-            if(marbles.Length > 1)
-            {
-                if(i == 0 && marbles[i].Win && marbles[i+1].Win)
-                {
-                    ((MyGame)game).LoadLevel(++currentLevel);
-                }
-            }
-            else if(marbles[i].Win) ((MyGame)game).LoadLevel(++currentLevel);
             if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
         }
+        if(win == marbles.Length) ((MyGame)game).LoadLevel(++currentLevel);
 
         foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
