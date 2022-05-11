@@ -17,6 +17,7 @@ public class Level: GameObject
     ConveyorBelt[] belts;
     Portal[] portals;
     Timer timer;
+    Score score;
 
     int currentLevel;
     int tiles = 17;
@@ -24,7 +25,7 @@ public class Level: GameObject
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
@@ -47,6 +48,11 @@ public class Level: GameObject
         doors = FindObjectsOfType<Door>();
         belts = FindObjectsOfType<ConveyorBelt>();
         timer = FindObjectOfType<Timer>();
+        if (timer != null)
+        {
+            score = new Score(timer);
+            AddChild(score);
+        }
 
         ConnectingDoorToButton();
         ConnectingPortals();
@@ -80,7 +86,7 @@ public class Level: GameObject
 
         foreach (Door door in doors) door.Step();
         foreach (NotMarble notMarble in notMarbles) notMarble.Step();
-        foreach (ConveyorBelt belt in belts) belt.Step();  
+        //foreach (ConveyorBelt belt in belts) belt.Step();  
     }
 
     void AddingPlanets()

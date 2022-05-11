@@ -108,8 +108,8 @@ public class Planet:Ball
         if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
-        if (riding && !stopping) acceleration += beltAcceleration;
         gravity = acceleration;
+        if (riding) acceleration += beltAcceleration;
         if(!Started && (acceleration.x > 0 || acceleration.y > 0)) _started = true;
         acceleration.LimitLength(0.05f); 
     }
@@ -199,11 +199,13 @@ public class Planet:Ball
             //Vector2 difference = Position - belt.Position;
             //float distance = difference.Length();
             float distance = Position.DistanceBetween(belt.Position);
-            float differenceFromCenter = Mathf.Abs(this.Width/2 + belt.Width/2);
+            Console.WriteLine(distance);
+            float differenceFromCenter = this.Width/2 + belt.Width/2;
 
             if (distance < differenceFromCenter)
             {
                 RidingConveyorBelt(belt.Movement);
+                continue;
             }
             else amountNotColliding++;
         }
