@@ -11,6 +11,7 @@ public class Planet:Ball
     Vector2 acceleration;
     Vector2 velocity;
     Vector2 oldPosition;
+    Vector2 gravity; 
     Vector2 desVelocity = new Vector2(0,0);
     Vector2 beltAcceleration;
 
@@ -30,6 +31,7 @@ public class Planet:Ball
     int timesLost = 10;
     int timesWon = 10;
 
+    public Vector2 Gravity { get => gravity; }
     public float Width { get => _width; }
     public float Height { get => _height; }
     public Vector2 Velocity { get => velocity; }
@@ -103,9 +105,21 @@ public class Planet:Ball
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
         if (riding && !stopping) acceleration += beltAcceleration;
-
+        gravity = acceleration;
         if(!Started && (acceleration.x > 0 || acceleration.y > 0)) _started = true;
         acceleration.LimitLength(0.05f); 
+    }
+    
+    void OnCollision(GameObject pOther)
+    {
+        if (pOther is Door d)
+        {
+            if (!d.disableCollider)
+            {
+                _position = oldPosition + velocity * pOther.collider.GetCollisionInfo(pOther.collider).timeOfImpact;
+                velocity.Reflect(bounciness,pOther.collider.GetCollisionInfo(pOther.collider).normal);
+            }
+        }
     }
 
     public void SuckedIn(Vector2 pDifference, GameObject pOther)
