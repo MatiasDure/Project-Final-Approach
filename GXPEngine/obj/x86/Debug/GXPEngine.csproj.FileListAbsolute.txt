@@ -46,3 +46,6 @@ C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEn
 C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CoreCompileInputs.cache
 C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\obj\x86\Debug\GXPEngine.exe
 C:\Users\omair\Documents\Saxion\CMGT\Courses\Kraken\Project-Final-Approach\GXPEngine\obj\x86\Debug\GXPEngine.pdb
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\Newtonsoft.Json.dll
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\bin\Debug\Newtonsoft.Json.xml
+C:\Users\matid\Documents\CMGT_Saxion\year1\term4\projectFinalApproach\finalApproach\GXPEngine\obj\x86\Debug\GXPEngine.csproj.CopyComplete

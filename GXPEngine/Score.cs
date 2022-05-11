@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 public class Score : GameObject
 {
     int _stars = 3;
-
     Timer timer;
     float fraction1;
     float fraction2;
@@ -22,6 +23,8 @@ public class Score : GameObject
         fraction1 = timer.LevelTime * (3f / 4f);
         fraction2 = timer.LevelTime * (2f / 4f);
         fraction3 = timer.LevelTime * (1f / 4f);
+
+        
     }
 
     void Update()

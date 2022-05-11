@@ -12,6 +12,7 @@ public class Timer : Sprite
     float _levelTime;
     int newSecond;
     int oldSecond;
+
     public float TimeLeft { get => _timer; }
     public float LevelTime { get => _levelTime; }
 

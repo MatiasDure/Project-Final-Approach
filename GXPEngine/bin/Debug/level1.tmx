@@ -132,5 +132,11 @@
     <property name="timer" type="int" value="60"/>
    </properties>
   </object>
+  <object id="43" name="marble1" type="Planet" x="164" y="650" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="44" name="ship" type="Ship" x="176" y="550" width="64" height="64">
+   <ellipse/>
+  </object>
  </objectgroup>
 </map>

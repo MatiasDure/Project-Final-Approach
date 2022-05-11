@@ -33,7 +33,7 @@ public class Planet:Ball
     float _width, _height;
 
     int timesLost = 10;
-    int timesWon = 10;
+    int timesWon = 150;
 
     public Vector2 Gravity { get => gravity; }
     public float Width { get => _width; }
@@ -152,11 +152,13 @@ public class Planet:Ball
             {
                 check2 = true;
                 diff += new Vector2(6, -53);
-                if(height > 10)
+                if (height > 10)
                 {
                     width--;
                     height--;
                 }
+                else timesWon--;
+                _win = timesWon < 1; 
             }
             acceleration = diff;
             acceleration.LimitLength(0.5f);
@@ -185,11 +187,9 @@ public class Planet:Ball
         if (pDifference.Length() < 1)
         {
             if (!Lost && pOther is Blackhole) timesLost--;
-            else if (!Win && pOther is Ship) timesWon--;
         }
 
         if (timesLost < 0) _lost = true;
-        else if (timesWon < 0) _win = true;
     }
 
     public void RidingConveyorBelt(Vector2 pDirection)
