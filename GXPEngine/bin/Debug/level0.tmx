@@ -28,7 +28,7 @@
   <object id="4" name="goal" type="Ship" x="512" y="512" width="61.3333" height="61.3333">
    <ellipse/>
   </object>
-  <object id="6" name="planet" type="Planet" x="194.667" y="194.667" width="61.3333" height="61.3333">
+  <object id="6" name="planet" type="Planet" x="204" y="209.334" width="32" height="32">
    <ellipse/>
   </object>
   <object id="7" name="blackhole" type="Blackhole" x="770.667" y="773.333" width="61.3333" height="61.3333">
@@ -40,6 +40,6 @@
   <object id="11" type="Obstacle" x="258.656" y="384.706" width="61.355" height="321.255"/>
   <object id="12" type="Obstacle" x="193.656" y="256.706" width="128.021" height="61.255"/>
   <object id="13" type="Obstacle" x="450.656" y="638.706" width="64" height="64"/>
-  <object id="14" type="Obstacle" x="194.667" y="188" width="188"/>
+  <object id="14" type="Obstacle" x="183.167" y="171.917" width="309.833" height="16.0833"/>
  </objectgroup>
 </map>

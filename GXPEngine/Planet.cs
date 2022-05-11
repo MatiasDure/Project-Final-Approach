@@ -58,6 +58,7 @@ public class Planet:Ball
         velocity += acceleration;
 
         bool firstTime = true;
+
         for (int i = 0; i < 2; i++)
         {
             _position += velocity;
@@ -67,7 +68,6 @@ public class Planet:Ball
                 ResolveCollision(firstCollision);
                 if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
                 {
-                    _position = oldPosition;
                     firstTime = false;
                     continue;
                 }
@@ -75,12 +75,10 @@ public class Planet:Ball
             break;
         }
 
-        //Console.WriteLine(riding);
         if (!riding) velocity = velocity * 0.99f + desVelocity * 0.01f;
         else
         {
             velocity = velocity * 0.95f;
-            //Console.WriteLine(velocity);
         }
 
         UpdateScreenPosition();
@@ -163,73 +161,6 @@ public class Planet:Ball
         acceleration = new Vector2(0, 0);
     }
 
-    CollisionInfo FindEarliestCollision()
-    {
-        Level myLevel = ((MyGame)game).level;
-
-        if(myLevel == null) return null;
-
-        float smallestToi = 100;
-        float currentToi = smallestToi;
-        bool collisionDetected = false;
-        Vector2 firstColNormal = new Vector2();
-
-        for (int i = 0; i < myLevel.BallCount(); i++)
-        {     
-            Ball other = myLevel.BallAtIndex(i);
-            if (other == this) continue;
-            smallestToi = ToiBall(other, currentToi);
-
-            if (smallestToi != currentToi)
-            {
-                collisionDetected = true;
-                firstColNormal = (this.oldPosition + smallestToi * this.velocity) - other.Position; // Point of impact - mover.position
-                firstColNormal.Normalize();
-                currentToi = smallestToi;
-            }
-        }
-
-        for (int i = 0; i < myLevel.CapsCount(); i++)
-        {
-            Caps other = myLevel.CapsAtIndex(i);
-            smallestToi = ToiBall(other, currentToi);
-
-            if (smallestToi != currentToi)
-            {
-                collisionDetected = true;
-                firstColNormal = (this.oldPosition + smallestToi * this.velocity) - other.Position; // Point of impact - mover.position
-                firstColNormal.Normalize();
-                currentToi = smallestToi;
-            }
-        }
-
-        for (int i = 0; i < myLevel.LineCount(); i++)
-        {
-            NLineSegment currentLine = myLevel.LineAtIndex(i);
-            smallestToi = ToiLine(currentLine, currentToi);
-
-            if (smallestToi != currentToi)
-            {
-                collisionDetected = true;
-                firstColNormal = currentLine._normal.vector;
-                Console.WriteLine(firstColNormal);
-                currentToi = smallestToi;
-            }
-        }
-
-        if (collisionDetected) return new CollisionInfo(firstColNormal, null, smallestToi);
-        return null;
-    }
-
-    void ResolveCollision(CollisionInfo pCollision)
-    {
-        Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
-        Position.SetXY(desiredPos);
-        velocity.Reflect(Ball.bounciness, pCollision.normal);
-        //velocity *= 0.995f; //friction
-        //velocity.Reflect(-0.995f, pCollision.normal.Normal()); // funky but correct friction!
-    }
-
     float ToiBall(Ball pOther, float pCurrentToi)
     {
         Vector2 oldRelativePos = this.oldPosition - pOther.Position;
@@ -270,12 +201,109 @@ public class Planet:Ball
             return pCurrentToi;
         }
     }
-    
+
+    CollisionInfo FindEarliestCollision()
+    {
+        Level myLevel = ((MyGame)game).level;
+
+        float smallestToi = 100;
+        float currentToi = smallestToi;
+        bool collisionDetected = false;
+        Vector2 firstColNormal = new Vector2();
+
+        for (int i = 0; i < myLevel.BallCount(); i++)
+        {
+            Ball other = myLevel.BallAtIndex(i);
+            if (other == this) continue;
+            smallestToi = ToiBall(other, currentToi);
+
+            if (smallestToi != currentToi)
+            {
+                collisionDetected = true;
+                firstColNormal = (this.oldPosition + smallestToi * this.velocity) - other.Position; // Point of impact - mover.position
+                firstColNormal.Normalize();
+                currentToi = smallestToi;
+            }
+        }
+
+            for (int i = 0; i < myLevel.CapsCount(); i++)
+            {
+                Ball other = myLevel.CapsAtIndex(i);
+                if (other == this) continue;
+                smallestToi = ToiPoint(other, currentToi);
+
+                if (smallestToi != currentToi)
+                {
+                    collisionDetected = true;
+                    firstColNormal = (this.oldPosition + smallestToi * this.velocity) - other.Position; // Point of impact - mover.position
+                    firstColNormal.Normalize();
+                    currentToi = smallestToi;
+                }
+            }
+
+            for (int i = 0; i < myLevel.LineCount(); i++)
+            {
+                NLineSegment currentLine = myLevel.LineAtIndex(i);
+                smallestToi = this.ToiLine(currentLine, currentToi);
+
+                if (smallestToi != currentToi)
+                {
+                    collisionDetected = true;
+                    firstColNormal = currentLine._normal.vector;
+                    Console.WriteLine(firstColNormal);
+                    currentToi = smallestToi;
+                }
+            }
+
+        if (collisionDetected) return new CollisionInfo(firstColNormal, null, smallestToi);
+        return null;
+    }
+
+    void ResolveCollision(CollisionInfo pCollision)
+    {
+        Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
+        _position.SetXY(desiredPos);
+            Console.WriteLine("position: "+ _position);
+        velocity.Reflect(Ball.bounciness, pCollision.normal);
+    }
+
+    float ToiPoint(Ball pOther, float pCurrentToi)
+    {
+        Vector2 oldRelativePos = this.oldPosition - pOther.Position;
+
+        float distance = oldRelativePos.Length();
+        float velocityLength = this.velocity.Length();
+        float sumRadius = this.Radius + pOther.Radius;
+        float a = velocityLength * velocityLength;
+        float b = 2 * oldRelativePos.Dot(this.velocity);
+        float c = distance * distance - sumRadius * sumRadius;
+        float insideSqrt = b * b - 4 * a * c;
+
+        // returns null because a negative number inside the sqrt would give no solution or the velocity is 0 (ball is not moving) 
+        if (insideSqrt < 0 || a == 0) return pCurrentToi;
+
+        if (c < 0)
+        {
+            if (b < 0) return 0;
+            else return pCurrentToi;
+        }
+        else
+        {
+            float toi;
+            float sqrtResult = Mathf.Sqrt(insideSqrt);
+
+            toi = (-b - sqrtResult) / (2 * a);
+
+            if (toi < 0 || toi > 1) return pCurrentToi; //time of impact its outside the possible scope
+            if (pCurrentToi > toi) return toi;
+            return pCurrentToi;
+        }
+    }
 
     float ToiLine(NLineSegment pOther, float pCurrentToi)
     {
         Vector2 lineVector = pOther.start - pOther.end;
-        Vector2 diffVecBetweenEndPoint = this.Position - pOther.end;
+        Vector2 diffVecBetweenEndPoint = this._position - pOther.end;
 
         float lineVectorLength = lineVector.Length();
         float scalarProjection = diffVecBetweenEndPoint.ScalarProjection(lineVector);
@@ -288,7 +316,7 @@ public class Planet:Ball
         if (vectorProjection.Length() < this.Radius) //if ball collides with lineSegment
         {
             float toi;
-            Vector2 lineNormal = pOther._normal.vector; 
+            Vector2 lineNormal = pOther._normal.vector; //(currentLine.end - currentLine.start).Normal();
             Vector2 oldDiffVector = this.oldPosition - pOther.end;
             float a = Vector2.Dot(lineNormal, oldDiffVector) - this.Radius;
             float b = -Vector2.Dot(lineNormal, velocity);

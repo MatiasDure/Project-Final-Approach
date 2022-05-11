@@ -10,7 +10,7 @@ public abstract class Ball:AnimationSprite
 {    
     protected float _radius;
     protected Vector2 _position;
-    public static float bounciness = 1f;
+    public static float bounciness = 0.4f;
 
     public float Radius { get => _radius; }
     public Vector2 Position { get => _position; }
