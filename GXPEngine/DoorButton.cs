@@ -10,11 +10,21 @@ public class DoorButton:NotMarble
 {
     int _id;
 
-    public int Id { get => _id; } 
+    public int Id { get => _id; }
+    List<String> images;
 
-    public DoorButton(TiledObject obj = null):base("buttonCyanAnim.png", 3,1)
+    public DoorButton(TiledObject obj = null):base("doorButton1.png", 3,1)
     {
+
+
         Initialize(obj);
+        images = new List<String>();
+        images.Add("doorButton1.png");
+        images.Add("doorButton2.png");
+        images.Add("doorButton3.png");
+        images.Add("doorButton4.png");
+        _id = obj.GetIntProperty("id", -1);
+        base._texture = new Sprite(images[(_id - 1)%4]).texture;
     }
 
     protected override void Initialize(TiledObject obj = null)

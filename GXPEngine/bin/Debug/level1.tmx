@@ -1,33 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="43">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="49">
  <imagelayer id="2" name="Image Layer 1">
-  <image source="background.jpg" width="1920" height="1080"/>
+  <image source="background.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="objects">
-  <object id="10" name="blackhole" type="Blackhole" x="1247.33" y="273.333" width="82" height="82">
+  <object id="10" name="blackhole" type="Blackhole" x="881.253" y="160.84" width="82" height="82">
    <properties>
     <property name="range" type="int" value="150"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="21" name="door1" type="Door" x="1101.17" y="219.907" width="64" height="64">
+  <object id="21" name="door1" type="Door" x="1293.74" y="622.211" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="22" name="doorButton1" type="DoorButton" x="360" y="680" width="86" height="86">
+  <object id="44" name="door1" type="Door" x="1297.56" y="441.079" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="46" name="door1" type="Door" x="1335.69" y="225.627" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="48" name="door1" type="Door" x="1337.6" y="78.8146" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="5"/>
+   </properties>
+  </object>
+  <object id="22" name="doorButton1" type="DoorButton" x="1406.75" y="609.454" width="86" height="86">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="23" name="doorButton2" type="DoorButton" x="1397" y="541" width="86" height="90">
+  <object id="43" name="doorButton1" type="DoorButton" x="1410.57" y="428.322" width="86" height="86">
+   <properties>
+    <property name="id" type="int" value="3"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="45" name="doorButton1" type="DoorButton" x="1448.7" y="212.87" width="86" height="86">
+   <properties>
+    <property name="id" type="int" value="4"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="47" name="doorButton1" type="DoorButton" x="1450.61" y="66.0576" width="86" height="86">
+   <properties>
+    <property name="id" type="int" value="5"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="23" name="doorButton2" type="DoorButton" x="1406.53" y="895.638" width="86" height="90">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="24" name="door2" type="Door" x="1215" y="720" width="64" height="64">
+  <object id="24" name="door2" type="Door" x="1276.01" y="910.665" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
@@ -50,7 +83,8 @@
   </object>
   <object id="35" name="belt1" type="ConveyorBelt" x="768" y="404" width="128" height="128">
    <properties>
-    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="-0.03"/>
    </properties>
   </object>
   <object id="36" name="belt1" type="ConveyorBelt" x="896" y="404" width="128" height="128">
@@ -65,7 +99,7 @@
   </object>
   <object id="38" name="belt1" type="ConveyorBelt" x="640" y="404" width="128" height="128">
    <properties>
-    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementX" type="float" value="-0.02"/>
    </properties>
   </object>
   <object id="16" name="marble1" type="Planet" x="95" y="429" width="32" height="32">

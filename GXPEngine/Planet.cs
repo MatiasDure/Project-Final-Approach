@@ -28,6 +28,7 @@ public class Planet:Ball
     public bool teleporting = false;
     bool ufoSucked;
     bool check2 = false;
+    List<String> images;
 
     float _width, _height;
 
@@ -43,11 +44,19 @@ public class Planet:Ball
     public bool Pull { get => _pull; }
     public bool Started { get => _started; }
 
-    public Planet(TiledObject obj = null):base("circle.png", 1, 1, true)
+    public Planet(TiledObject obj = null):base("planet1.png", 1, 1, true)
     {
+        images = new List<String>();
+        images.Add("planet1.png");
+        images.Add("planet2.png");
+        images.Add("planet3.png");
+        images.Add("planet4.png");
+        String random = images[Utils.Random(0, 4)];
+
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
         Initialize(obj);
+        base._texture = new Sprite(random).texture;
     }
 
     protected override void Initialize(TiledObject obj = null)
