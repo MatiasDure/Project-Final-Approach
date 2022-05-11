@@ -13,6 +13,7 @@ public class Door:AnimationSprite
     int _id;
     public DoorButton connectedButton = null;
     bool open = true;
+    public bool disableCollider = false; 
 
     public int Id { get => _id; }
 
@@ -31,15 +32,16 @@ public class Door:AnimationSprite
     {
         bool collision = connectedButton.CollisionWithPlanet();
 
-        if (connectedButton != null && collision) OpenClose(openPos);
+        if (connectedButton != null && collision) disableCollider = true;//OpenClose(openPos);
         else if (!collision)
         {
-            if(open)
+            if (open)
             {
-                SetXY(closePos.x,closePos.y);
+                SetXY(closePos.x, closePos.y);
                 open = false;
             }
-            OpenClose(closePos);
+            disableCollider = false;
+            // OpenClose(closePos);
         }
     }
 
