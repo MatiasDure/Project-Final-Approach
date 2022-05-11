@@ -17,6 +17,6 @@ public class Ship:NotMarble
 
     public override void Step()
     {
-        Animate(0.05f);
+        Animate(0.1f);
     }
 }

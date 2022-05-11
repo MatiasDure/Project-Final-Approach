@@ -113,14 +113,14 @@ public class Planet:Ball
     {
         ResetAcceleration();
         
-        if (Input.GetKey(Key.UP)) acceleration += new Vector2(0, -.05f);
-        if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .05f);
-        if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
-        if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
+        if (Input.GetKey(Key.UP)) acceleration += new Vector2(0, -.1f);
+        if (Input.GetKey(Key.DOWN)) acceleration += new Vector2(0, .1f);
+        if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.1f, 0);
+        if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.1f, 0);
         gravity = acceleration;
         if (riding && !stopping) acceleration += beltAcceleration;
         if(!Started && (acceleration.x > 0 || acceleration.y > 0)) _started = true;
-        acceleration.LimitLength(0.05f); 
+        acceleration.LimitLength(0.1f); 
     }
     
     void OnCollision(GameObject pOther)
@@ -161,7 +161,7 @@ public class Planet:Ball
                 _win = timesWon < 1; 
             }
             acceleration = diff;
-            acceleration.LimitLength(0.5f);
+            acceleration.LimitLength(1f);
             velocity *= 0.5f;
         }
     }
