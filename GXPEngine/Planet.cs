@@ -40,7 +40,7 @@ public class Planet:Ball
     public bool Pull { get => _pull; }
     public bool Started { get => _started; }
 
-    public Planet(TiledObject obj = null):base("circle.png", 1, 1)
+    public Planet(TiledObject obj = null):base("circle.png", 1, 1, true)
     {
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);

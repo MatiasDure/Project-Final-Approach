@@ -15,7 +15,7 @@ public abstract class Ball:AnimationSprite
     public float Radius { get => _radius; }
     public Vector2 Position { get => _position; }
 
-    public Ball(string pImgPath, int pCol, int pRow, TiledObject obj = null):base(pImgPath, pCol, pRow, -1, false, false)
+    public Ball(string pImgPath, int pCol, int pRow, bool collision = false, TiledObject obj = null):base(pImgPath, pCol, pRow, -1, false, collision)
     { 
     }
 
