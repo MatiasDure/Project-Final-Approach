@@ -16,6 +16,7 @@ public class Level: GameObject
     Door[] doors;
     ConveyorBelt[] belts;
     Portal[] portals;
+    Timer timer;
 
     int currentLevel;
     int tiles = 17;
@@ -45,6 +46,7 @@ public class Level: GameObject
         marbles = FindObjectsOfType<Planet>();
         doors = FindObjectsOfType<Door>();
         belts = FindObjectsOfType<ConveyorBelt>();
+        timer = FindObjectOfType<Timer>();
 
         ConnectingDoorToButton();
         ConnectingPortals();

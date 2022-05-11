@@ -16,7 +16,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 0;
+	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
@@ -25,6 +25,7 @@ public class MyGame : Game
 
 	public MyGame() : base(1920, 1080, false, true, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
 	{
+		targetFps = 60;
 		soundtrack = new Sound[] { new Sound("sounds/mainMenuSoundtrack.mp3",true,true),
 									new Sound("sounds/gameplaySoundtrack.mp3",true,true) };
 		OnAfterStep += CheckLevel;

@@ -17,6 +17,7 @@ public class Planet:Ball
     public NotMarble[] notMarbles;
     public ConveyorBelt[] belts;
 
+    bool _started = false;
     bool _pull = false;
     bool _lost = false;
     bool _win = false;
@@ -35,6 +36,7 @@ public class Planet:Ball
     public bool Lost { get => _lost; }
     public bool Win { get => _win; }
     public bool Pull { get => _pull; }
+    public bool Started { get => _started; }
 
     public Planet(TiledObject obj = null):base("circle.png", 1, 1)
     {
@@ -101,6 +103,8 @@ public class Planet:Ball
         if (Input.GetKey(Key.LEFT)) acceleration += new Vector2(-.05f, 0);
         if (Input.GetKey(Key.RIGHT)) acceleration += new Vector2(.05f, 0);
         if (riding && !stopping) acceleration += beltAcceleration;
+
+        if(!Started && (acceleration.x > 0 || acceleration.y > 0)) _started = true;
         acceleration.LimitLength(0.05f); 
     }
 
