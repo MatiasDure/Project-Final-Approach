@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="43">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="43">
  <imagelayer id="2" name="Image Layer 1">
   <image source="background.jpg" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="objects">
-  <object id="1" name="ship" type="Ship" x="116" y="124" width="82" height="82">
-   <ellipse/>
-  </object>
   <object id="10" name="blackhole" type="Blackhole" x="1247.33" y="273.333" width="82" height="82">
    <properties>
     <property name="range" type="int" value="150"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="21" name="door1" type="Door" x="1166" y="218" width="78" height="208">
+  <object id="21" name="door1" type="Door" x="1101.17" y="219.907" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
@@ -30,7 +27,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="24" name="door2" type="Door" x="1215" y="720" width="78" height="208">
+  <object id="24" name="door2" type="Door" x="1215" y="720" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
@@ -74,7 +71,10 @@
   <object id="16" name="marble1" type="Planet" x="95" y="429" width="32" height="32">
    <ellipse/>
   </object>
-  <object id="29" name="ob" type="Obstacle" x="1199" y="218" width="45" height="208"/>
+  <object id="1" name="ship" type="Ship" x="472.544" y="108.747" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="29" name="ob" type="Obstacle" x="1826.29" y="54.0278" width="45" height="208"/>
   <object id="39" name="blackhole" type="Blackhole" x="704" y="743" width="64" height="64">
    <properties>
     <property name="distance" type="float" value="20"/>

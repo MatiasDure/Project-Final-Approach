@@ -13,7 +13,7 @@ public class Timer:Sprite
     
     public Timer(TiledObject obj):base("empty.png", false)
     {
-        Console.WriteLine("Timer");
+        //Console.WriteLine("Timer");
         if(obj != null)
         {
             _timer = obj.GetIntProperty("timer");
@@ -33,7 +33,7 @@ public class Timer:Sprite
     void UpdateTimer()
     {
         int t = Time.time % 1000;
-        Console.WriteLine(t);
+        //Console.WriteLine(t);
         if (!(TimeLeft > 0)) return;
         
     }

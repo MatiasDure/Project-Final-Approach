@@ -15,7 +15,7 @@ public abstract class NotMarble:Ball
     public float Width { get => _width; }
     public float Height { get => _height; }
     
-    public NotMarble(string pImgPath, int pCol, int pRow, TiledObject obj = null) : base(pImgPath, pCol, pRow)
+    public NotMarble(string pImgPath, int pCol, int pRow, TiledObject obj = null) : base(pImgPath, pCol, pRow,true)
     {
     }
 

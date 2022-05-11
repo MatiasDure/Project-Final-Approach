@@ -8,9 +8,15 @@ using TiledMapParser;
 
 public class Ship:NotMarble
 {
-    public Ship(TiledObject obj = null) :base("ship.png", 1, 1)
+    public Ship(TiledObject obj = null) :base("ufoIdleSpritesheet.png", 4, 5)
     {
         Init(obj);
         detectionRange = 50;
+        SetCycle(0, 4);
+    }
+
+    public override void Step()
+    {
+        Animate(0.05f);
     }
 }

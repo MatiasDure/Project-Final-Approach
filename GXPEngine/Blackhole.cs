@@ -15,7 +15,7 @@ public class Blackhole:NotMarble
     Vector2 startingPosition;
     Vector2 currentPosition;
 
-    public Blackhole( TiledObject obj = null) :base("blackhole.png", 1, 1)
+    public Blackhole( TiledObject obj = null) :base("blackhole.png", 4, 4)
     {
         Initialize(obj);
     }
@@ -45,6 +45,7 @@ public class Blackhole:NotMarble
             MovingPull();
         }
         else base.Step();
+        Animate(0.05f);
     }
 
     void Move()

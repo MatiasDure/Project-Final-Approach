@@ -15,7 +15,7 @@ public class Portal:NotMarble
 
     public int Id { get => _id; }
 
-    public Portal(TiledObject obj=null):base("portal.png",1,1)
+    public Portal(TiledObject obj=null):base("portal.png",3,3)
     {
         Initialize(obj);
     }
@@ -31,6 +31,7 @@ public class Portal:NotMarble
     public override void Step()
     {
         CollisionWPlanet();
+        Animate(0.05f);
     }
 
     void CollisionWPlanet()

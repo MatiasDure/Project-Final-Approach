@@ -17,11 +17,10 @@ public class Door:AnimationSprite
 
     public int Id { get => _id; }
 
-    public Door(TiledObject obj = null):base("square.png", 1, 1)
+    public Door(TiledObject obj = null):base("rockCyanSprite.png", 3, 1)
     {
         if(obj != null)
         {
-            Console.WriteLine(obj.X);
             _id = obj.GetIntProperty("id",-1);
             closePos = new Vector2(obj.X, obj.Y);
             openPos = new Vector2(obj.GetFloatProperty("openPosX", obj.X), obj.GetFloatProperty("openPosY", obj.Y - 200));          
@@ -32,6 +31,8 @@ public class Door:AnimationSprite
     {
         bool collision = connectedButton.CollisionWithPlanet();
 
+        if(disableCollider && currentFrame != 2) Animate(0.05f);
+        if(!disableCollider) currentFrame = 0;
         if (connectedButton != null && collision) disableCollider = true;//OpenClose(openPos);
         else if (!collision)
         {

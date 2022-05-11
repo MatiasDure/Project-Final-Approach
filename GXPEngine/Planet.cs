@@ -14,6 +14,7 @@ public class Planet:Ball
     Vector2 gravity; 
     Vector2 desVelocity = new Vector2(0,0);
     Vector2 beltAcceleration;
+    Vector2 ufoPosition; 
 
     public NotMarble[] notMarbles;
     public ConveyorBelt[] belts;
@@ -25,6 +26,8 @@ public class Planet:Ball
     public bool riding = false;
     bool stopping = false;
     public bool teleporting = false;
+    bool ufoSucked;
+    bool check2 = false;
 
     float _width, _height;
 
@@ -59,6 +62,7 @@ public class Planet:Ball
         oldPosition = Position;
         if(!_pull) GravityChange();
         CollisionWithBelt();
+        UfoSuck();
         velocity += acceleration;
 
         bool firstTime = true;
@@ -120,6 +124,44 @@ public class Planet:Ball
                 velocity.Reflect(bounciness,pOther.collider.GetCollisionInfo(pOther.collider).normal);
             }
         }
+
+        if (pOther is Ship s)
+        {
+            //velocity.Reflect(bounciness, pOther.collider.GetCollisionInfo(pOther.collider).normal);
+            Ufo(s); 
+        }
+    }
+    void UfoSuck()
+    {
+            
+        if (ufoSucked)
+        {
+            ufoPosition += new Vector2(0, 32);
+            Vector2 diff = ufoPosition  - _position;
+            if (Mathf.Abs(ufoPosition.Length() - _position.Length()) < 0.1f || check2)
+            {
+                check2 = true;
+                diff += new Vector2(6, -53);
+                if(height > 10)
+                {
+                    width--;
+                    height--;
+                }
+            }
+            acceleration = diff;
+            acceleration.LimitLength(0.5f);
+            velocity *= 0.5f;
+        }
+    }
+
+    void Ufo(Ship s)
+    {
+        s.SetCycle(5, 13);
+        Vector2 impulse = new Vector2(0, (s.Position.y - _position.y) + Mathf.Abs(s.Position.y - _position.y));
+        velocity += new Vector2(0, impulse.y/500);
+        ufoPosition = s.Position;
+        ufoSucked = true; 
+        if(s.currentFrame > 15) s.SetCycle(16, 1);
     }
 
     public void SuckedIn(Vector2 pDifference, GameObject pOther)
@@ -134,7 +176,6 @@ public class Planet:Ball
         {
             if (!Lost && pOther is Blackhole) timesLost--;
             else if (!Win && pOther is Ship) timesWon--;
-            
         }
 
         if (timesLost < 0) _lost = true;
