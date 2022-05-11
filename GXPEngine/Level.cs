@@ -17,6 +17,7 @@ public class Level: GameObject
     ConveyorBelt[] belts;
     Portal[] portals;
     Timer timer;
+    Score score;
 
     int currentLevel;
     int tiles = 17;
@@ -47,6 +48,11 @@ public class Level: GameObject
         doors = FindObjectsOfType<Door>();
         belts = FindObjectsOfType<ConveyorBelt>();
         timer = FindObjectOfType<Timer>();
+        if (timer != null)
+        {
+            score = new Score(timer);
+            AddChild(score);
+        }
 
         ConnectingDoorToButton();
         ConnectingPortals();
