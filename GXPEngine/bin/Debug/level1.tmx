@@ -35,10 +35,10 @@
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="25" name="belt1" type="ConveyorBelt" x="384" y="404" width="128" height="128">
+  <object id="25" name="belt1" type="ConveyorBelt" x="512" y="473" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="0"/>
-    <property name="movementY" type="float" value="0.03"/>
+    <property name="movementY" type="float" value="-0.02"/>
    </properties>
   </object>
   <object id="26" name="portal1" type="Portal" x="880" y="786" width="64" height="64">
@@ -61,14 +61,14 @@
     <property name="movementX" type="float" value="0.02"/>
    </properties>
   </object>
-  <object id="37" name="belt1" type="ConveyorBelt" x="512" y="404" width="128" height="128">
+  <object id="37" name="belt1" type="ConveyorBelt" x="512" y="404" width="64" height="64">
    <properties>
-    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="-0.02"/>
    </properties>
   </object>
-  <object id="38" name="belt1" type="ConveyorBelt" x="640" y="404" width="128" height="128">
+  <object id="38" name="belt1" type="ConveyorBelt" x="512" y="331" width="64" height="64">
    <properties>
-    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="-0.02"/>
    </properties>
   </object>
   <object id="16" name="marble1" type="Planet" x="95" y="429" width="32" height="32">
