@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="49">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="120" height="68" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="50">
  <imagelayer id="2" name="Image Layer 1">
   <image source="background.png" width="1920" height="1080"/>
  </imagelayer>
  <objectgroup id="3" name="objects">
-  <object id="10" name="blackhole" type="Blackhole" x="881.253" y="160.84" width="82" height="82">
+  <object id="10" name="blackhole" type="Blackhole" x="1073.82" y="57.8807" width="82" height="82">
    <properties>
     <property name="range" type="int" value="150"/>
    </properties>
@@ -110,6 +110,14 @@
   </object>
   <object id="29" name="ob" type="Obstacle" x="1826.29" y="54.0278" width="45" height="208"/>
   <object id="39" name="blackhole" type="Blackhole" x="704" y="743" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="20"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="velocityX" type="float" value="0.2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="49" name="blackhole" type="Blackhole" x="780.266" y="157.657" width="64" height="64">
    <properties>
     <property name="distance" type="float" value="20"/>
     <property name="movable" type="bool" value="true"/>

@@ -8,6 +8,7 @@ using TiledMapParser;
 
 public class Ship:NotMarble
 {
+    public bool used = false; 
     public Ship(TiledObject obj = null) :base("ufoIdleSpritesheet.png", 4, 5)
     {
         Init(obj);

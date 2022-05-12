@@ -29,6 +29,7 @@ public class Planet:Ball
     bool ufoSucked;
     bool check2 = false;
     List<String> images;
+    Ship ufo; 
 
     float _width, _height;
 
@@ -69,9 +70,9 @@ public class Planet:Ball
     public override void Step()
     {
         oldPosition = Position;
-        if(!_pull) GravityChange();
+        if(!_pull && !ufoSucked) GravityChange();
         CollisionWithBelt();
-        UfoSuck();
+        //UfoSuck();
         velocity += acceleration;
 
         bool firstTime = true;
@@ -97,6 +98,7 @@ public class Planet:Ball
         {
             velocity = velocity * 0.95f;
         }
+        Ufo();
 
         UpdateScreenPosition();
     }
@@ -136,8 +138,9 @@ public class Planet:Ball
 
         if (pOther is Ship s)
         {
-            //velocity.Reflect(bounciness, pOther.collider.GetCollisionInfo(pOther.collider).normal);
-            Ufo(s); 
+            ufo = s;
+            if(!s.used) ufoSucked = true;
+
         }
 
     }
@@ -147,11 +150,14 @@ public class Planet:Ball
         if (ufoSucked)
         {
             ufoPosition += new Vector2(0, 32);
-            Vector2 diff = ufoPosition  - _position;
+            Vector2 desPosition = ufoPosition;
+            Vector2 diff = desPosition - _position;
+            diff.SetLength(0.01f);
+            _position += diff;
             if (diff.Length() < 0.1f || check2)
             {
                 check2 = true;
-                diff += new Vector2(6, -53);
+                desPosition += new Vector2(6, -53);
                 if (height > 10)
                 {
                     width--;
@@ -160,20 +166,41 @@ public class Planet:Ball
                 else timesWon--;
                 _win = timesWon < 1; 
             }
-            acceleration = diff;
-            acceleration.LimitLength(1f);
-            velocity *= 0.5f;
         }
     }
 
-    void Ufo(Ship s)
+    void Ufo()
     {
-        s.SetCycle(5, 13);
-        Vector2 impulse = new Vector2(0, (s.Position.y - _position.y) + Mathf.Abs(s.Position.y - _position.y));
-        velocity += new Vector2(0, impulse.y/500);
-        ufoPosition = s.Position;
-        ufoSucked = true; 
-        if(s.currentFrame > 15) s.SetCycle(16, 1);
+        if (ufoSucked && !ufo.used) 
+        { 
+            ufo.SetCycle(5, 13);
+            if(ufo.currentFrame > 15) ufo.SetCycle(16, 1);
+
+            Vector2 desPosition = ufo.Position + new Vector2(0, 20);
+            if ((desPosition - _position).Length() < 0.1f || check2)
+            {
+                Console.WriteLine(ufo.currentFrame);
+                check2 = true; 
+                desPosition += new Vector2(6, -42);
+                if (height > 10)
+                {
+                    width--;
+                    height--;
+                }
+               // else timesWon--;
+                //_win = timesWon < 1;
+                if (ufo.currentFrame > 15 && ufo != null)
+                {
+                    _win = true;
+                    ufo.used = true;
+                }
+            }
+            Vector2 diff = desPosition - _position ;
+            diff.LimitLength(1f);
+            _position += diff;
+            acceleration *= 0;
+            velocity *= 0;
+        }
     }
 
     public void SuckedIn(Vector2 pDifference, GameObject pOther)
@@ -181,14 +208,10 @@ public class Planet:Ball
         if(!_pull) _pull = true;
         
         Vector2 unitDifference = pDifference.Normalized();
-        acceleration = unitDifference * velocity.Length() * 0.05f;
+        acceleration = unitDifference * velocity.Length() * 0.5f;
         desVelocity = unitDifference;
 
-        if (pDifference.Length() < 1)
-        {
-            if (!Lost && pOther is Blackhole) timesLost--;
-        }
-
+        if (pDifference.Length() < 5 && !Lost) timesLost--;
         if (timesLost < 0) _lost = true;
     }
 

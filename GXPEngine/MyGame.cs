@@ -16,7 +16,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 1;
+	int startingLevel = 6;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
@@ -36,7 +36,7 @@ public class MyGame : Game
 	void Update() 
 	{
 		if (Input.GetKeyDown(Key.TAB)) LoadLevel(levelNum);
-        Console.WriteLine(currentFps);
+        //Console.WriteLine(currentFps);
 	}
 
 	static void Main()

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="74">
+ <tileset firstgid="1" name="tile-set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
+  <image source="tile-set.png" width="320" height="192"/>
+ </tileset>
+ <imagelayer id="5" name="bg" visible="0">
+  <image source="background.png" width="1920" height="1080"/>
+ </imagelayer>
+ <layer id="1" name="Tile Layer 1" width="19" height="19">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,1,13,13,13,13,13,13,13,13,13,5,0,0,0,0,0,0,0,
+0,9,0,0,9,0,8,0,0,0,8,7,0,0,0,0,0,0,0,
+0,9,0,0,9,0,0,0,0,0,8,7,0,0,0,0,0,0,0,
+0,9,0,0,9,0,0,0,0,0,8,7,0,0,0,0,0,0,0,
+0,9,0,9,8,0,0,0,0,0,8,7,0,0,0,0,0,0,0,
+0,9,0,0,0,0,8,0,0,0,0,7,0,0,0,0,0,0,0,
+0,9,0,9,8,0,0,0,0,0,0,7,0,0,0,0,0,0,0,
+0,9,0,11,3,0,3,0,8,8,8,7,0,0,0,0,0,0,0,
+0,9,0,0,0,0,0,0,0,0,8,7,0,0,0,0,0,0,0,
+0,9,0,0,0,0,0,0,8,8,8,7,0,0,0,0,0,0,0,
+0,9,0,8,3,3,3,3,3,3,3,15,0,0,0,0,0,0,0,
+0,11,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="10" name="doorButton1" type="DoorButton" x="448" y="448" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="11" name="door1" type="Door" x="549" y="608" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="16" name="Conver" type="ConveyorBelt" x="127.333" y="256" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="18" name="Conver" type="ConveyorBelt" x="192.333" y="256.333" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="25" name="ob" type="Obstacle" x="256.5" y="128" width="63.3333" height="256"/>
+  <object id="26" name="ob" type="Obstacle" x="704" y="64" width="63.3333" height="702.667"/>
+  <object id="27" name="ob" type="Obstacle" x="63.6667" y="64.0682" width="63.3333" height="768.182"/>
+  <object id="28" name="ob" type="Obstacle" x="127.583" y="63.9167" width="576.833" height="63.7273"/>
+  <object id="29" name="ob" type="Obstacle" x="512" y="512" width="128" height="64"/>
+  <object id="30" name="ob" type="Obstacle" x="512" y="640" width="64" height="64"/>
+  <object id="32" name="ob" type="Obstacle" x="129.583" y="767.5" width="126.833" height="63"/>
+  <object id="33" name="ob" type="Obstacle" x="192.128" y="704.5" width="512.121" height="63"/>
+  <object id="35" name="ob" type="Obstacle" x="384.083" y="384.063" width="64" height="64"/>
+  <object id="38" name="ob" type="Obstacle" x="191.583" y="448.25" width="128.083" height="127.25"/>
+  <object id="39" name="ob" type="Obstacle" x="192" y="320" width="64" height="64"/>
+  <object id="40" name="ob" type="Obstacle" x="384.333" y="128" width="64" height="64"/>
+  <object id="49" name="Conver" type="ConveyorBelt" x="320.5" y="256" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="52" name="Blackhole" type="Blackhole" x="576" y="384" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="54" name="Blackhole" type="Blackhole" x="320" y="128" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="55" name="Blackhole" type="Blackhole" x="128" y="704" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="56" name="Blackhole" type="Blackhole" x="512" y="320" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="57" name="Conver" type="ConveyorBelt" x="384" y="256" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="58" name="Conver" type="ConveyorBelt" x="320" y="320" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="59" name="Conver" type="ConveyorBelt" x="384" y="320" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="60" name="Conver" type="ConveyorBelt" x="448" y="320" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="61" name="ob" type="Obstacle" x="384" y="512" width="64" height="64"/>
+  <object id="62" name="ob" type="Obstacle" x="575.917" y="674.167" width="63.4997" height="29.8333"/>
+  <object id="64" name="Conver" type="ConveyorBelt" x="128" y="320" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="65" name="Conver" type="ConveyorBelt" x="127.333" y="512" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="66" name="Conver" type="ConveyorBelt" x="255" y="576" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="67" name="Conver" type="ConveyorBelt" x="191.5" y="575.5" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0.02"/>
+    <property name="movementY" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="68" name="Conver" type="ConveyorBelt" x="384" y="192" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="0.02"/>
+   </properties>
+  </object>
+  <object id="69" name="Conver" type="ConveyorBelt" x="320" y="576" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0.04"/>
+    <property name="movementY" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="70" name="Blackhole" type="Blackhole" x="576" y="320" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="71" name="Blackhole" type="Blackhole" x="640" y="384" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="72" name="ob" type="Obstacle" x="640" y="547.25" width="64" height="156.75"/>
+  <object id="73" name="ob" type="Obstacle" x="640" y="128" width="64" height="256"/>
+  <object id="15" name="marble1" type="Planet" x="591.333" y="143.667" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="9" name="marble1" type="Planet" x="144.583" y="142.916" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="36" name="ship" type="Ship" x="640" y="448" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="37" name="ship" type="Ship" x="576.333" y="576.667" width="64" height="64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
