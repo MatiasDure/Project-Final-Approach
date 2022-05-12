@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Level: GameObject
+public class Level: Sprite
 {
     TiledLoader loader;
     NotMarble[] notMarbles;

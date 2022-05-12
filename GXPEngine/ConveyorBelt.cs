@@ -25,12 +25,10 @@ public class ConveyorBelt:AnimationSprite
         _movement = new Vector2();
         if(obj != null)
         {
-            _position.SetXY(obj.X,obj.Y);
             _movement = new Vector2(obj.GetFloatProperty("movementX", 0), obj.GetFloatProperty("movementY", 0)) * 2;
-            //SetOrigin(this.width / 2, this.height / 2);
             _width = obj.Width;
             _height = obj.Height;
-           // rotation = _movement.GetAngleDegrees();
+            _position.SetXY(obj.X+_width/2,obj.Y+_height/2);
         }
     }
     void FixPositions()
@@ -39,21 +37,13 @@ public class ConveyorBelt:AnimationSprite
         {
             SetOrigin(this.width / 2, this.height / 2);
             rotation = _movement.GetAngleDegrees() - 90;
-            if(rotation == -90) y -= this.height;
-            if(rotation == 90) x -= this.width;
-            if(rotation == -180)
-            {
-                x -= this.width;
-                y -= this.height;
-            }
+            fixedPoisitions = true;
         }
 
     }
     public void Step()
     {
         FixPositions();
-        fixedPoisitions = true;
         Animate(0.1f);
     }
-
 }
