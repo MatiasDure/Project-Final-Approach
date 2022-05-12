@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Button:AnimationSprite
+public class Button : AnimationSprite
 {
     int target;
     int _id;
     public bool _paused = false;
 
     public bool Paused { get => _paused; }
-    public Button(int pTarget = -1, int pId = 1, string pImgPath = "square.png", TiledObject obj = null) :base(pImgPath,2,1)
+    public Button(int pTarget = -1, int pId = 1, string pImgPath = "square.png", TiledObject obj = null) : base(pImgPath, 2, 1)
     {
         if (obj != null)
         {
-            target = obj.GetIntProperty("target",0);
+            target = obj.GetIntProperty("target", 0);
             _id = obj.GetIntProperty("id", 1);
         }
         else
@@ -56,7 +56,7 @@ public class Button:AnimationSprite
 
     void LoadLvl(bool pClicked)
     {
-        if(pClicked) ((MyGame)game).LoadLevel(target);
+        if (pClicked) ((MyGame)game).LoadLevel(target);
     }
 
     bool Clicked()
@@ -64,7 +64,7 @@ public class Button:AnimationSprite
         if (HitTestPoint(Input.mouseX, Input.mouseY))
         {
             currentFrame = 1;
-            if(Input.GetMouseButtonDown(0)) return true;
+            if (Input.GetMouseButtonDown(0)) return true;
         }
         else currentFrame = 0;
         return false;
@@ -81,3 +81,4 @@ public class Button:AnimationSprite
     }
 
 }
+

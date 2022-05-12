@@ -1,26 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="64" tileheight="64" infinite="0" nextlayerid="2" nextobjectid="1">
- <layer id="1" name="Tile Layer 1" width="19" height="19">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="17" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="67">
+ <tileset firstgid="1" name="Marble_Game_Prototype_Tileset" tilewidth="64" tileheight="64" tilecount="100" columns="10">
+  <image source="City_Level_1.png" trans="ff00ff" width="640" height="640"/>
+ </tileset>
+ <tileset firstgid="101" name="tile-set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
+  <image source="tile-set.png" width="320" height="192"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="17" height="17">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+102,103,103,103,103,103,103,103,103,103,103,103,103,103,103,103,104,
+107,33,33,0,33,33,33,33,0,33,33,33,33,33,33,33,109,
+107,33,102,103,103,103,103,103,103,103,103,103,103,103,104,0,109,
+107,33,107,0,33,33,33,33,0,0,0,0,33,33,109,0,109,
+107,33,107,0,0,0,0,0,0,0,0,0,0,33,109,33,109,
+107,33,107,33,0,108,108,102,103,104,108,108,0,33,109,33,109,
+107,33,107,33,0,108,108,107,0,109,108,108,0,0,109,33,109,
+107,33,107,33,0,108,108,107,0,109,108,108,0,0,109,33,109,
+107,33,107,33,0,108,108,107,0,109,108,108,0,33,109,0,109,
+107,0,107,0,0,108,108,107,33,109,108,108,0,0,109,0,109,
+107,33,107,33,0,108,108,107,0,0,0,109,0,109,108,0,109,
+107,33,107,33,0,108,108,112,113,113,113,114,0,0,109,0,109,
+107,33,107,33,0,0,0,0,0,0,0,0,0,33,109,0,109,
+107,0,107,0,0,33,33,0,33,33,33,33,33,33,109,0,109,
+107,33,112,113,113,113,113,113,113,113,113,113,113,113,114,33,109,
+107,33,33,33,33,33,33,0,108,33,33,33,33,0,33,33,109,
+112,113,113,113,113,113,113,113,113,113,113,113,113,113,113,113,114
 </data>
  </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="4" name="Blackhole" type="Blackhole" x="768" y="768" width="64" height="64">
+   <properties>
+    <property name="range" type="int" value="50"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="7" type="Obstacle" x="128" y="128" width="64" height="832"/>
+  <object id="8" type="Obstacle" x="192" y="896" width="768" height="64"/>
+  <object id="9" type="Obstacle" x="896" y="128" width="64" height="768"/>
+  <object id="27" name="portal2" type="Portal" x="512" y="640" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="28" name="portal2" type="Portal" x="512" y="768" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="30" name="door2" type="Door" x="544" y="96" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="31" name="door1" type="Door" x="96" y="223" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="33" name="door3" type="Door" x="992" y="608" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="34" name="doorButton1" type="DoorButton" x="192" y="192" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="35" name="doorButton3" type="DoorButton" x="832" y="576" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="3"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="36" type="Obstacle" x="192" y="128" width="768" height="64"/>
+  <object id="37" type="Obstacle" x="0" y="0" width="64" height="1087.33"/>
+  <object id="40" type="Obstacle" x="1023" y="0" width="64" height="1087.33"/>
+  <object id="41" type="Obstacle" x="64" y="0" width="960" height="64"/>
+  <object id="42" type="Obstacle" x="64" y="1024" width="512" height="64"/>
+  <object id="43" type="Obstacle" x="512" y="960" width="64" height="64"/>
+  <object id="44" type="Obstacle" x="320" y="704" width="448" height="64"/>
+  <object id="45" type="Obstacle" x="320" y="320" width="191.698" height="64"/>
+  <object id="46" type="Obstacle" x="320" y="384" width="192" height="320"/>
+  <object id="48" type="Obstacle" x="704" y="384" width="64" height="320.909"/>
+  <object id="49" name="doorButton2" type="DoorButton" x="832" y="256" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="50" type="Obstacle" x="576" y="320" width="190.667" height="64"/>
+  <object id="51" type="Obstacle" x="512" y="320" width="64" height="29.6667"/>
+  <object id="52" type="Obstacle" x="576" y="384" width="128" height="256.083"/>
+  <object id="55" name="doorButton4" type="DoorButton" x="512.333" y="515.667" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="4"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="56" name="door4" type="Door" x="864" y="992" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="57" type="Obstacle" x="832" y="640" width="64" height="64"/>
+  <object id="58" name="moving blackhole up" type="Blackhole" x="224" y="736" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="384"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="0"/>
+    <property name="velocityY" type="float" value="-5"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="59" name="moving blackhole up" type="Blackhole" x="416" y="288" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="64"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="0"/>
+    <property name="velocityY" type="float" value="-0.4"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="60" name="moving blackhole up" type="Blackhole" x="672" y="288" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="64"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="0"/>
+    <property name="velocityY" type="float" value="-0.4"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="29" name="Planet" type="Planet" x="652.833" y="656.167" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="6" name="Planet" type="Planet" x="462.667" y="977.333" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="54" name="Ship" type="Ship" x="512" y="380" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="5" name="Ship" type="Ship" x="576" y="960" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="61" type="Obstacle" x="640" y="1024" width="384" height="64"/>
+  <object id="62" type="Obstacle" x="576" y="1057.75" width="64" height="30.25"/>
+  <object id="63" name="timer" type="Timer" x="0" y="0" width="40" height="45.3333" visible="0">
+   <properties>
+    <property name="timer" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="66" name="timer" type="Timer" x="0" y="0" width="60" height="52">
+   <properties>
+    <property name="timer" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

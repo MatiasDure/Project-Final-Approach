@@ -47,6 +47,7 @@
     <Compile Include="Ball.cs" />
     <Compile Include="Blackhole.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="ButtonTiled.cs" />
     <Compile Include="Caps.cs" />
     <Compile Include="CollisionInfo.cs" />
     <Compile Include="ConveyorBelt.cs" />
