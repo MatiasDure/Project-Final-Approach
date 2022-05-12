@@ -11,19 +11,24 @@ public class Hud:GameObject
     Score scoreInfo;
     bool _paused = false;
     int pauseIndex;
+    AnimationSprite stars;
 
     public bool Paused { get => _paused; } 
 
     public Hud(int pCurrentLevel, Score pScore)
     {
+        //stars 
         scoreInfo = pScore;
-        buttons = new Button[] { new Button(pCurrentLevel, 1), 
-                                new Button(-1, 2)};
+        buttons = new Button[] { new Button(pCurrentLevel, 1, "buttons/resetIcon.png"), 
+                                new Button(-1, 2, "buttons/pause.png")};
         pauseIndex = 1;
         for (int i = 0; i < buttons.Length; i++)
         {
             AddChild(buttons[i]);
-            buttons[i].x += i * 100;
+            if (i == 0)
+                buttons[i].x = 50;
+            else buttons[i].x = 170;
+            buttons[i].y = 50;
         }
     }
 

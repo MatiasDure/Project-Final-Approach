@@ -59,7 +59,16 @@ public class Button:AnimationSprite
         if(pClicked) ((MyGame)game).LoadLevel(target);
     }
 
-    bool Clicked() => HitTestPoint(Input.mouseX, Input.mouseY) && Input.GetMouseButtonDown(0);
+    bool Clicked()
+    {
+        if (HitTestPoint(Input.mouseX, Input.mouseY))
+        {
+            currentFrame = 1;
+            if(Input.GetMouseButtonDown(0)) return true;
+        }
+        else currentFrame = 0;
+        return false;
+    }
 
     void PauseGame(bool pClicked)
     {

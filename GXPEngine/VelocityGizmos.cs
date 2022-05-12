@@ -25,9 +25,8 @@ public class VelocityGizmos: EasyDraw
         gizmosBase.SetOrigin(gizmosBase.width/2, gizmosBase.height/2);
         AddChild(gizmosBase);
         SetOrigin(50, 50);
-        //boardMoving = new Sound("sounds/board_moving.wav",true,true).Play();
-        x = 100;
-        y = 100;        
+        x = -208;
+        y = game.height - 150;        
     }
 
     void addToShaft(int value)
