@@ -16,15 +16,17 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 6;
+	int startingLevel = 0;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
 	Sound[] soundtrack;
 	SoundChannel soundtrackChannel;
+	Sprite background;
 
 	public MyGame() : base(1920, 1080, false, false, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
 	{
+		
 		targetFps = 60;
 		soundtrack = new Sound[] { new Sound("sounds/mainMenuSoundtrack.mp3",true,true),
 									new Sound("sounds/gameplaySoundtrack.mp3",true,true) };
@@ -49,6 +51,8 @@ public class MyGame : Game
 		if (levelName == null) return;
 		if (soundtrackChannel != null) soundtrackChannel.Stop();
 		DestroyAll();
+		background = new Sprite("background.png", false, false);
+		AddChild(background);
 		Sound soundToPlay;
 		soundToPlay = levelNum == 0 ? soundtrack[0] : soundtrack[1];
 		//soundtrackChannel = soundToPlay.Play();

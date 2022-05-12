@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GXPEngine;
 using TiledMapParser;
 
-public class Level: Sprite
+public class Level: GameObject
 {
     TiledLoader loader;
     NotMarble[] notMarbles;
@@ -26,7 +26,7 @@ public class Level: Sprite
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
-        //SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
+        SetXY(game.width/2 - tiles*tileSize/2, game.height/2 - tiles*tileSize / 2);
         loader = new TiledLoader(pCurrentLevel);
         Map levelData = MapParser.ReadMap(pCurrentLevel);
         currentLevel = pCurrentLevelNum;
