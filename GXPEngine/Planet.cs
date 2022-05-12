@@ -47,7 +47,8 @@ public class Planet:Ball
     public bool Pull { get => _pull; }
     public bool Started { get => _started; }
     Sound[] sounds;
-    SoundChannel ufoSound;
+    //SoundChannel ufoSound;
+    bool ufoPlay = false;
 
     public Planet(TiledObject obj = null):base("planet1.png", 1, 1, true)
     {
@@ -61,12 +62,12 @@ public class Planet:Ball
         sounds = new Sound[] { new Sound("sounds/ballbounce1.wav", false,true), 
             new Sound("sounds/ballbounce2.wav", false, true), 
             new Sound("sounds/ballbounce3.wav", false, true),
-            new Sound("sounds/belt.wav", true, true),
+            new Sound("sounds/belt.wav", false, true),
             new Sound("sounds/teleport.wav",false,true),
             new Sound("sounds/UFO_pickup_v2.wav",false,true)};
 
-        ufoSound = sounds[5].Play();
-        ufoSound.IsPaused = true;
+        //ufoSound = sounds[5].Play();
+        //ufoSound.IsPaused = true;
 
 
 
@@ -97,9 +98,7 @@ public class Planet:Ball
             CollisionInfo firstCollision = FindEarliestCollision();
             if (firstCollision != null)
             {
-                if (firstCollision.timeOfImpact < 0.41f) rolling = true; 
-                else rolling = false;
-                Console.WriteLine(firstCollision.timeOfImpact);
+                rolling = firstCollision.timeOfImpact < 0.41f;
                 ResolveCollision(firstCollision);
                 if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
                 {
@@ -161,10 +160,10 @@ public class Planet:Ball
 
     }
     void UfoSuck()
-    {
-            
+    {     
         if (ufoSucked)
         {
+            if (!ufoPlay) sounds[5].Play();
             ufoPosition += new Vector2(0, 32);
             Vector2 desPosition = ufoPosition;
             Vector2 diff = desPosition - _position;
@@ -187,16 +186,20 @@ public class Planet:Ball
 
     void Ufo()
     {
-        if (ufoSucked && !ufo.used) ufoSound.IsPaused = false;
+        //if (ufoSucked && !ufo.used) //ufoSound.IsPaused = false;
         if (ufoSucked && !ufo.used) 
-        { 
+        {
+            if (!ufoPlay)
+            {
+                sounds[5].Play();
+                ufoPlay = true;
+            }
             ufo.SetCycle(5, 13);
             if(ufo.currentFrame > 15) ufo.SetCycle(16, 1);
 
             Vector2 desPosition = ufo.Position + new Vector2(0, 20);
             if ((desPosition - _position).Length() < 0.1f || check2)
             {
-                Console.WriteLine(ufo.currentFrame);
                 check2 = true; 
                 desPosition += new Vector2(6, -42);
                 if (height > 10)
@@ -204,8 +207,6 @@ public class Planet:Ball
                     width--;
                     height--;
                 }
-               // else timesWon--;
-                //_win = timesWon < 1;
                 if (ufo.currentFrame > 15 && ufo != null)
                 {
                     _win = true;
@@ -234,15 +235,7 @@ public class Planet:Ball
 
     public void RidingConveyorBelt(Vector2 pDirection)
     {
-        if (riding )
-        {
-           // beltSound.IsPaused = false;
-        }
-
-
         beltAcceleration = pDirection;
-        //riding = true;
-        //velocity.SetLength(0.85f);
     }
 
     void CollisionWithBelt()
@@ -251,8 +244,6 @@ public class Planet:Ball
 
         foreach (ConveyorBelt belt in belts)
         {
-            //Vector2 difference = Position - belt.Position;
-            //float distance = difference.Length();
             float distance = Position.DistanceBetween(belt.Position);
             float differenceFromCenter = Mathf.Abs(this.Width/2 + belt.Width/2);
 
@@ -262,7 +253,6 @@ public class Planet:Ball
             }
             else
             {
-                //beltSound.IsPaused = true;
                 amountNotColliding++;
             }
                 
@@ -310,14 +300,9 @@ public class Planet:Ball
 
             if (toi < 0 || toi > 1) 
             {
-                return pCurrentToi; //time of impact its outside the possible scope
+                return pCurrentToi; //time of impact is outside the possible scope
             }
-            if (pCurrentToi > toi) 
-            {
-
-                //Console.WriteLine("Collision ! ");
-                return toi;
-            }
+            if (pCurrentToi > toi) return toi;
             return pCurrentToi;
         }
     }
@@ -385,7 +370,7 @@ public class Planet:Ball
         _position.SetXY(desiredPos);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
         Console.WriteLine("ROlong " + rolling );
-        if(!rolling)sounds[Utils.Random(0,2)].Play();
+        if(!rolling)sounds[Utils.Random(0,3)].Play();
     }
 
     float ToiPoint(Ball pOther, float pCurrentToi)

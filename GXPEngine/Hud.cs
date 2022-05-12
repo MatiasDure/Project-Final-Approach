@@ -47,10 +47,8 @@ public class Hud:GameObject
 
     void DisplayStars()
     {
-        Console.WriteLine(scoreInfo.Stars);
         if(scoreInfo.Stars == 2 && stars.currentFrame < 4) stars.Animate(0.1f);
         if(scoreInfo.Stars == 1 && stars.currentFrame < 8) stars.Animate(0.1f);
         if(scoreInfo.Stars == 0 && stars.currentFrame < 12) stars.Animate(0.1f);
-
     }
 }
