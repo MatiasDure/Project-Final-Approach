@@ -1,105 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="64" tileheight="64" infinite="0" nextlayerid="11" nextobjectid="155">
- <tileset firstgid="1" name="City_Level_1" tilewidth="64" tileheight="64" tilecount="15" columns="5">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="17" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="13" nextobjectid="155">
+ <tileset firstgid="1" name="City_Level_1" tilewidth="64" tileheight="64" tilecount="100" columns="10">
+  <image source="../../../../1-First-5.9.22Project-Final-Approach-master/GXPEngine/bin/Debug/City_Level_1.png" width="640" height="640"/>
+ </tileset>
+ <tileset firstgid="101" name="tile set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
   <image source="tile-set.png" width="320" height="192"/>
  </tileset>
- <tileset firstgid="16" name="tile set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
-  <image source="tile-set.png" width="320" height="192"/>
- </tileset>
- <objectgroup id="7" name="Objects">
-  <object id="111" type="Obstacle" x="191.831" y="191.808" width="64" height="832.208"/>
-  <object id="113" type="Obstacle" x="959.247" y="191.516" width="64" height="702.958" rotation="90"/>
-  <object id="114" type="Obstacle" x="895.497" y="704.433" width="192" height="64" rotation="90"/>
-  <object id="115" type="Obstacle" x="704" y="448" width="64" height="192"/>
-  <object id="116" type="Obstacle" x="703.997" y="640" width="64" height="64"/>
-  <object id="117" type="Obstacle" x="575.679" y="832.221" width="64" height="128"/>
-  <object id="118" name="doorButton3" type="DoorButton" x="576.058" y="511.387" width="64" height="64">
+ <layer id="12" name="Tile Layer 2" width="17" height="17">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,102,103,103,103,103,108,108,108,108,103,104,103,104,0,0,
+0,0,107,0,0,0,0,108,108,108,108,0,111,0,109,0,0,
+0,0,107,0,0,0,0,102,103,104,108,0,0,0,109,0,0,
+0,0,107,0,0,0,0,107,0,111,104,0,0,0,109,0,0,
+0,0,107,0,0,0,0,107,0,0,109,0,0,0,109,0,0,
+0,0,107,0,0,0,0,115,0,0,109,0,0,0,109,0,0,
+0,0,107,0,108,108,107,0,0,0,109,108,108,0,109,0,0,
+0,0,107,0,0,0,108,107,0,0,109,0,0,0,109,0,0,
+0,0,107,0,0,0,0,107,0,109,0,0,101,0,109,0,0,
+0,0,107,0,0,0,0,107,0,109,0,0,109,0,109,0,0,
+0,0,107,0,0,0,0,107,0,109,0,0,109,0,109,0,0,
+0,0,107,0,0,0,0,0,113,0,0,0,0,0,109,0,0,
+0,0,112,113,113,113,113,113,108,113,113,113,113,113,114,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="7" name="Objects" offsetx="-7.10543e-15" offsety="0">
+  <object id="111" type="Obstacle" x="127.977" y="127.954" width="64" height="832.208"/>
+  <object id="112" type="Obstacle" x="895.643" y="127.828" width="64" height="832.151"/>
+  <object id="113" type="Obstacle" x="895.393" y="127.662" width="64" height="702.375" rotation="90"/>
+  <object id="114" type="Obstacle" x="831.643" y="640.579" width="192" height="64" rotation="90"/>
+  <object id="115" type="Obstacle" x="640.146" y="191.911" width="64" height="384.235"/>
+  <object id="116" type="Obstacle" x="640.143" y="576.146" width="64" height="64"/>
+  <object id="117" type="Obstacle" x="511.825" y="833.7" width="64" height="62.6667"/>
+  <object id="118" name="doorButton3" type="DoorButton" x="512.204" y="447.533" width="64" height="64">
    <properties>
     <property name="id" type="int" value="3"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="119" name="door3" type="Door" x="575.664" y="704.099" width="64" height="64">
+  <object id="119" name="door3" type="Door" x="544.146" y="672.146" width="64" height="64">
    <properties>
     <property name="id" type="int" value="3"/>
    </properties>
   </object>
-  <object id="120" name="door1" type="Door" x="255.497" y="575.766" width="64" height="64">
+  <object id="120" name="door1" type="Door" x="224.146" y="544.146" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="121" name="door2" type="Door" x="895.497" y="575.766" width="64" height="64">
+  <object id="121" name="door2" type="Door" x="864.146" y="544.146" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="122" name="portal1" type="Portal" x="576.164" y="255.433" width="64" height="64">
+  <object id="122" name="portal1" type="Portal" x="704.31" y="447.829" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="123" name="portal1" type="Portal" x="575.664" y="383.766" width="64" height="64">
+  <object id="123" name="portal1" type="Portal" x="512.977" y="320.245" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
   </object>
-  <object id="124" name="portal2" type="Portal" x="511.831" y="895.433" width="64" height="64">
+  <object id="124" name="portal2" type="Portal" x="447.977" y="831.579" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="125" name="portal1" type="Portal" x="639.831" y="895.766" width="64" height="64">
+  <object id="125" name="portal1" type="Portal" x="575.977" y="831.912" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="126" name="ship1" type="Ship" x="895.789" y="255.557" width="64" height="64">
-   <ellipse/>
-  </object>
-  <object id="127" name="ship2" type="Ship" x="575.164" y="767.099" width="64" height="64">
-   <ellipse/>
-  </object>
-  <object id="129" name="marble2" type="Planet" x="792.162" y="910.01" width="32" height="32">
-   <ellipse/>
-  </object>
-  <object id="130" name="marble1" type="Planet" x="464.164" y="269.933" width="32" height="32">
-   <ellipse/>
-  </object>
-  <object id="131" name="doorButton1" type="DoorButton" x="511.71" y="576.419" width="64" height="64">
+  <object id="128" type="Obstacle" x="895.674" y="896.106" width="64" height="703.28" rotation="90"/>
+  <object id="131" name="doorButton1" type="DoorButton" x="447.856" y="512.565" width="64" height="64">
    <properties>
     <property name="id" type="int" value="1"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="132" name="doorButton2" type="DoorButton" x="640.195" y="575.297" width="64" height="64">
+  <object id="132" name="doorButton2" type="DoorButton" x="576.146" y="511.146" width="64" height="64">
    <properties>
     <property name="id" type="int" value="2"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="133" type="Obstacle" x="576.164" y="639.419" width="192" height="64" rotation="90"/>
-  <object id="134" type="Obstacle" x="639.831" y="703.752" width="64" height="128"/>
-  <object id="135" type="Obstacle" x="447.164" y="576.085" width="64" height="128"/>
-  <object id="136" type="Obstacle" x="319.831" y="575.752" width="128" height="64"/>
-  <object id="137" type="Obstacle" x="575.831" y="255.752" width="320" height="64" rotation="90"/>
-  <object id="138" type="Obstacle" x="831.498" y="255.752" width="64" height="128"/>
-  <object id="139" type="Obstacle" x="704.134" y="383.449" width="64" height="64" rotation="90"/>
-  <object id="140" type="Obstacle" x="640.498" y="320.085" width="64" height="64" rotation="90"/>
-  <object id="141" type="Obstacle" x="767.831" y="575.752" width="128" height="64"/>
-  <object id="146" name="moving blackhole right" type="Blackhole" x="281.831" y="799.752" width="64" height="64">
+  <object id="133" type="Obstacle" x="512.31" y="575.565" width="255.333" height="64" rotation="90"/>
+  <object id="134" type="Obstacle" x="575.977" y="639.898" width="64" height="190.667"/>
+  <object id="135" type="Obstacle" x="383.31" y="512.231" width="64" height="128"/>
+  <object id="136" type="Obstacle" x="255.977" y="511.898" width="128" height="64"/>
+  <object id="137" type="Obstacle" x="511.977" y="191.898" width="320" height="64" rotation="90"/>
+  <object id="138" type="Obstacle" x="767.644" y="191.898" width="64" height="64"/>
+  <object id="139" type="Obstacle" x="640.28" y="319.595" width="64" height="64" rotation="90"/>
+  <object id="140" type="Obstacle" x="639.311" y="192.398" width="128" height="128" rotation="90"/>
+  <object id="141" type="Obstacle" x="703.977" y="511.898" width="128" height="64"/>
+  <object id="142" name="Conver" type="ConveyorBelt" x="832.146" y="832.146" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="-0.03"/>
+   </properties>
+  </object>
+  <object id="143" name="Conver" type="ConveyorBelt" x="832.146" y="768.146" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="-0.03"/>
+   </properties>
+  </object>
+  <object id="144" name="Conver" type="ConveyorBelt" x="832.146" y="704.146" width="64" height="64">
+   <properties>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="-0.03"/>
+   </properties>
+  </object>
+  <object id="145" name="moving blackhole left" type="Blackhole" x="416.146" y="416.146" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="190"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="-0.5"/>
+    <property name="velocityY" type="float" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="146" name="moving blackhole right" type="Blackhole" x="217.977" y="735.898" width="64" height="64">
    <properties>
     <property name="distance" type="float" value="170"/>
     <property name="movable" type="bool" value="true"/>
-    <property name="range" type="int" value="80"/>
+    <property name="range" type="int" value="50"/>
     <property name="velocityX" type="float" value="0.5"/>
     <property name="velocityY" type="float" value="0"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="148" name="moving blackhole right" type="Blackhole" x="799.831" y="677.752" width="64" height="64">
+  <object id="147" name="moving blackhole left" type="Blackhole" x="670.146" y="671.146" width="64" height="64">
    <properties>
-    <property name="distance" type="float" value="100"/>
+    <property name="distance" type="float" value="190"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="0"/>
+    <property name="velocityY" type="float" value="1.5"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="148" name="moving blackhole right" type="Blackhole" x="735.977" y="612.898" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="126"/>
     <property name="movable" type="bool" value="true"/>
     <property name="range" type="int" value="50"/>
     <property name="velocityX" type="float" value="0.4"/>
@@ -107,53 +156,49 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="150" name="moving blackhole down" type="Blackhole" x="480" y="736" width="64" height="64">
+  <object id="149" name="moving blackhole right" type="Blackhole" x="224.146" y="288.146" width="64" height="64">
    <properties>
     <property name="distance" type="float" value="190"/>
     <property name="movable" type="bool" value="true"/>
-    <property name="range" type="int" value="80"/>
+    <property name="range" type="int" value="50"/>
+    <property name="velocityX" type="float" value="0.5"/>
+    <property name="velocityY" type="float" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="150" name="moving blackhole down" type="Blackhole" x="416.146" y="672.146" width="64" height="64">
+   <properties>
+    <property name="distance" type="float" value="190"/>
+    <property name="movable" type="bool" value="true"/>
+    <property name="range" type="int" value="50"/>
     <property name="velocityX" type="float" value="0"/>
     <property name="velocityY" type="float" value="0.4"/>
    </properties>
    <ellipse/>
   </object>
-  <object id="151" name="Conver" type="ConveyorBelt" x="934" y="895" width="64" height="64">
+  <object id="152" name="Conver" type="ConveyorBelt" x="832.146" y="640.146" width="64" height="64">
    <properties>
-    <property name="movementY" type="float" value="-0.02"/>
+    <property name="movementX" type="float" value="0"/>
+    <property name="movementY" type="float" value="-0.03"/>
    </properties>
   </object>
-  <object id="152" name="Conver" type="ConveyorBelt" x="934" y="831" width="64" height="64">
-   <properties>
-    <property name="movementY" type="float" value="-0.02"/>
-   </properties>
+  <object id="129" name="marble2" type="Planet" x="397.999" y="206.489" width="32" height="32">
+   <ellipse/>
   </object>
-  <object id="154" name="Conver" type="ConveyorBelt" x="934" y="767" width="64" height="64">
+  <object id="130" name="marble1" type="Planet" x="527.977" y="463.079" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="126" name="ship1" type="Ship" x="831.935" y="195.703" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="127" name="ship2" type="Ship" x="512.31" y="707.245" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="153" type="Obstacle" x="832.396" y="447.813" width="64" height="64" rotation="90"/>
+  <object id="154" name="timer" type="Timer" x="0" y="0" width="60" height="52">
    <properties>
-    <property name="movementY" type="float" value="-0.02"/>
+    <property name="timer" type="int" value="0"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="10" name="Tile Layer 1" width="19" height="19">
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,17,18,18,18,18,17,18,18,18,18,19,18,19,0,0,0,
-0,0,0,22,0,0,0,0,22,0,0,0,0,24,0,24,0,0,0,
-0,0,0,22,0,0,0,0,17,18,0,0,0,24,0,24,0,0,0,
-0,0,0,22,0,0,0,0,22,0,24,0,0,0,0,24,0,0,0,
-0,0,0,22,0,0,0,0,22,0,0,24,0,0,0,24,0,0,0,
-0,0,0,22,0,0,0,0,22,0,0,24,0,0,0,24,0,0,0,
-0,0,0,22,0,23,23,22,0,0,0,24,23,23,0,24,0,0,0,
-0,0,0,22,0,0,0,23,22,0,0,24,0,0,0,24,0,0,0,
-0,0,0,22,0,0,0,0,22,0,24,0,0,24,0,24,0,0,0,
-0,0,0,22,0,0,0,0,22,0,24,0,0,24,0,24,0,0,0,
-0,0,0,22,0,0,0,0,0,28,0,0,0,24,0,24,0,0,0,
-0,0,0,22,0,0,0,0,0,23,0,0,0,0,0,24,0,0,0,
-0,0,0,27,28,28,28,28,28,23,28,28,28,28,28,29,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</data>
- </layer>
 </map>

@@ -29,6 +29,7 @@ public class Planet:Ball
     public bool teleporting = false;
     bool ufoSucked;
     bool check2 = false;
+    bool rolling; 
     List<String> images;
     Ship ufo; 
 
@@ -67,8 +68,6 @@ public class Planet:Ball
         ufoSound = sounds[5].Play();
         ufoSound.IsPaused = true;
 
-       // beltSound = sounds[3].Play();
-        //beltSound.IsPaused = true;
 
 
         acceleration = new Vector2(0, 0);
@@ -89,9 +88,7 @@ public class Planet:Ball
         oldPosition = Position;
         if(!_pull && !ufoSucked) GravityChange();
         CollisionWithBelt();
-        //UfoSuck();
         velocity += acceleration;
-
         bool firstTime = true;
 
         for (int i = 0; i < 2; i++)
@@ -100,10 +97,12 @@ public class Planet:Ball
             CollisionInfo firstCollision = FindEarliestCollision();
             if (firstCollision != null)
             {
+                if (firstCollision.timeOfImpact < 0.41f) rolling = true; 
+                else rolling = false;
+                Console.WriteLine(firstCollision.timeOfImpact);
                 ResolveCollision(firstCollision);
                 if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
                 {
-                    firstTime = false;
                     continue;
                 }
             }
@@ -384,9 +383,9 @@ public class Planet:Ball
     {
         Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
         _position.SetXY(desiredPos);
-            //Console.WriteLine("position: "+ _position);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
-        sounds[Utils.Random(0,2)].Play();
+        Console.WriteLine("ROlong " + rolling );
+        if(!rolling)sounds[Utils.Random(0,2)].Play();
     }
 
     float ToiPoint(Ball pOther, float pCurrentToi)
