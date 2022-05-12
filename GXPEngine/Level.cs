@@ -19,10 +19,16 @@ public class Level: GameObject
     Timer timer;
     Score score;
     ScoreInfo info;
+    Hud hud;
+    Pause pausedWindow;
+    VelocityGizmos gravityIndicator;
 
     int currentLevel;
     int tiles = 17;
     int tileSize = 64;
+
+    bool pause = false;
+    bool addedPauseWindow = false;
 
     public Level(string pCurrentLevel, int pCurrentLevelNum)
     {
@@ -40,7 +46,7 @@ public class Level: GameObject
     {
         loader.addColliders = false;
         loader.rootObject = this;
-        loader.LoadImageLayers();
+        //loader.LoadImageLayers();
         loader.LoadTileLayers();
 
         loader.autoInstance = true;
@@ -55,6 +61,8 @@ public class Level: GameObject
         {
             score = new Score(timer);
             AddChild(score);
+            hud = new Hud(currentLevel);
+            parent.AddChild(hud);
         }
 
         ConnectingDoorToButton();
@@ -67,29 +75,54 @@ public class Level: GameObject
 
     void CreateGravityIndicator()
     {
-        VelocityGizmos v = new VelocityGizmos();
-        AddChild(v);
+        gravityIndicator = new VelocityGizmos();
+        AddChild(gravityIndicator);
     }
 
     void Update()
     {
-        int win = 0;
-        for (int i = 0; i < marbles.Length ;i++)
+        if (!pause)
         {
-            if(marbles[i].Win) win++;
-            marbles[i].Step();
-            if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
+            if(addedPauseWindow)
+            {
+                pausedWindow.Destroy();
+                addedPauseWindow = false;
+            }
+            int win = 0;
+            for (int i = 0; i < marbles.Length; i++)
+            {
+                if (marbles[i].Win) win++;
+                marbles[i].Step();
+                if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
+            }
+            if (win == marbles.Length)
+            {
+                info.Save(currentLevel, score.Stars);
+                ((MyGame)game).LoadLevel(++currentLevel);
+            }
+
+            if (hud != null)
+            {
+                hud.Step();
+                pause = hud.Paused;
+            }
+
+            gravityIndicator.Step();
+            foreach (Door door in doors) door.Step();
+            foreach (NotMarble notMarble in notMarbles) notMarble.Step();
+            foreach (ConveyorBelt belt in belts) belt.Step();
         }
-        if(win == marbles.Length)
+        else
         {
-            info.Save(currentLevel,score.Stars);
-            ((MyGame)game).LoadLevel(++currentLevel); 
-        } 
-
-
-        foreach (Door door in doors) door.Step();
-        foreach (NotMarble notMarble in notMarbles) notMarble.Step();
-        foreach (ConveyorBelt belt in belts) belt.Step();  
+            if (!addedPauseWindow)
+            {
+                pausedWindow = new Pause(currentLevel);
+                parent.AddChild(pausedWindow);
+                addedPauseWindow = true;
+            }
+            pausedWindow.Step();
+            pause = pausedWindow.Paused;
+        }
     }
 
     void AddingPlanets()

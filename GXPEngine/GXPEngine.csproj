@@ -100,6 +100,7 @@
     <Compile Include="NotMarble.cs" />
     <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Obstacle.cs" />
+    <Compile Include="Pause.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Portal.cs" />
     <Compile Include="Score.cs" />

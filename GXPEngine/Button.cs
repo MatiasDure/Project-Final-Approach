@@ -4,20 +4,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GXPEngine;
+using TiledMapParser;
 
 public class Button:AnimationSprite
 {
     int target;
-    public Button(int pTarget):base("square.png",1,1)
+    int _id;
+    public bool _paused = false;
+
+    public bool Paused { get => _paused; }
+    public Button(int pTarget = -1, int pId = 1, string pImgPath = "square.png", TiledObject obj = null) :base(pImgPath,2,1)
     {
-        target = pTarget;
+        if (obj != null) target = obj.GetIntProperty("target");
+        else
+        {
+            _id = pId;
+            target = pTarget;
+            Console.WriteLine(target);
+        }
+
     }
 
-    void Update()
+    public void Step()
     {
-        if(HitTestPoint(Input.mouseX,Input.mouseY) && Input.GetMouseButtonDown(0))
+        bool clickedButton = Clicked();
+        TypeButton(clickedButton);
+    }
+
+    void TypeButton(bool pClicked)
+    {
+        switch (_id)
         {
-            ((MyGame)game).LoadLevel(target);
+            case 1:
+                LoadLvl(pClicked);
+                break;
+            case 2:
+                PauseGame(pClicked);
+                break;
+            case 3:
+                EndGame(pClicked);
+                break;
+            default:
+                Console.WriteLine("not found ID");
+                break;
         }
     }
+
+    void LoadLvl(bool pClicked)
+    {
+        if(pClicked) ((MyGame)game).LoadLevel(target);
+    }
+
+    bool Clicked() => HitTestPoint(Input.mouseX, Input.mouseY) && Input.GetMouseButtonDown(0);
+
+    void PauseGame(bool pClicked)
+    {
+        if (pClicked) _paused = !_paused;
+    }
+
+    void EndGame(bool pClicked)
+    {
+        if (pClicked) ((MyGame)game).Destroy();
+    }
+
 }
