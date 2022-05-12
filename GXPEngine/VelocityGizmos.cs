@@ -13,7 +13,9 @@ public class VelocityGizmos: EasyDraw
     Vector2 velocity;
     int count;
     int oldCount = 0;
-    float magnituge; 
+    float magnituge;
+    //SoundChannel boardMoving; 
+
     public VelocityGizmos() : base(100, 100)
     {
         shaft = new List<EasyDraw>();
@@ -23,6 +25,7 @@ public class VelocityGizmos: EasyDraw
         gizmosBase.SetOrigin(gizmosBase.width/2, gizmosBase.height/2);
         AddChild(gizmosBase);
         SetOrigin(50, 50);
+        //boardMoving = new Sound("sounds/board_moving.wav",true,true).Play();
         x = 100;
         y = 100;        
     }
@@ -36,7 +39,6 @@ public class VelocityGizmos: EasyDraw
         AddChild(tip);
         AddChild(gizmosBase);
     }
-
     void UpdatePositons()
     {
         tip.x = magnituge + tip.width/2;
@@ -45,13 +47,13 @@ public class VelocityGizmos: EasyDraw
            shaft.ElementAt(i).x = magnituge - (i * 15) - (shaft.ElementAt(i).width/2);
         }
     }
-
     void Direction()
     {
         rotation = velocity.GetAngleDegrees();
     }
     void Magnitude()
-    { 
+    {
+        //boardMoving.Volume = magnituge/10;
         count = Mathf.Round(magnituge / 15);
 
         if (oldCount < count)

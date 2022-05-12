@@ -16,7 +16,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 0;
+	int startingLevel = 1;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
@@ -28,8 +28,8 @@ public class MyGame : Game
 	{
 		
 		targetFps = 60;
-		soundtrack = new Sound[] { new Sound("sounds/mainMenuSoundtrack.mp3",true,true),
-									new Sound("sounds/gameplaySoundtrack.mp3",true,true) };
+		soundtrack = new Sound[] { new Sound("sounds/main_menu_music.mp3",true,true),
+									new Sound("sounds/in_game_music.mp3",true,true) };
 		OnAfterStep += CheckLevel;
 		LoadLevel(startingLevel);
 	}
@@ -44,6 +44,7 @@ public class MyGame : Game
 	{
 		Game myGame = new MyGame();
 		myGame.Start();
+		
 	}
 
 	void CheckLevel()
@@ -55,7 +56,7 @@ public class MyGame : Game
 		AddChild(background);
 		Sound soundToPlay;
 		soundToPlay = levelNum == 0 ? soundtrack[0] : soundtrack[1];
-		//soundtrackChannel = soundToPlay.Play();
+		soundtrackChannel = soundToPlay.Play();
 		level = new Level(levelName,levelNum);
 		AddChild(level);
 		level.CreateLevel();

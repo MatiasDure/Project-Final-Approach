@@ -13,6 +13,7 @@ public class ConveyorBelt:AnimationSprite
     Vector2 _movement;
     float _width, _height;
     bool fixedPoisitions;
+    SoundChannel beltSound; 
 
 
     public Vector2 Position { get => _position; }
@@ -29,6 +30,8 @@ public class ConveyorBelt:AnimationSprite
             _width = obj.Width;
             _height = obj.Height;
             _position.SetXY(obj.X+_width/2,obj.Y+_height/2);
+            beltSound = new Sound("sounds/belt.wav", true, true).Play();
+            beltSound.IsPaused = true;
         }
     }
     void FixPositions()
@@ -40,6 +43,14 @@ public class ConveyorBelt:AnimationSprite
             fixedPoisitions = true;
         }
 
+    }
+    void OnCollision(GameObject pOther)
+    {
+        if(pOther is Planet)
+        {
+            beltSound.IsPaused = false;
+        }else beltSound.IsPaused = true;
+        
     }
     public void Step()
     {
