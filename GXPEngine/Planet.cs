@@ -24,6 +24,7 @@ public class Planet:Ball
     bool _lost = false;
     bool _win = false;
     public bool riding = false;
+    bool ridingSound = false;
     bool stopping = false;
     public bool teleporting = false;
     bool ufoSucked;
@@ -44,6 +45,8 @@ public class Planet:Ball
     public bool Win { get => _win; }
     public bool Pull { get => _pull; }
     public bool Started { get => _started; }
+    Sound[] sounds;
+    SoundChannel ufoSound;
 
     public Planet(TiledObject obj = null):base("planet1.png", 1, 1, true)
     {
@@ -53,6 +56,20 @@ public class Planet:Ball
         images.Add("planet3.png");
         images.Add("planet4.png");
         String random = images[Utils.Random(0, 4)];
+
+        sounds = new Sound[] { new Sound("sounds/ballbounce1.wav", false,true), 
+            new Sound("sounds/ballbounce2.wav", false, true), 
+            new Sound("sounds/ballbounce3.wav", false, true),
+            new Sound("sounds/belt.wav", true, true),
+            new Sound("sounds/teleport.wav",false,true),
+            new Sound("sounds/UFO_pickup_v2.wav",false,true)};
+
+        ufoSound = sounds[5].Play();
+        ufoSound.IsPaused = true;
+
+       // beltSound = sounds[3].Play();
+        //beltSound.IsPaused = true;
+
 
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
@@ -171,6 +188,7 @@ public class Planet:Ball
 
     void Ufo()
     {
+        if (ufoSucked && !ufo.used) ufoSound.IsPaused = false;
         if (ufoSucked && !ufo.used) 
         { 
             ufo.SetCycle(5, 13);
@@ -217,7 +235,12 @@ public class Planet:Ball
 
     public void RidingConveyorBelt(Vector2 pDirection)
     {
-        //velocity += pDirection;
+        if (riding )
+        {
+           // beltSound.IsPaused = false;
+        }
+
+
         beltAcceleration = pDirection;
         //riding = true;
         //velocity.SetLength(0.85f);
@@ -238,7 +261,12 @@ public class Planet:Ball
             {
                 RidingConveyorBelt(belt.Movement);
             }
-            else amountNotColliding++;
+            else
+            {
+                //beltSound.IsPaused = true;
+                amountNotColliding++;
+            }
+                
         }
         riding = !(amountNotColliding == belts.Length);
     }
@@ -246,6 +274,7 @@ public class Planet:Ball
     public void Teleport(Vector2 pPos)
     {
         _position = pPos;
+        sounds[4].Play();
     }
 
     void ResetAcceleration()
@@ -357,6 +386,7 @@ public class Planet:Ball
         _position.SetXY(desiredPos);
             //Console.WriteLine("position: "+ _position);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
+        sounds[Utils.Random(0,2)].Play();
     }
 
     float ToiPoint(Ball pOther, float pCurrentToi)

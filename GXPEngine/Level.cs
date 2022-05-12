@@ -78,10 +78,18 @@ public class Level: GameObject
         {
             if(marbles[i].Win) win++;
             marbles[i].Step();
-            if (marbles[i].Lost) ((MyGame)game).LoadLevel(currentLevel);
+            if (marbles[i].Lost)
+            {
+                Sound loseSound = new Sound("sounds/you_lose.wav", false, true);
+                loseSound.Play();
+                ((MyGame)game).LoadLevel(currentLevel);     
+            } 
+
         }
         if(win == marbles.Length)
         {
+            Sound winSound = new Sound("sounds/you_win.wav", false, true);
+            winSound.Play(); 
             info.Save(currentLevel,score.Stars);
             ((MyGame)game).LoadLevel(++currentLevel); 
         } 

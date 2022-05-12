@@ -15,7 +15,9 @@ public class Door:AnimationSprite
     bool open = true;
     public bool disableCollider = false;
     float delay = 1;
+    int firstTime; 
     List<String> images;
+    Sound doorOpen = new Sound("sounds/door_open_v2.wav", false, true);
 
     public int Id { get => _id; }
 
@@ -28,12 +30,13 @@ public class Door:AnimationSprite
             images.Add("rock2.png");
             images.Add("rock3.png");
             images.Add("rock4.png");
-            //base.
+
 
             _id = obj.GetIntProperty("id",-1);
             base._texture = new Sprite(images[(_id - 1) % 4]).texture;
             closePos = new Vector2(obj.X, obj.Y);
             openPos = new Vector2(obj.GetFloatProperty("openPosX", obj.X), obj.GetFloatProperty("openPosY", obj.Y - 200));
+
         }
     }
 
@@ -43,18 +46,20 @@ public class Door:AnimationSprite
         if (collision)
         {
             if (connectedButton.currentFrame < 2) connectedButton.Animate(0.2f);
-            delay = 1; 
+            delay = 1;
+            if (firstTime == 0) doorOpen.Play();
+            firstTime++; 
         }
         else
         {
+            firstTime = 0; 
             connectedButton.currentFrame = 0;
             if (delay < 0.5) currentFrame = 1; 
             if (delay < 0) currentFrame = 0;
             delay -= 0.05f;
         } 
 
-            if (disableCollider && currentFrame != 2) Animate(0.1f);
-        //if(!disableCollider) currentFrame = 0;
+        if (disableCollider && currentFrame != 2) Animate(0.1f);
         if (connectedButton != null && collision) disableCollider = true;//OpenClose(openPos);
         else if (!collision)
         {
