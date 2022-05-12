@@ -15,7 +15,11 @@ public class Button:AnimationSprite
     public bool Paused { get => _paused; }
     public Button(int pTarget = -1, int pId = 1, string pImgPath = "square.png", TiledObject obj = null) :base(pImgPath,2,1)
     {
-        if (obj != null) target = obj.GetIntProperty("target");
+        if (obj != null)
+        {
+            target = obj.GetIntProperty("target",0);
+            _id = obj.GetIntProperty("id", 1);
+        }
         else
         {
             _id = pId;

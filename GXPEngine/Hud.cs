@@ -8,18 +8,17 @@ using GXPEngine;
 public class Hud:GameObject
 {
     Button[] buttons;
-    ScoreInfo scoreInfo;
+    Score scoreInfo;
     bool _paused = false;
     int pauseIndex;
 
     public bool Paused { get => _paused; } 
 
-    public Hud(int pCurrentLevel, ScoreInfo pScore)
+    public Hud(int pCurrentLevel, Score pScore)
     {
         scoreInfo = pScore;
         buttons = new Button[] { new Button(pCurrentLevel, 1), 
-                                new Button(-1, 2),
-                                new Button(-1,3)};
+                                new Button(-1, 2)};
         pauseIndex = 1;
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -36,5 +35,10 @@ public class Hud:GameObject
         }
         _paused = buttons[pauseIndex].Paused;
         if(buttons[pauseIndex].Paused) buttons[pauseIndex]._paused = false;
+    }
+
+    void DisplayStars()
+    {
+
     }
 }
