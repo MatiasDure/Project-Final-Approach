@@ -18,7 +18,7 @@ public class Pause:Sprite
         alpha = 255;
         buttons = new Button[] { new Button(-1, 2, "buttons/resume.png"),
                                 new Button(pCurrentLevel, 1, "buttons/restart.png"),
-                                new Button(pCurrentLevel, 1, "buttons/levels.png"),
+                                new Button(1, 1, "buttons/levels.png"),
                                 new Button(-1, 3, "buttons/quit.png")};
         pausedButton = 0;
         for (int i = 0; i < buttons.Length; i++)
