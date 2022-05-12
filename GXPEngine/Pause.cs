@@ -19,12 +19,12 @@ public class Pause:Sprite
         buttons = new Button[] { new Button(-1, 2, "buttons/resume.png"),
                                 new Button(pCurrentLevel, 1, "buttons/restart.png"),
                                 new Button(1, 1, "buttons/level1.png"),
-                                new Button(-1, 3, "buttons/quit.png")};
+                                new Button(0, 1, "buttons/level0.png")};
         pausedButton = 0;
         for (int i = 0; i < buttons.Length; i++)
         {
             AddChild(buttons[i]);
-            buttons[i].SetXY(width/2 - buttons[i].width/2, (i + 1) * 160);
+            buttons[i].SetXY(width/2 - buttons[i].width/2, (i + 1) * 160 + 100);
         }
         SetXY(game.width/2 - this.width/2,game.height/2 - this.height/2);
     }
