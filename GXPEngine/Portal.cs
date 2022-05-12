@@ -31,7 +31,7 @@ public class Portal:NotMarble
     public override void Step()
     {
         CollisionWPlanet();
-        Animate(0.2f);
+        Animate(0.12f);
     }
 
     void CollisionWPlanet()

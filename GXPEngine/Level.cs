@@ -81,56 +81,59 @@ public class Level: GameObject
 
     void Update()
     {
-        if (!pause)
+        if(currentLevel > 1)
         {
-            if(addedPauseWindow)
+            if (!pause)
             {
-                pausedWindow.Destroy();
-                addedPauseWindow = false;
-            }
-            int win = 0;
-            for (int i = 0; i < marbles.Length; i++)
-            {
-                if (marbles[i].Win) win++;
-                marbles[i].Step();
-                if (marbles[i].Lost)
+                if(addedPauseWindow)
                 {
-                    Sound loseSound = new Sound("sounds/you_lose.wav", false, true);
-                    loseSound.Play();
-                    ((MyGame)game).LoadLevel(currentLevel);
+                    pausedWindow.Destroy();
+                    addedPauseWindow = false;
                 }
+                int win = 0;
+                for (int i = 0; i < marbles.Length; i++)
+                {
+                    if (marbles[i].Win) win++;
+                    marbles[i].Step();
+                    if (marbles[i].Lost)
+                    {
+                        Sound loseSound = new Sound("sounds/you_lose.wav", false, true);
+                        loseSound.Play();
+                        ((MyGame)game).LoadLevel(currentLevel);
+                    }
+                }
+                if (win == marbles.Length)
+                {
+                    Sound winSound = new Sound("sounds/you_win.wav", false, true);
+                    winSound.Play(); 
+                    info.Save(currentLevel, score.Stars);
+                    ((MyGame)game).LoadLevel(++currentLevel);
+                }
+
+                if (hud != null)
+                {
+                    hud.Step();
+                    pause = hud.Paused;
+                }
+
+                gravityIndicator.Step();
+                foreach (Door door in doors) door.Step();
+                foreach (NotMarble notMarble in notMarbles) notMarble.Step();
+                foreach (ConveyorBelt belt in belts) belt.Step();
+
             }
-            if (win == marbles.Length)
+            else
             {
-                Sound winSound = new Sound("sounds/you_win.wav", false, true);
-                winSound.Play(); 
-                info.Save(currentLevel, score.Stars);
-                ((MyGame)game).LoadLevel(++currentLevel);
+
+                if (!addedPauseWindow)
+                {
+                    pausedWindow = new Pause(currentLevel);
+                    parent.AddChild(pausedWindow);
+                    addedPauseWindow = true;
+                }
+                pausedWindow.Step();
+                pause = pausedWindow.Paused;
             }
-
-            if (hud != null)
-            {
-                hud.Step();
-                pause = hud.Paused;
-            }
-
-            gravityIndicator.Step();
-            foreach (Door door in doors) door.Step();
-            foreach (NotMarble notMarble in notMarbles) notMarble.Step();
-            foreach (ConveyorBelt belt in belts) belt.Step();
-
-        }
-        else
-        {
-
-            if (!addedPauseWindow)
-            {
-                pausedWindow = new Pause(currentLevel);
-                parent.AddChild(pausedWindow);
-                addedPauseWindow = true;
-            }
-            pausedWindow.Step();
-            pause = pausedWindow.Paused;
         }
     }
 

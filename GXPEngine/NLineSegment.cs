@@ -28,7 +28,7 @@ namespace GXPEngine
 			color = pColor;
 			lineWidth = pLineWidth;
 			_normal = new Arrow(new Vector2(0, 0), new Vector2(0, 0), 40, 0xffff0000, 1);
-			AddChild(_normal);
+			//AddChild(_normal);
 		}
 
 		//------------------------------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ namespace GXPEngine
 			if (game != null)
 			{
 				recalculateArrowPosition();
-				Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
+				//Gizmos.RenderLine(start.x, start.y, end.x, end.y, color, lineWidth);
 			}
 		}
 		private void recalculateArrowPosition()

@@ -16,7 +16,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 0;
+	int startingLevel = 2;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;

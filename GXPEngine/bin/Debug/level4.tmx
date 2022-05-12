@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="19" height="19" tilewidth="128" tileheight="128" infinite="0" nextlayerid="3" nextobjectid="1">
- <imagelayer id="2" name="Image Layer 1">
-  <image source="HudBackground.png" width="2432" height="2432"/>
- </imagelayer>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="17" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="3" nextobjectid="29">
+ <tileset firstgid="1" name="Marble_Game_Prototype_Tileset" tilewidth="64" tileheight="64" tilecount="100" columns="10">
+  <image source="City_Level_1.png" trans="ff00ff" width="640" height="640"/>
+ </tileset>
+ <tileset firstgid="101" name="tile-set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
+  <image source="tile-set.png" width="320" height="192"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="17" height="17">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,102,103,103,103,103,103,108,103,103,103,103,103,104,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,108,107,0,108,108,108,108,108,108,108,108,108,0,0,
+0,0,107,0,0,0,107,0,108,0,0,0,0,0,109,0,0,
+0,0,112,113,113,113,107,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,108,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,0,0,0,0,0,0,109,0,0,
+0,0,107,0,0,0,0,0,113,0,0,0,0,0,109,0,0,
+0,0,112,113,113,113,113,113,108,113,113,113,113,113,114,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" name="Door1" type="Door" x="352" y="544" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="2" name="Door2" type="Door" x="544" y="800" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="3" name="TP1_in" type="Portal" x="576" y="320" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="4" name="TP1_out" type="Portal" x="832" y="768" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="5" name="Door2Button" type="DoorButton" x="192" y="320" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="6" name="Door1Button" type="DoorButton" x="320" y="832" width="64" height="64">
+   <properties>
+    <property name="id" type="int" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object id="11" name="Obstacle" type="Obstacle" x="512" y="191.25" width="64" height="320.75"/>
+  <object id="13" name="Obstacle" type="Obstacle" x="193" y="128" width="768" height="64"/>
+  <object id="14" name="Obstacle" type="Obstacle" x="128" y="128" width="64" height="832.417"/>
+  <object id="15" name="Obstacle" type="Obstacle" x="192" y="896" width="704.667" height="62.25"/>
+  <object id="16" name="Obstacle" type="Obstacle" x="896" y="191.25" width="64" height="767.917"/>
+  <object id="18" name="Obstacle" type="Obstacle" x="384.091" y="512" width="510" height="64"/>
+  <object id="19" name="Obstacle" type="Obstacle" x="512" y="576" width="64" height="192"/>
+  <object id="20" name="Obstacle" type="Obstacle" x="512" y="832" width="64" height="65.083"/>
+  <object id="21" name="Obstacle" type="Obstacle" x="192.333" y="512" width="127.688" height="64"/>
+  <object id="24" name="Obstacle" type="Obstacle" x="384" y="576" width="64" height="128"/>
+  <object id="25" name="Obstacle" type="Obstacle" x="256" y="640" width="128" height="64"/>
+  <object id="26" name="Obstacle" type="Obstacle" x="192" y="683.125" width="64" height="20.875"/>
+  <object id="7" name="Planet" type="Planet" x="400" y="270" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="8" name="Planet" type="Planet" x="785" y="270" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="23" name="Ship" type="Ship" x="191.333" y="578.333" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="9" name="Ship" type="Ship" x="448" y="577.667" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="28" name="timer" type="Timer" x="0" y="0" width="30.6667" height="33.3333">
+   <properties>
+    <property name="timer" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
