@@ -17,11 +17,10 @@ public class Hud:GameObject
 
     public Hud(int pCurrentLevel, Score pScore)
     {
-        //stars 
         scoreInfo = pScore;
         buttons = new Button[] { new Button(pCurrentLevel, 1, "buttons/resetIcon.png"), 
                                 new Button(-1, 2, "buttons/pause.png")};
-        stars = new AnimationSprite("heartsAnimation.png", 1, 13);
+        stars = new AnimationSprite("starSpritesheet.png", 1, 13);
         stars.SetXY(1500, 0); 
         AddChild(stars);
         pauseIndex = 1;
