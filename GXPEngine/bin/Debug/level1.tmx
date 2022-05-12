@@ -65,7 +65,7 @@
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="25" name="belt1" type="ConveyorBelt" x="384" y="404" width="128" height="128">
+  <object id="25" name="belt1" type="ConveyorBelt" x="384" y="404" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="0"/>
     <property name="movementY" type="float" value="0.03"/>
@@ -81,23 +81,23 @@
     <property name="id" type="int" value="2"/>
    </properties>
   </object>
-  <object id="35" name="belt1" type="ConveyorBelt" x="768" y="404" width="128" height="128">
+  <object id="35" name="belt1" type="ConveyorBelt" x="576" y="404" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="0"/>
     <property name="movementY" type="float" value="-0.03"/>
    </properties>
   </object>
-  <object id="36" name="belt1" type="ConveyorBelt" x="896" y="404" width="128" height="128">
+  <object id="36" name="belt1" type="ConveyorBelt" x="640" y="404" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="0.02"/>
    </properties>
   </object>
-  <object id="37" name="belt1" type="ConveyorBelt" x="512" y="404" width="128" height="128">
+  <object id="37" name="belt1" type="ConveyorBelt" x="448" y="404" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="0.02"/>
    </properties>
   </object>
-  <object id="38" name="belt1" type="ConveyorBelt" x="640" y="404" width="128" height="128">
+  <object id="38" name="belt1" type="ConveyorBelt" x="512" y="404" width="64" height="64">
    <properties>
     <property name="movementX" type="float" value="-0.02"/>
    </properties>
