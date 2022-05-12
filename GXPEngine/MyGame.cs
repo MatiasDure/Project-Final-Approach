@@ -8,10 +8,10 @@ using GXPEngine;                                // GXPEngine contains the engine
 // - score system (highscore or stars? / based on timer or something else? (timer for now)) --->Matias
 // - Implement json parser system to save highscore ---> Matias
 // - Create buttons for hud ---> Matias
-// - Alien ship laser beam new mechanism(three position checks, shrinking)---> ??
-// -Place buttons and hud elements on screen ---> ??
-// - Implement sound effects based on collisions---> ??
-// - Implement animation sprites and set cycles correctly---> ?? 
+// - Alien ship laser beam new mechanism(three position checks, shrinking)---> Omair
+// - Place buttons and hud elements on screen ---> Matias
+// - Implement sound effects based on collisions---> Omair
+// - Implement animation sprites and set cycles correctly---> Omair
 
 public class MyGame : Game
 {
@@ -24,7 +24,7 @@ public class MyGame : Game
 	SoundChannel soundtrackChannel;
 	Sprite background;
 
-	public MyGame() : base(1920, 1080, false, false, 1280, 720)      // Create a window that's 800x600 and NOT fullscreen
+	public MyGame() : base(1920, 1080, false, false, 1280, 720) // Create a window that's 800x600 and NOT fullscreen
 	{
 		
 		targetFps = 60;
@@ -58,8 +58,8 @@ public class MyGame : Game
 		soundToPlay = levelNum == 0 ? soundtrack[0] : soundtrack[1];
 		soundtrackChannel = soundToPlay.Play();
 		level = new Level(levelName,levelNum);
-		level.CreateLevel();
 		AddChild(level);
+		level.CreateLevel();
 		levelName = null;
     }
 

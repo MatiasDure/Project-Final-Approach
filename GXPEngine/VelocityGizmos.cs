@@ -81,7 +81,8 @@ public class VelocityGizmos: EasyDraw
         velocity *= 0.99f;
         velocity.LimitLength(100);
     }
-    void Update()
+
+    public void Step()
     {
         magnituge = velocity.Length();
         oldCount = count;
