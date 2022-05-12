@@ -49,13 +49,11 @@ public class ConveyorBelt:AnimationSprite
         if(pOther is Planet)
         {
             beltSound.IsPaused = false;
-        }else beltSound.IsPaused = true;
-        
+        }else beltSound.IsPaused = true; 
     }
     public void Step()
     {
         FixPositions();
         Animate(0.1f);
-        //rotation++;
     }
 }

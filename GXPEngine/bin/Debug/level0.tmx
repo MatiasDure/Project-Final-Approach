@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.1" orientation="orthogonal" renderorder="right-down" width="17" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="9">
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" name="start" type="ButtonTiled" x="321" y="550" width="449" height="108">
+   <properties>
+    <property name="id" type="int" value="1"/>
+    <property name="main" type="bool" value="true"/>
+    <property name="target" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="2" name="levels" type="ButtonTiled" x="321" y="725" width="449" height="108">
+   <properties>
+    <property name="id" type="int" value="1"/>
+    <property name="target" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="3" name="quit" type="ButtonTiled" x="321" y="900" width="449" height="108">
+   <properties>
+    <property name="id" type="int" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <imagelayer id="3" name="background" offsetx="-404" offsety="-228">
+  <image source="logo.png" width="1920" height="1080"/>
+ </imagelayer>
+</map>

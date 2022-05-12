@@ -46,7 +46,7 @@ public class Level: GameObject
     {
         loader.addColliders = false;
         loader.rootObject = this;
-        //loader.LoadImageLayers();
+        loader.LoadImageLayers();
         loader.LoadTileLayers();
 
         loader.autoInstance = true;
@@ -70,7 +70,7 @@ public class Level: GameObject
 
         AddingElementsToPlanets();
         AddingPlanets();
-        CreateGravityIndicator();
+        if (currentLevel > 1) CreateGravityIndicator();
     }
 
     void CreateGravityIndicator()
@@ -85,7 +85,7 @@ public class Level: GameObject
         {
             if (!pause)
             {
-                if(addedPauseWindow)
+                if (addedPauseWindow)
                 {
                     pausedWindow.Destroy();
                     addedPauseWindow = false;
@@ -99,7 +99,7 @@ public class Level: GameObject
                     {
                         Sound loseSound = new Sound("sounds/you_lose.wav", false, true);
                         loseSound.Play();
-                        ((MyGame)game).LoadLevel(currentLevel);
+                        LoadLvl(currentLevel);
                     }
                 }
                 if (win == marbles.Length)
@@ -107,7 +107,9 @@ public class Level: GameObject
                     Sound winSound = new Sound("sounds/you_win.wav", false, true);
                     winSound.Play(); 
                     info.Save(currentLevel, score.Stars);
-                    ((MyGame)game).LoadLevel(++currentLevel);
+
+                    if (currentLevel == 8) LoadLvl(0);
+                    else LoadLvl(++currentLevel);
                 }
 
                 if (hud != null)
@@ -181,6 +183,11 @@ public class Level: GameObject
                 }
             }
         }
+    }
+
+    void LoadLvl(int pLevel)
+    {
+        ((MyGame)game).LoadLevel(pLevel);
     }
 
     void ConnectingDoorToButton()

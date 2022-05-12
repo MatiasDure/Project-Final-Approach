@@ -187,7 +187,7 @@
   <object id="153" type="Obstacle" x="832.396" y="447.813" width="64" height="64" rotation="90"/>
   <object id="154" name="timer" type="Timer" x="0" y="0" width="60" height="52">
    <properties>
-    <property name="timer" type="int" value="0"/>
+    <property name="timer" type="int" value="60"/>
    </properties>
   </object>
   <object id="155" name="moving blackhole right" type="Blackhole" x="226" y="733" width="64" height="64">

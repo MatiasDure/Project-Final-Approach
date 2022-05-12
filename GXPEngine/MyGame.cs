@@ -16,7 +16,7 @@ using GXPEngine;                                // GXPEngine contains the engine
 public class MyGame : Game
 {
 	string levelName = null;
-	int startingLevel = 2;
+	int startingLevel = 0;
 	int levelNum;
 	public Planet planet;
 	public Level level = null;
@@ -55,7 +55,7 @@ public class MyGame : Game
 		background = new Sprite("background.png", false, false);
 		AddChild(background);
 		Sound soundToPlay;
-		soundToPlay = levelNum == 0 ? soundtrack[0] : soundtrack[1];
+		soundToPlay = levelNum < 2 ? soundtrack[0] : soundtrack[1];
 		soundtrackChannel = soundToPlay.Play();
 		level = new Level(levelName,levelNum);
 		AddChild(level);

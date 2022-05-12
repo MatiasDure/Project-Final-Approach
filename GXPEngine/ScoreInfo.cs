@@ -26,18 +26,13 @@ public class ScoreInfo : GameObject
         Load();
     }
 
-    void Update()
-    {
-        //Console.WriteLine(level1Score);
-    }
-
     public void Save(int pLevel, int pScore)
     {
         try
         {
             //attributes that change throughout game
-            if (levelScores[pLevel - 1] >= pScore) return;
-            scores.GetValue("level1").Replace(pScore);
+            if (levelScores[pLevel - 2] >= pScore) return;
+            scores.GetValue("level" + (pLevel - 1)).Replace(pScore);
             File.WriteAllText(jsonPath, scores.ToString());
             Console.WriteLine("Game Saved!");
             gameSaved = false;

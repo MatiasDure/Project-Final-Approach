@@ -93,9 +93,9 @@
   <object id="5" name="Ship" type="Ship" x="512.417" y="195" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="59" name="timer" type="Timer" x="0" y="0" width="60" height="52">
+  <object id="59" name="timer" type="Timer" x="0" y="0" width="60" height="52" visible="0">
    <properties>
-    <property name="timer" type="int" value="0"/>
+    <property name="timer" type="int" value="60"/>
    </properties>
   </object>
  </objectgroup>

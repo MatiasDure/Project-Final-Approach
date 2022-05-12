@@ -10,26 +10,52 @@ public class ButtonTiled : AnimationSprite
 {
     int target;
     int _id;
+    bool mainMenu = false;
 
-    public ButtonTiled(TiledObject obj = null) : base("buttons/levels.png", 2, 1)
+    public ButtonTiled(TiledObject obj = null) : base("buttons/restart.png", 2, 1)
     {
         if (obj != null)
         {
             target = obj.GetIntProperty("target", 0);
             _id = obj.GetIntProperty("id", 1);
+            mainMenu = obj.GetBoolProperty("main", false);
         }
-        base._texture = new AnimationSprite("buttons/level"+(target-1)+".png", 2, 1).texture;
+
+        string path;
+        if (_id == 3) path = "buttons/quit.png";
+        else if (mainMenu) path = "buttons/start.png";
+        else path = "buttons/level" + target + ".png";
+        
+        base._texture = new AnimationSprite(path, 2, 1).texture;
     }
 
     public void Update()
     {
         bool clickedButton = Clicked();
-        if (clickedButton) LoadLvl();
+        TypeButton(clickedButton);
     }
 
-    void LoadLvl()
+    void TypeButton(bool pClicked)
     {
-        ((MyGame)game).LoadLevel(target);
+        switch (_id)
+        {
+            case 1:
+                LoadLvl(pClicked);
+                break;
+            case 2:
+                break;
+            case 3:
+                EndGame(pClicked);
+                break;
+            default:
+                Console.WriteLine("not found ID");
+                break;
+        }
+    }
+
+    void LoadLvl(bool pClicked)
+    {
+        if (pClicked) ((MyGame)game).LoadLevel(target);
     }
 
     bool Clicked()
@@ -41,6 +67,11 @@ public class ButtonTiled : AnimationSprite
         }
         else currentFrame = 0;
         return false;
+    }
+
+    void EndGame(bool pClicked)
+    {
+        if (pClicked) ((MyGame)game).Destroy();
     }
 
 }

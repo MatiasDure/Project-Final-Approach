@@ -134,7 +134,7 @@
   </object>
   <object id="84" name="timer" type="Timer" x="0" y="0" width="60" height="52">
    <properties>
-    <property name="timer" type="int" value="0"/>
+    <property name="timer" type="int" value="60"/>
    </properties>
   </object>
  </objectgroup>
