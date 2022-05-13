@@ -44,7 +44,6 @@ public class MyGame : Game
 	{
 		Game myGame = new MyGame();
 		myGame.Start();
-		
 	}
 
 	void CheckLevel()

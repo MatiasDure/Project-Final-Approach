@@ -6,9 +6,6 @@
  <tileset firstgid="1" name="tile-set" tilewidth="64" tileheight="64" tilecount="15" columns="5">
   <image source="tile-set.png" width="320" height="192"/>
  </tileset>
- <imagelayer id="5" name="bg" visible="0">
-  <image source="background.png" width="1920" height="1080"/>
- </imagelayer>
  <layer id="6" name="Tile Layer 2" width="17" height="17">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

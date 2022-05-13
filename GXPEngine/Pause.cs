@@ -10,6 +10,7 @@ public class Pause:Sprite
     Button[] buttons;
     bool _paused;
     int pausedButton;
+    Sprite pauseImg;
 
     public bool Paused { get => _paused; }
 
@@ -21,10 +22,16 @@ public class Pause:Sprite
                                 new Button(1, 1, "buttons/level1.png"),
                                 new Button(0, 1, "buttons/level0.png")};
         pausedButton = 0;
+
+        float halfPause = width / 2;
+
+        pauseImg = new Sprite("pause.png",false,false);
+        AddChild(pauseImg);
+        pauseImg.SetXY(halfPause - pauseImg.width/2 + 3,50);
         for (int i = 0; i < buttons.Length; i++)
         {
             AddChild(buttons[i]);
-            buttons[i].SetXY(width/2 - buttons[i].width/2, (i + 1) * 160 + 100);
+            buttons[i].SetXY(halfPause - buttons[i].width/2, (i + 1) * 160 + 100);
         }
         SetXY(game.width/2 - this.width/2,game.height/2 - this.height/2);
     }
