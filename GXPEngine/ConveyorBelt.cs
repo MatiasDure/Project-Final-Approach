@@ -13,6 +13,9 @@ public class ConveyorBelt:AnimationSprite
     Vector2 _movement;
     float _width, _height;
     bool fixedPoisitions;
+    bool wasPlaying;
+    bool wasPlaying2;
+    bool colliding;
     SoundChannel beltSound; 
 
     public Vector2 Position { get => _position; }
@@ -45,17 +48,30 @@ public class ConveyorBelt:AnimationSprite
 
     void OnCollision(GameObject pOther)
     {
-        try
+        colliding = false;
+        if (pOther is Planet)
         {
-            if(pOther is Planet)
-            {
-                beltSound.IsPaused = false;
-            }else beltSound.IsPaused = true; 
+            colliding = true;
+            wasPlaying = true;
         }
-        catch (Exception e) { Console.WriteLine(e.Message); }
     }
+
     public void Step()
     {
+        try
+        {
+            if (wasPlaying) wasPlaying2 = true;
+            else wasPlaying2 = false;
+            if (wasPlaying2) beltSound.IsPaused = false;
+            else beltSound.IsPaused = true;
+            wasPlaying = false;
+
+        }
+        catch(Exception)
+        {
+            Console.WriteLine("You moron");
+        }
+
         FixPositions();
         Animate(0.1f);
     }

@@ -88,7 +88,7 @@
   <object id="9" name="Ship" type="Ship" x="448" y="577.667" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="28" name="timer" type="Timer" x="0" y="0" width="30.6667" height="33.3333">
+  <object id="28" name="timer" type="Timer" x="0" y="0" visible="0">
    <properties>
     <property name="timer" type="int" value="60"/>
    </properties>

@@ -61,7 +61,7 @@ public class Level: GameObject
         {
             score = new Score(timer);
             AddChild(score);
-            hud = new Hud(currentLevel,score);
+            hud = new Hud(currentLevel,score, info);
             parent.AddChild(hud);
         }
 

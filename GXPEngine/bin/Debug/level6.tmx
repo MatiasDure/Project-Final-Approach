@@ -175,11 +175,6 @@
   <object id="37" name="ship" type="Ship" x="704.333" y="640.667" width="64" height="64">
    <ellipse/>
   </object>
-  <object id="75" name="timer" type="Timer" x="0" y="0" width="60" height="52" visible="0">
-   <properties>
-    <property name="timer" type="int" value="0"/>
-   </properties>
-  </object>
   <object id="76" name="timer" type="Timer" x="0" y="0">
    <properties>
     <property name="timer" type="int" value="60"/>

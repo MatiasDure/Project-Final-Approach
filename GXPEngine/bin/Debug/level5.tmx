@@ -149,12 +149,7 @@
   </object>
   <object id="61" type="Obstacle" x="640" y="1024" width="384" height="64"/>
   <object id="62" type="Obstacle" x="576" y="1057.75" width="64" height="30.25"/>
-  <object id="63" name="timer" type="Timer" x="0" y="0" width="40" height="45.3333" visible="0">
-   <properties>
-    <property name="timer" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="66" name="timer" type="Timer" x="0" y="0" width="60" height="52">
+  <object id="66" name="timer" type="Timer" x="0" y="0">
    <properties>
     <property name="timer" type="int" value="60"/>
    </properties>

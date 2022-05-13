@@ -360,7 +360,7 @@
   <object id="110" name="Obstacle" type="Obstacle" x="576" y="704" width="192" height="64"/>
   <object id="111" name="Obstacle" type="Obstacle" x="832" y="704" width="64" height="64"/>
   <object id="112" name="Obstacle" type="Obstacle" x="512" y="192" width="64" height="128"/>
-  <object id="113" name="timer" type="Timer" x="0" y="0" width="30.6667" height="33.3333" visible="0">
+  <object id="113" name="timer" type="Timer" x="0" y="0">
    <properties>
     <property name="timer" type="int" value="60"/>
    </properties>

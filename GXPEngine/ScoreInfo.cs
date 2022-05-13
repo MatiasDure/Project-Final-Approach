@@ -12,11 +12,13 @@ public class ScoreInfo : GameObject
     const string jsonPath = @"scoreSave.json";
     JObject scores;
     public bool gameSaved;
-    int[] levelScores;
+    int[] _levelScores;
+
+    public int[] LevelScores { get => _levelScores; }
 
     public ScoreInfo()
     {
-        levelScores = new int[8];
+        _levelScores = new int[7];
         try
         {
             scores = JObject.Parse(File.ReadAllText(jsonPath));
@@ -31,7 +33,7 @@ public class ScoreInfo : GameObject
         try
         {
             //attributes that change throughout game
-            if (levelScores[pLevel - 2] >= pScore) return;
+            if (_levelScores[pLevel - 2] >= pScore) return;
             scores.GetValue("level" + (pLevel - 1)).Replace(pScore);
             File.WriteAllText(jsonPath, scores.ToString());
             Console.WriteLine("Game Saved!");
@@ -44,9 +46,9 @@ public class ScoreInfo : GameObject
     {
         try
         {
-            for(int i = 0; i < levelScores.Length; i++)
+            for(int i = 0; i < _levelScores.Length; i++)
             {
-                levelScores[i] = (int)scores["level" + (i+1)];
+                _levelScores[i] = (int)scores["level" + (i+1)];
             }
         }
         catch (Exception) { Console.WriteLine("Error while loading! Game was not loaded properly."); }

@@ -24,7 +24,7 @@ public class Planet:Ball
     bool _lost = false;
     bool _win = false;
     public bool riding = false;
-    bool ridingSound = false;
+    //bool ridingSound = false;
     bool stopping = false;
     public bool teleporting = false;
     bool ufoSucked;
@@ -47,8 +47,9 @@ public class Planet:Ball
     public bool Pull { get => _pull; }
     public bool Started { get => _started; }
     Sound[] sounds;
-    //SoundChannel ufoSound;
+    SoundChannel ufoSound;
     bool ufoPlay = false;
+    //int timeLimit = 0;
 
     public Planet(TiledObject obj = null):base("planet1.png", 1, 1, true)
     {
@@ -66,10 +67,8 @@ public class Planet:Ball
             new Sound("sounds/teleport.wav",false,true),
             new Sound("sounds/UFO_pickup_v2.wav",false,true)};
 
-        //ufoSound = sounds[5].Play();
-        //ufoSound.IsPaused = true;
-
-
+        ufoSound = sounds[5].Play();
+        ufoSound.IsPaused = true;
 
         acceleration = new Vector2(0, 0);
         velocity = new Vector2(0, 0);
@@ -98,12 +97,21 @@ public class Planet:Ball
             CollisionInfo firstCollision = FindEarliestCollision();
             if (firstCollision != null)
             {
-                rolling = firstCollision.timeOfImpact < 0.41f;
+                //rolling = firstCollision.timeOfImpact < 0.41f;
                 ResolveCollision(firstCollision);
                 if (firstTime && Approximate(firstCollision.timeOfImpact)) //rolling
                 {
                     continue;
                 }
+
+                //int time = Time.time;
+                //if (/*!rolling*/ time > timeLimit)
+                //{
+                //    timeLimit = time + 800;
+                //    int random = Utils.Random(0, 3);
+                //    //sounds[random].Play();
+                //    Console.WriteLine(random);
+                //}
             }
             break;
         }
@@ -186,14 +194,14 @@ public class Planet:Ball
 
     void Ufo()
     {
-        //if (ufoSucked && !ufo.used) //ufoSound.IsPaused = false;
+        if (ufoSucked && !ufo.used) ufoSound.IsPaused = false;
         if (ufoSucked && !ufo.used) 
         {
-            if (!ufoPlay)
-            {
-                sounds[5].Play();
-                ufoPlay = true;
-            }
+            //if (!ufoPlay)
+            //{
+            //    sounds[5].Play();
+            //    ufoPlay = true;
+            //}
             ufo.SetCycle(5, 13);
             if(ufo.currentFrame > 15) ufo.SetCycle(16, 1);
 
@@ -369,8 +377,7 @@ public class Planet:Ball
         Vector2 desiredPos = oldPosition + pCollision.timeOfImpact * velocity;
         _position.SetXY(desiredPos);
         velocity.Reflect(Ball.bounciness, pCollision.normal);
-        Console.WriteLine("ROlong " + rolling );
-        if(!rolling)sounds[Utils.Random(0,3)].Play();
+        //if(!rolling)sounds[Utils.Random(0,3)].Play();
     }
 
     float ToiPoint(Ball pOther, float pCurrentToi)
